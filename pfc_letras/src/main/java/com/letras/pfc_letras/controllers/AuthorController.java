@@ -1,4 +1,4 @@
-package com.letras.pfc_letras.controllers.dto;
+package com.letras.pfc_letras.controllers;
 
 import com.letras.pfc_letras.models.Author;
 import com.letras.pfc_letras.services.AuthorService;
