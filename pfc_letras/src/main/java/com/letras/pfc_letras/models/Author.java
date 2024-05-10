@@ -1,4 +1,4 @@
-package models;
+package com.letras.pfc_letras.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

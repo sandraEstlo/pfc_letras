@@ -1,6 +1,6 @@
-package services;
+package com.letras.pfc_letras.services;
 
-import models.Author;
+import com.letras.pfc_letras.models.Author;
 import java.util.List;
 import java.util.Optional;
 
