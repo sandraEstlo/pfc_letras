@@ -17,6 +17,7 @@ public class AuthorController {
     @Resource
     private AuthorService authorService;
 
+
     @GetMapping("/all")
     public List<Author> getAuthors() {
         return authorService.getAllAuthors();
@@ -24,6 +25,7 @@ public class AuthorController {
 
     @GetMapping("/{id}")
     public Author getAuthorById(@PathVariable String id) {
-        return authorService.getAuthorById(id).orElse(null);
+        return authorService.getAuthorById(id)
+                            .orElse(null);
     }
 }
