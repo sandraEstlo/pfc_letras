@@ -11,5 +11,9 @@ public interface AuthorService {
 
     Optional<Author> getAuthorById(String id);
 
-    Author addAuthor(Author author);
+    Optional<Author> getAuthorByName(String name);
+
+    List<Author> getAuthorByNameContaining(String name);
+
+    Author create(Author author);
 }

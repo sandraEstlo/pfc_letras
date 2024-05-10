@@ -26,7 +26,17 @@ public class DefaultAuthorImpl implements AuthorService {
     }
 
     @Override
-    public Author addAuthor(Author author) {
+    public Optional<Author> getAuthorByName(String name) {
+        return authorDao.findByName(name);
+    }
+
+    @Override
+    public List<Author> getAuthorByNameContaining(String name) {
+        return authorDao.findByNameContainingIgnoreCase(name);
+    }
+
+    @Override
+    public Author create(Author author) {
         return authorDao.save(author);
     }
 }
