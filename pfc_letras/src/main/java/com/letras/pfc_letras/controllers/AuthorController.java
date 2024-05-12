@@ -1,6 +1,6 @@
 package com.letras.pfc_letras.controllers;
 
-import com.letras.pfc_letras.models.Author;
+import com.letras.pfc_letras.models.AuthorModel;
 import com.letras.pfc_letras.services.AuthorService;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,13 +19,15 @@ public class AuthorController {
 
 
     @GetMapping("/all")
-    public List<Author> getAuthors() {
-        return authorService.getAllAuthors();
+    public List<AuthorModel> getAuthors() {
+
+        return authorService.findAllAuthors();
     }
 
     @GetMapping("/{id}")
-    public Author getAuthorById(@PathVariable String id) {
-        return authorService.getAuthorById(id)
-                            .orElse(null);
+    public AuthorModel getAuthorById(@PathVariable String id) {
+
+        return authorService.findAuthorById(id)
+                .orElse(null);
     }
 }

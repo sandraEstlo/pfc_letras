@@ -1,19 +1,19 @@
 package com.letras.pfc_letras.services;
 
-import com.letras.pfc_letras.models.Author;
+import com.letras.pfc_letras.models.AuthorModel;
 import java.util.List;
 import java.util.Optional;
 
 
 public interface AuthorService {
 
-    List<Author> getAllAuthors();
+    List<AuthorModel> findAllAuthors();
 
-    Optional<Author> getAuthorById(String id);
+    Optional<AuthorModel> findAuthorById(String id);
 
-    Optional<Author> getAuthorByName(String name);
+    Optional<AuthorModel> findAuthorByName(String name);
 
-    List<Author> getAuthorByNameContaining(String name);
+    List<AuthorModel> findAuthorByNameContaining(String name);
 
-    Author create(Author author);
+    AuthorModel save(AuthorModel author);
 }

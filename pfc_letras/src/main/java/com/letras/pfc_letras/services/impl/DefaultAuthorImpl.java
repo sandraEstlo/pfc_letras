@@ -2,9 +2,9 @@ package com.letras.pfc_letras.services.impl;
 
 import com.letras.pfc_letras.services.AuthorService;
 import jakarta.annotation.Resource;
-import com.letras.pfc_letras.models.Author;
+import com.letras.pfc_letras.models.AuthorModel;
 import org.springframework.stereotype.Service;
-import com.letras.pfc_letras.repositories.AuthorDao;
+import com.letras.pfc_letras.repositories.AuthorRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,30 +13,30 @@ import java.util.Optional;
 public class DefaultAuthorImpl implements AuthorService {
 
     @Resource
-    private AuthorDao authorDao;
+    private AuthorRepository authorDao;
 
     @Override
-    public List<Author> getAllAuthors() {
+    public List<AuthorModel> findAllAuthors() {
         return authorDao.findAll();
     }
 
     @Override
-    public Optional<Author> getAuthorById(String id) {
+    public Optional<AuthorModel> findAuthorById(String id) {
         return authorDao.findById(id);
     }
 
     @Override
-    public Optional<Author> getAuthorByName(String name) {
+    public Optional<AuthorModel> findAuthorByName(String name) {
         return authorDao.findByName(name);
     }
 
     @Override
-    public List<Author> getAuthorByNameContaining(String name) {
+    public List<AuthorModel> findAuthorByNameContaining(String name) {
         return authorDao.findByNameContainingIgnoreCase(name);
     }
 
     @Override
-    public Author create(Author author) {
+    public AuthorModel save(AuthorModel author) {
         return authorDao.save(author);
     }
 }
