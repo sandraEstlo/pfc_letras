@@ -1,4 +1,4 @@
-package com.letras.pfc_letras.models.CategoriesModels;
+package com.letras.pfc_letras.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,9 +7,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.util.List;
 
 @Setter
 @Getter
@@ -17,13 +14,13 @@ import java.util.List;
 @AllArgsConstructor
 @ToString
 @Builder
-@Document
-public class SpecificCategoryModel {
+public class BookDto {
 
-    @Id
     private String id;
 
-    private String name;
+    private String authorName;
 
-    private List<SubcategoryModel> subcategories;
+    private String title;
+
+    private String subcategory;
 }

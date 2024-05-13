@@ -1,5 +1,6 @@
 package com.letras.pfc_letras.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.letras.pfc_letras.models.CategoriesModels.SubcategoryModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,8 +11,11 @@ import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
+import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -27,7 +31,7 @@ public class BookModel {
     @Id
     private String id;
 
-    @DBRef
+    @DocumentReference(lookup = "{ '_id': ?#{#target} }")
     private List<AuthorModel> authors;
 
     private int copies;
@@ -38,11 +42,13 @@ public class BookModel {
 
     private String isbn;
 
-    @DateTimeFormat
+    @Field("publication_date")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private Date publishDate;
 
-    @DBRef
-    private SubcategoryModel subcategory;
+    @Field("subcategory_id")
+    private String subcategoryId;
 
     private String title;
 
