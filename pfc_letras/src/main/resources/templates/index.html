@@ -1,10 +1,372 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+<!--    <link rel="stylesheet" href="styleIndex.css"/>-->
 </head>
-<body>
+<style>
+    .home-001,
+    .home-001 * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    .home-001 {
+        background: #ffffff;
+        height: 2793px;
+        position: relative;
+    }
+    .rectangle-10 {
+        background: #f5f5f5;
+        border-radius: 30px;
+        width: 1520px;
+        height: 600px;
+        position: absolute;
+        left: 200px;
+        top: 116px;
+    }
+    .components-header {
+        background: #ffffff;
+        border-style: solid;
+        border-color: transparent;
+        border-width: 0px 0px 0.5px 0px;
+        padding: 30px 200px 22px 200px;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: 1920px;
+        height: 100px;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        overflow: hidden;
+    }
+    .imago {
+        flex-shrink: 0;
+        width: 140px;
+        height: 31px;
+        position: relative;
+        object-fit:contain;
+    }
+    .component-boton {
+        flex-shrink: 0;
+        width: 180px;
+        height: 38px;
+        position: relative;
+    }
 
+    .component-boton:hover {
+
+    }
+    .rectangle-9 {
+        background: #2042ea;
+        border-radius: 8px;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        right: 0%;
+        left: 0%;
+        bottom: 0%;
+        top: 0%;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+    }
+    .iniciar-sesion {
+        color: #ffffff;
+        text-align: center;
+        font-family:"AnekTamil-SemiBold",sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .components-header2 {
+        margin-top: -20px;
+        width: 1920px;
+        height: 82px;
+        position: absolute;
+        top: 814px;
+    }
+    .rectangle-19 {
+        background: #ffffff;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+    .catalogo {
+        color: #2042ea;
+        text-align: left;
+        font-family: "AnekTamil-SemiBold",sans-serif;
+        font-size: 24px;
+        font-weight: 700;
+        position: absolute;
+        right: 82.34%;
+        left: 12.66%;
+        width: 5%;
+        bottom: 19.51%;
+        top: 19.51%;
+        height: 60.98%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    .component-51 {
+        width: 37.55%;
+        height: 60.98%;
+        position: absolute;
+        right: 20.21%;
+        left: 42.24%;
+        bottom: 19.51%;
+        top: 19.51%;
+    }
+    .rectangle-17 {
+        background: #ffffff;
+        border-radius: 20px;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        right: 0%;
+        left: 0%;
+        bottom: 0%;
+        top: 0%;
+        box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.25);
+    }
+    .component-50 {
+        width: 5.96%;
+        height: 72%;
+        position: absolute;
+        right: 1.94%;
+        left: 92.09%;
+        bottom: 16%;
+        top: 12%;
+    }
+    .rectangle-18 {
+        border-style: solid;
+        border-color: #2042ea;
+        border-width: 0px 0px 0px 0.5px;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+    .elements-icons {
+        width: 69.77%;
+        height: 83.33%;
+        position: absolute;
+        right: 0%;
+        left: 30.23%;
+        bottom: 5.56%;
+        top: 11.11%;
+        overflow: visible;
+    }
+    .elements-button {
+        width: 5.62%;
+        height: 60.98%;
+        position: absolute;
+        right: 13.65%;
+        left: 80.73%;
+        bottom: 19.51%;
+        top: 19.51%;
+    }
+    .elements-button2 {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        right: 0%;
+        left: 0%;
+        bottom: 0%;
+        top: 0%;
+    }
+    .rectangle-92 {
+        background: #ffffff;
+        border-radius: 8px;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        right: 0%;
+        left: 0%;
+        bottom: 0%;
+        top: 0%;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+    }
+    .filtrar {
+        color: #2042ea;
+        text-align: center;
+        font-family:"AnekTamil-SemiBold",sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        position: absolute;
+        right: 0%;
+        left: 39.81%;
+        width: 60.19%;
+        bottom: 0%;
+        top: 0%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .elements-icons2 {
+        width: 27.78%;
+        height: 60%;
+        position: absolute;
+        right: 60.19%;
+        left: 12.04%;
+        bottom: 20%;
+        top: 20%;
+        overflow: visible;
+    }
+    .scrollbar-1 {
+        width: 1520px;
+        height: 1589px;
+        position: absolute;
+        left: 200px;
+        top: 900px;
+        overflow-y: auto;
+    }
+    .frame-12 {
+        display: flex;
+        flex-direction: row;
+        gap: 55px;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        width: 1270px;
+        position: relative;
+        left: 125px;
+        top: 112px;
+    }
+    .component-25 {
+        opacity: 0.8999999761581421;
+        flex-shrink: 0;
+        width: 210px;
+        height: 350px;
+        position: relative;
+    }
+    .rectangle-15{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+    .rectangle-15:hover {
+        background: #ffffff;
+        border-radius: 20px;
+        border-style: solid;
+        border-color: transparent;
+        border-width: 0.5px;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        box-shadow: 0px 6px 8px 6px rgba(0, 0, 0, 0.15);
+    }
+    .frame-13 {
+        width: 177px;
+        height: 242px;
+        position: absolute;
+        left: 16px;
+        top: 19px;
+    }
+    .img-libro {
+        border-radius: 15px;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        right: -0.27%;
+        left: -0.27%;
+        bottom: -0.04%;
+        top: -0.1%;
+        object-fit: cover;
+    }
+    .frame-14 {
+        display: flex;
+        flex-direction: row;
+        gap: 4px;
+        align-items: flex-start;
+        justify-content: initial;
+        flex-wrap: wrap;
+        width: 180px;
+        height: 35px;
+        position: absolute;
+        left: 26px;
+        top: 279px;
+    }
+    .lorem-ipsum {
+        color: #2042ea;
+        text-align: left;
+        font-family:"AnekTamil-SemiBold", sans-serif;
+        font-size: 15px;
+        font-weight: 600;
+        position: absolute;
+        left: 20px;
+        top: 280px;
+        width: 180px;
+    }
+    .lorem-ipsum-dolor {
+        color: #000000;
+        text-align: left;
+        font-family: "Montserrat-Regular", sans-serif;
+        font-size: 10px;
+        font-weight: 400;
+        position: relative;
+        left: 20px;
+        top: 318px;
+        width: 180px;
+    }
+
+</style>
+<body>
+<div class="home-001">
+    <div class="rectangle-10"></div>
+    <div class="components-header">
+        <img class="imago" src="https://raw.githubusercontent.com/sanesloEduca/imagenes/main/logotipo.png"/>
+        <div class="component-boton">
+            <div class="rectangle-9"></div>
+            <div class="iniciar-sesion">Iniciar sesion</div>
+        </div>
+    </div>
+    <div class="components-header2">
+        <div class="rectangle-19"></div>
+        <div class="catalogo">Catalogo</div>
+        <div class="component-51">
+            <div class="rectangle-17"></div>
+            <div class="component-50">
+                <div class="rectangle-18">
+                    <svg class = elements-icons width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19.375 17.5H18.3875L18.0375 17.1625C19.3048 15.6925 20.0014 13.8159 20 11.875C20 10.268 19.5235 8.69715 18.6307 7.361C17.7379 6.02485 16.469 4.98344 14.9843 4.36848C13.4997 3.75352 11.866 3.59262 10.2899 3.90612C8.7138 4.21963 7.26606 4.99346 6.12976 6.12976C4.99346 7.26606 4.21963 8.7138 3.90612 10.2899C3.59262 11.866 3.75352 13.4997 4.36848 14.9843C4.98344 16.469 6.02485 17.7379 7.361 18.6307C8.69715 19.5235 10.268 20 11.875 20C13.8875 20 15.7375 19.2625 17.1625 18.0375L17.5 18.3875V19.375L23.75 25.6125L25.6125 23.75L19.375 17.5ZM11.875 17.5C8.7625 17.5 6.25 14.9875 6.25 11.875C6.25 8.7625 8.7625 6.25 11.875 6.25C14.9875 6.25 17.5 8.7625 17.5 11.875C17.5 14.9875 14.9875 17.5 11.875 17.5Z" fill="#2042EA"/>
+                    </svg>
+
+                </div>
+            </div>
+        </div>
+        <div class="elements-button">
+            <div class="elements-button2">
+                <div class="rectangle-92">
+                    <svg class = elements-icons2 width="40" height="40" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8.75001 7.5H21.25L14.9875 15.375L8.75001 7.5ZM5.31251 7.0125C7.83751 10.25 12.5 16.25 12.5 16.25V23.75C12.5 24.4375 13.0625 25 13.75 25H16.25C16.9375 25 17.5 24.4375 17.5 23.75V16.25C17.5 16.25 22.15 10.25 24.675 7.0125C24.8183 6.82797 24.9068 6.60691 24.9306 6.37451C24.9544 6.1421 24.9125 5.90769 24.8095 5.69796C24.7066 5.48823 24.5469 5.31162 24.3485 5.18822C24.1502 5.06482 23.9211 4.99961 23.6875 5H6.30001C5.26251 5 4.67501 6.1875 5.31251 7.0125Z" fill="#2042EA"/>
+                    </svg>
+                </div>
+                <div class="filtrar">filtrar</div>
+            </div>
+        </div>
+    </div>
+    <div class="scrollbar-1">
+        <div class="frame-12" >
+            <div class="component-25" th:each="book: ${books}">
+                <div class="rectangle-15"></div>
+                <div class="frame-13">
+                    <img class="img-libro" th:src="@{${book.image}}" />
+                </div>
+                <div class="frame-14"></div>
+                <div class="lorem-ipsum" th:text="@{${book.getTitle()}}"></div>
+                <div class="lorem-ipsum-dolor" th:text="@{${book.getAuthors().get(0).getName()}}"></div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
