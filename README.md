@@ -334,3 +334,5 @@ Si el tiempo lo permite la idea es implementar otras funcionalidades como pudier
   "type_id": "ObjectId(...)"
 }
 ```
+## Enlace protitipo y pruebas figma:
+https://www.figma.com/community/file/1372199110003262894
