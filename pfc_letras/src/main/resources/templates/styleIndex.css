@@ -43,7 +43,7 @@
     left: 200px;
     top: 116px;
 }
-.components-header {
+.nave_bar {
     background: #ffffff;
     border-style: solid;
     border-color: transparent;
@@ -61,14 +61,14 @@
     top: 0px;
     overflow: hidden;
 }
-.imago {
+.logo {
     flex-shrink: 0;
     width: 140px;
     height: 31px;
     position: relative;
     object-fit:contain;
 }
-.component-boton {
+.btn-login {
     flex-shrink: 0;
     width: 180px;
     height: 38px;

@@ -20,13 +20,11 @@ public class AuthorController {
 
     @GetMapping("/all")
     public List<AuthorModel> getAuthors() {
-
         return authorService.findAllAuthors();
     }
 
     @GetMapping("/author{id}")
     public AuthorModel getAuthorById(@PathVariable String id) {
-
         return authorService.findAuthorById(id)
                 .orElse(null);
     }

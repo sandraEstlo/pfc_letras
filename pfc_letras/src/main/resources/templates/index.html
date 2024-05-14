@@ -6,6 +6,10 @@
 <!--    <link rel="stylesheet" href="styleIndex.css"/>-->
 </head>
 <style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
     .home-001,
     .home-001 * {
         padding: 0;
@@ -17,78 +21,51 @@
         height: 2793px;
         position: relative;
     }
-    .rectangle-10 {
-        background: #f5f5f5;
-        border-radius: 30px;
-        width: 1520px;
-        height: 600px;
-        position: absolute;
-        left: 200px;
-        top: 116px;
-    }
-    .components-header {
+
+    .nave_bar {
         background: #ffffff;
-        border-style: solid;
-        border-color: transparent;
-        border-width: 0px 0px 0.5px 0px;
         padding: 30px 200px 22px 200px;
         display: flex;
         flex-direction: row;
         align-items: flex-start;
         justify-content: space-between;
         flex-wrap: wrap;
-        width: 1920px;
-        height: 100px;
-        position: absolute;
-        left: 0px;
-        top: 0px;
+        width: 100%;
+        height: 100pt;
+        position: relative;
         overflow: hidden;
     }
-    .imago {
+    .logo {
         flex-shrink: 0;
         width: 140px;
         height: 31px;
         position: relative;
-        object-fit:contain;
+        object-fit: contain;
     }
-    .component-boton {
-        flex-shrink: 0;
-        width: 180px;
-        height: 38px;
-        position: relative;
-    }
-
-    .component-boton:hover {
-
-    }
-    .rectangle-9 {
-        background: #2042ea;
-        border-radius: 8px;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        right: 0%;
-        left: 0%;
-        bottom: 0%;
-        top: 0%;
-        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
-    }
-    .iniciar-sesion {
+    .btn-login {
         color: #ffffff;
         text-align: center;
         font-family:"AnekTamil-SemiBold",sans-serif;
         font-size: 16px;
         font-weight: 600;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        flex-shrink: 0;
+        width: 180px;
+        height: 38px;
+        position: relative;
+        background: #2042ea;
+        border-radius: 8px;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+        border: none;
     }
+
+    .btn-login:hover {
+        color: #2042ea;
+        background: #ffffff;
+    }
+
     .components-header2 {
         margin-top: -20px;
-        width: 1920px;
+        width: 100%;
         height: 82px;
         position: absolute;
         top: 814px;
@@ -321,13 +298,13 @@
 </style>
 <body>
 <div class="home-001">
-    <div class="rectangle-10"></div>
-    <div class="components-header">
-        <img class="imago" src="https://raw.githubusercontent.com/sanesloEduca/imagenes/main/logotipo.png"/>
-        <div class="component-boton">
-            <div class="rectangle-9"></div>
-            <div class="iniciar-sesion">Iniciar sesion</div>
-        </div>
+<!--    <div class="rectangle-10"></div>-->
+    <div class="nave_bar">
+        <img class="logo" src="https://raw.githubusercontent.com/sanesloEduca/imagenes/main/logotipo.png"/>
+        <button class="btn-login">Iniciar sesion</button>
+<!--            <div class="rectangle-9"></div>-->
+<!--            <div class="iniciar-sesion">Iniciar sesion</div>-->
+
     </div>
     <div class="components-header2">
         <div class="rectangle-19"></div>
