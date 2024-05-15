@@ -1,4 +1,4 @@
-package com.letras.pfc_letras.models.CategoriesModels;
+package com.letras.pfc_letras.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,5 +25,5 @@ public class CategoryModel {
 
     private String name;
 
-    private List<SpecificCategoryModel> specificCategories;
+    private String path;
 }

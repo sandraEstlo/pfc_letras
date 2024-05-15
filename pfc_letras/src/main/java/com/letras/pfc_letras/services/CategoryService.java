@@ -1,11 +1,11 @@
 package com.letras.pfc_letras.services;
 
-import com.letras.pfc_letras.models.CategoriesModels.SubcategoryModel;
+import com.letras.pfc_letras.models.CategoryModel;
 import org.springframework.stereotype.Component;
-import java.util.Optional;
+import java.util.List;
 
 @Component
 public interface CategoryService{
 
-    Optional<SubcategoryModel> findBySpecificCategoriesContaining(String subcategoryId);
+    public List<CategoryModel> AllCategories();
 }

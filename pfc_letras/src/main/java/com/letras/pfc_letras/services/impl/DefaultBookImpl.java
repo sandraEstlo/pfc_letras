@@ -20,4 +20,10 @@ public class DefaultBookImpl implements BookService {
 
         return bookRepository.findAll();
     }
+
+    @Override
+    public List<BookModel> findByCategories(String ... paths) {
+
+        return bookRepository.findByCategories(paths);
+    }
 }

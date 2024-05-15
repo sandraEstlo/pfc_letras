@@ -5,7 +5,6 @@ import jakarta.annotation.Resource;
 import com.letras.pfc_letras.models.AuthorModel;
 import org.springframework.stereotype.Service;
 import com.letras.pfc_letras.repositories.AuthorRepository;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -13,30 +12,30 @@ import java.util.Optional;
 public class DefaultAuthorImpl implements AuthorService {
 
     @Resource
-    private AuthorRepository authorDao;
+    private AuthorRepository authorRepository;
 
     @Override
     public List<AuthorModel> findAllAuthors() {
-        return authorDao.findAll();
+        return authorRepository.findAll();
     }
 
     @Override
     public Optional<AuthorModel> findAuthorById(String id) {
-        return authorDao.findById(id);
+        return authorRepository.findById(id);
     }
 
     @Override
     public Optional<AuthorModel> findAuthorByName(String name) {
-        return authorDao.findByName(name);
+        return authorRepository.findByName(name);
     }
 
     @Override
     public List<AuthorModel> findAuthorByNameContaining(String name) {
-        return authorDao.findByNameContainingIgnoreCase(name);
+        return authorRepository.findByNameContainingIgnoreCase(name);
     }
 
     @Override
     public AuthorModel save(AuthorModel author) {
-        return authorDao.save(author);
+        return authorRepository.save(author);
     }
 }

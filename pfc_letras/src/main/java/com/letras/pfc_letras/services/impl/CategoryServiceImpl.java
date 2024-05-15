@@ -1,11 +1,12 @@
 package com.letras.pfc_letras.services.impl;
-import com.letras.pfc_letras.models.CategoriesModels.SubcategoryModel;
+
+import com.letras.pfc_letras.models.CategoryModel;
 import com.letras.pfc_letras.repositories.CategoryRepository;
 import com.letras.pfc_letras.services.CategoryService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.List;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -14,8 +15,8 @@ public class CategoryServiceImpl implements CategoryService {
     private CategoryRepository categoryRepository;
 
     @Override
-    public Optional<SubcategoryModel> findBySpecificCategoriesContaining(String subcategoryId) {
+    public List<CategoryModel> AllCategories() {
 
-        return categoryRepository.findBySpecificCategoriesContaining(subcategoryId);
+        return categoryRepository.findAll();
     }
 }

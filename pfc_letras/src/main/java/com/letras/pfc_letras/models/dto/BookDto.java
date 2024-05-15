@@ -1,4 +1,4 @@
-package com.letras.pfc_letras.daos;
+package com.letras.pfc_letras.models.dto;
 
 import com.letras.pfc_letras.models.AuthorModel;
 import lombok.AllArgsConstructor;
@@ -16,15 +16,15 @@ import java.util.List;
 @AllArgsConstructor
 @ToString
 @Builder
-public class BookDao {
+public class BookDto {
 
     private String id;
 
     private List<AuthorModel> authors;
 
-    private int copies;
-
     private String description;
+
+    private int copies;
 
     private String image;
 
@@ -32,7 +32,7 @@ public class BookDao {
 
     private Date publishDate;
 
-    private String subcategoryId;
+    private String category;
 
     private String title;
 

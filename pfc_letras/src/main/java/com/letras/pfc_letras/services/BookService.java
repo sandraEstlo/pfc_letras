@@ -6,4 +6,6 @@ import java.util.List;
 public interface BookService {
 
     List<BookModel> findAllBooks();
+
+    List<BookModel> findByCategories(String ... paths);
 }

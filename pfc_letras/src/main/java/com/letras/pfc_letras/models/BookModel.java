@@ -38,14 +38,13 @@ public class BookModel {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private Date publishDate;
 
-    @Field("subcategory_id")
-    private String subcategoryId;
-
-    private int copies;
-
     private String image;
 
+    private String category;
+
     private String title;
+
+    private int copies;
 
     private String isbn;
 
