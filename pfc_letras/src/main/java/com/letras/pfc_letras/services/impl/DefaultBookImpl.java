@@ -17,13 +17,22 @@ public class DefaultBookImpl implements BookService {
 
     @Override
     public List<BookModel> findAllBooks() {
-
         return bookRepository.findAll();
     }
 
     @Override
     public List<BookModel> findByCategories(String ... paths) {
-
         return bookRepository.findByCategories(paths);
     }
+
+    @Override
+    public List<BookModel> findByAuthorNameContainingIgnoreCase(String authorName) {
+        return bookRepository.findByAuthorsNameContainingIgnoreCase(authorName);
+    }
+
+    @Override
+    public List<BookModel> findByAuthorsContaining(String idAuthor) {
+        return bookRepository.findByAuthorsContaining(idAuthor);
+    }
+
 }

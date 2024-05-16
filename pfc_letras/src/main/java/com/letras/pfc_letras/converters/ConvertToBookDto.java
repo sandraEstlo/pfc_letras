@@ -4,7 +4,10 @@ import com.letras.pfc_letras.models.dto.BookDto;
 import com.letras.pfc_letras.models.BookModel;
 import lombok.NonNull;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
+
+@Component
 public class ConvertToBookDto implements Converter<BookDto, BookModel> {
 
     @Override

@@ -17,7 +17,6 @@ public class AuthorController {
     @Resource
     private AuthorService authorService;
 
-
     @GetMapping("/all")
     public List<AuthorModel> getAuthors() {
         return authorService.findAllAuthors();
