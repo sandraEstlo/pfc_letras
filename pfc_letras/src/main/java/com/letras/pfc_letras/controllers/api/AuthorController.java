@@ -22,7 +22,7 @@ public class AuthorController {
         return authorService.findAllAuthors();
     }
 
-    @GetMapping("/author{id}")
+    @GetMapping("/details/{id}")
     public AuthorModel getAuthorById(@PathVariable String id) {
         return authorService.findAuthorById(id)
                 .orElse(null);

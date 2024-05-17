@@ -28,6 +28,8 @@ public class BookModel {
     @Id
     private String id;
 
+    private String title;
+
     @DocumentReference(lookup = "{ '_id': ?#{#target} }")
     private List<AuthorModel> authors;
 
@@ -41,8 +43,6 @@ public class BookModel {
     private String image;
 
     private String category;
-
-    private String title;
 
     private int copies;
 
