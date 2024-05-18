@@ -14,6 +14,7 @@ public class ConvertToAuthorDto implements Converter<AuthorModel, AuthorDto>{
         return AuthorDto.builder()
                         .id(authorModel.getId())
                         .name(authorModel.getName())
+                        .description(authorModel.getDescription())
                         .build();
     }
 }

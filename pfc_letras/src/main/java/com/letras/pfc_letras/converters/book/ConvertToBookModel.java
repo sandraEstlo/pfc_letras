@@ -1,6 +1,7 @@
 package com.letras.pfc_letras.converters.book;
 
 import com.letras.pfc_letras.dto.author.AuthorDetailsDto;
+import com.letras.pfc_letras.dto.author.AuthorDto;
 import com.letras.pfc_letras.dto.book.BookDetailsDto;
 import com.letras.pfc_letras.models.AuthorModel;
 import com.letras.pfc_letras.models.BookModel;
@@ -14,6 +15,9 @@ import java.util.stream.Collectors;
 @Component
 public class ConvertToBookModel implements Converter<BookDetailsDto, BookModel> {
 
+    @Resource
+    Converter<AuthorDto, AuthorModel> authorConverter;
+
     @Override
     public BookModel convert(@NonNull BookDetailsDto bookDetailsDto) {
         return BookModel.builder()
@@ -26,6 +30,9 @@ public class ConvertToBookModel implements Converter<BookDetailsDto, BookModel> 
                         .copies(bookDetailsDto.getCopies())
                         .isbn(bookDetailsDto.getIsbn())
                         .label(bookDetailsDto.getLabel())
+                        .authors(bookDetailsDto.getAuthorsDto()
+                                               .stream()
+                                               .map(authorConverter::convert).collect(Collectors.toList()))
                         .build();
     }
 }
