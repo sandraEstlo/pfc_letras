@@ -1,7 +1,9 @@
 package com.letras.pfc_letras.services;
 
 import com.letras.pfc_letras.models.BookModel;
+import org.springframework.stereotype.Component;
 import java.util.List;
+import java.util.Optional;
 
 public interface BookService {
 
@@ -11,5 +13,7 @@ public interface BookService {
 
     List<BookModel> findByAuthorNameContainingIgnoreCase(String authorName);
 
-    List<BookModel> findByAuthorsContaining(String idAuthor);
+    List<BookModel> findByIdAuthorsContaining(String idAuthor);
+
+    Optional<BookModel> findById(String id);
 }

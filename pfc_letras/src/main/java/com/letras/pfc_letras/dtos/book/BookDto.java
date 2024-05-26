@@ -1,4 +1,4 @@
-package com.letras.pfc_letras.dto.author;
+package com.letras.pfc_letras.dtos.book;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,17 +7,23 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.List;
+
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
 @Builder
-public class AuthorDto {
+public class BookDto {
 
     private String id;
 
-    private String name;
+    private String title;
 
-    private String description;
+    private String authorsNames;
+
+    private String image;
+
+    private String category;
 }

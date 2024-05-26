@@ -4,9 +4,11 @@ import com.letras.pfc_letras.models.BookModel;
 import com.letras.pfc_letras.repositories.BookRepository;
 import com.letras.pfc_letras.services.BookService;
 import jakarta.annotation.Resource;
+import lombok.NonNull;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DefaultBookImpl implements BookService {
@@ -31,8 +33,13 @@ public class DefaultBookImpl implements BookService {
     }
 
     @Override
-    public List<BookModel> findByAuthorsContaining(String idAuthor) {
+    public List<BookModel> findByIdAuthorsContaining(String idAuthor) {
         return bookRepository.findByAuthorsContaining(idAuthor);
+    }
+
+    @Override
+    public Optional<BookModel> findById(@NonNull String id) {
+        return bookRepository.findById(id);
     }
 
 }

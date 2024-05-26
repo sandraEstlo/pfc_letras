@@ -1,8 +1,7 @@
 package com.letras.pfc_letras.converters.book;
 
-import com.letras.pfc_letras.dto.author.AuthorDetailsDto;
-import com.letras.pfc_letras.dto.author.AuthorDto;
-import com.letras.pfc_letras.dto.book.BookDetailsDto;
+import com.letras.pfc_letras.dtos.author.AuthorDto;
+import com.letras.pfc_letras.dtos.book.BookDetailsDto;
 import com.letras.pfc_letras.models.AuthorModel;
 import com.letras.pfc_letras.models.BookModel;
 import jakarta.annotation.Resource;

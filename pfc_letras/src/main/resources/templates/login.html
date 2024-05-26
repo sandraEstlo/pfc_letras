@@ -3,8 +3,318 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-</head>
-<body>
+    <style>
+        .principal-administrador-tama-o-2,
+        .principal-administrador-tama-o-2 * {
+            box-sizing: border-box;
+        }
+        .principal-administrador-tama-o-2 {
+            background: #ffffff;
+            border-style: solid;
+            border-color: rgba(0, 0, 0, 0);
+            border-width: 4px;
+            height: 898px;
+            position: relative;
+            overflow: hidden;
+        }
+        .group-13 {
+            position: absolute;
+            inset: 0;
+        }
+        .rectangle-6 {
+            background: #ffffff;
+            border-radius: 46px;
+            border-style: solid;
+            border-color: rgba(220, 226, 255, 0.11);
+            border-width: 1px;
+            width: 1013px;
+            height: 654px;
+            position: absolute;
+            left: 453px;
+            top: 122px;
+            box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.16);
+        }
+        .rectangle-1 {
+            background: #2042ea;
+            border-radius: 46px 0px 0px 46px;
+            width: 458px;
+            height: 654px;
+            position: absolute;
+            left: 453px;
+            top: 122px;
+        }
+        .frame-5 {
+            opacity: 0.8999999761581421;
+            width: 413px;
+            height: 572px;
+            position: absolute;
+            left: 982px;
+            top: 163px;
+            overflow: hidden;
+        }
+        .elements-button {
+            width: 300px;
+            height: 38px;
+            position: absolute;
+            left: 49px;
+            top: 367px;
+        }
+        .rectangle-9 {
+            background: #2042ea;
+            border-radius: 8px;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            right: 0%;
+            left: 0%;
+            bottom: 0%;
+            top: 0%;
+            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+        }
+        .iniciar-sesion {
+            color: #ffffff;
+            text-align: center;
+            font-family: var(
+                    --texts-normal-text-font-family,
+                    "AnekTamil-SemiBold",
+                    sans-serif
+            );
+            font-size: var(--texts-normal-text-font-size, 16px);
+            font-weight: var(--texts-normal-text-font-weight, 600);
+            position: absolute;
+            right: 0%;
+            left: 0%;
+            width: 100%;
+            bottom: 0%;
+            top: 0%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .frame-6 {
+            padding: 10px;
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            width: 121px;
+            position: absolute;
+            left: 288px;
+            top: 12px;
+        }
+        .registrarse {
+            color: #2042ea;
+            text-align: left;
+            font-family: "AnekTamil-Medium", sans-serif;
+            font-size: 20px;
+            font-weight: 500;
+            position: relative;
+        }
+        .has-olvidado-la-contrase-a-recuperar {
+            color: #2042ea;
+            text-align: left;
+            font-family: "-", sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            position: absolute;
+            left: 58px;
+            top: 429px;
+        }
+        .has-olvidado-la-contrase-a-recuperar-span {
+            color: #2042ea;
+            font-family: "AnekTamil-ExtraLight", sans-serif;
+            font-size: 16px;
+            font-weight: 200;
+        }
+        .has-olvidado-la-contrase-a-recuperar-span2 {
+            color: #2042ea;
+            font-family: "AnekTamil-Regular", sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            text-decoration: underline;
+        }
+        .group-11 {
+            position: absolute;
+            inset: 0;
+        }
+        .rectangle-5 {
+            border-radius: 8px;
+            border-style: solid;
+            border-color: rgba(32, 66, 234, 0.6);
+            border-width: 1px;
+            width: 301px;
+            height: 38px;
+            position: absolute;
+            left: 49px;
+            top: 222px;
+            box-shadow: 0px 2px 5px 1px rgba(32, 66, 234, 0.1);
+        }
+        .usuario {
+            color: rgba(32, 66, 234, 0.4);
+            text-align: left;
+            font-family: "Montserrat-Regular", sans-serif;
+            font-size: 15px;
+            font-weight: 400;
+            position: absolute;
+            left: 68px;
+            top: 233px;
+            width: 258px;
+            height: 16px;
+        }
+        .group-12 {
+            position: absolute;
+            inset: 0;
+        }
+        .rectangle-10 {
+            border-radius: 8px;
+            border-style: solid;
+            border-color: rgba(32, 66, 234, 0.6);
+            border-width: 1px;
+            width: 301px;
+            height: 38px;
+            position: absolute;
+            left: 49px;
+            top: 280px;
+            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.8);
+        }
+        .contrase-a {
+            color: rgba(32, 66, 234, 0.4);
+            text-align: left;
+            font-family: "Montserrat-Regular", sans-serif;
+            font-size: 15px;
+            font-weight: 400;
+            position: absolute;
+            left: 68px;
+            top: 290px;
+            width: 258px;
+            height: 18px;
+        }
+        .iniciar-sesi-n {
+            color: #2042ea;
+            text-align: left;
+            font-family: "AnekTamil-Bold", sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            position: absolute;
+            left: 49px;
+            top: 113px;
+        }
+        .group-5 {
+            height: auto;
+            position: absolute;
+            left: 519px;
+            top: 220px;
+            overflow: visible;
+        }
+        /* Figma Styles of your File */
+        :root {
+            /* Colors */
+            --primary-azul: #2042ea;
+            --secundary-gray: #f5f5f5;
 
-</body>
+            /* Fonts */
+            --medium-text-font-family: AnekTamil-SemiBold, sans-serif;
+            --medium-text-font-size: 14px;
+            --medium-text-line-height: normal;
+            --medium-text-font-weight: 600;
+            --medium-text-font-style: normal;
+            --text-small-font-family: Montserrat-Regular, sans-serif;
+            --text-small-font-size: 9px;
+            --text-small-line-height: normal;
+            --text-small-font-weight: 400;
+            --text-small-font-style: normal;
+            --medium-text-2-font-family: AnekTamil-SemiBold, sans-serif;
+            --medium-text-2-font-size: 12px;
+            --medium-text-2-line-height: normal;
+            --medium-text-2-font-weight: 600;
+            --medium-text-2-font-style: normal;
+            --small-text-font-family: Montserrat-Regular, sans-serif;
+            --small-text-font-size: 8px;
+            --small-text-line-height: normal;
+            --small-text-font-weight: 400;
+            --small-text-font-style: normal;
+            --normal-text-light-font-family: AnekTamil-Light, sans-serif;
+            --normal-text-light-font-size: 15px;
+            --normal-text-light-line-height: normal;
+            --normal-text-light-font-weight: 300;
+            --normal-text-light-font-style: normal;
+            --nodes-text-font-family: AnekTamil-Medium, sans-serif;
+            --nodes-text-font-size: 16px;
+            --nodes-text-line-height: normal;
+            --nodes-text-font-weight: 500;
+            --nodes-text-font-style: normal;
+            --paragraph2-font-family: Montserrat-Medium, sans-serif;
+            --paragraph2-font-size: 14px;
+            --paragraph2-line-height: normal;
+            --paragraph2-font-weight: 500;
+            --paragraph2-font-style: normal;
+            --subtitule-font-family: AnekTamil-Light, sans-serif;
+            --subtitule-font-size: 20px;
+            --subtitule-line-height: normal;
+            --subtitule-font-weight: 300;
+            --subtitule-font-style: normal;
+            --titles-title-one-font-family: AnekTamil-Bold, sans-serif;
+            --titles-title-one-font-size: 36px;
+            --titles-title-one-line-height: normal;
+            --titles-title-one-font-weight: 700;
+            --titles-title-one-font-style: normal;
+            --titles-title-two-font-family: AnekTamil-Bold, sans-serif;
+            --titles-title-two-font-size: 32px;
+            --titles-title-two-line-height: normal;
+            --titles-title-two-font-weight: 700;
+            --titles-title-two-font-style: normal;
+            --titles-title-three-font-family: AnekTamil-Bold, sans-serif;
+            --titles-title-three-font-size: 24px;
+            --titles-title-three-line-height: normal;
+            --titles-title-three-font-weight: 700;
+            --titles-title-three-font-style: normal;
+            --texts-normal-text-font-family: AnekTamil-SemiBold, sans-serif;
+            --texts-normal-text-font-size: 16px;
+            --texts-normal-text-line-height: normal;
+            --texts-normal-text-font-weight: 600;
+            --texts-normal-text-font-style: normal;
+            --texts-paragraph-text-font-family: Montserrat-Regular, sans-serif;
+            --texts-paragraph-text-font-size: 12px;
+            --texts-paragraph-text-line-height: normal;
+            --texts-paragraph-text-font-weight: 400;
+            --texts-paragraph-text-font-style: normal;
+
+            /* Effects */
+        }
+    </style>
+</head>
+    <body>
+        <div class="principal-administrador-tama-o-2">
+            <div class="rectangle-6"></div>
+            <div class="rectangle-1"></div>
+            <div class="frame-5">
+                <div class="elements-button">
+                    <div class="rectangle-9"></div>
+                    <div class="iniciar-sesion">Iniciar sesion</div>
+                </div>
+                <div class="frame-6">
+                    <div class="registrarse">Registrarse</div>
+                </div>
+                <div class="has-olvidado-la-contrase-a-recuperar">
+              <span>
+                <span class="has-olvidado-la-contrase-a-recuperar-span">
+                  ¿Has olvidado la contraseña?
+                </span>
+                <span class="has-olvidado-la-contrase-a-recuperar-span2">
+                  Recuperar
+                </span>
+              </span>
+                </div>
+                <div class="rectangle-5"></div>
+                <div class="usuario">Usuario</div>
+                <div class="rectangle-10"></div>
+                <div class="contrase-a">Contraseña</div>
+                <div class="iniciar-sesi-n">Iniciar Sesión</div>
+            </div>
+            <img class="group-5" src="imagotipo.png" />
+        </div>
+    </body>
 </html>

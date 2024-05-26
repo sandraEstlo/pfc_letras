@@ -1,6 +1,7 @@
 package com.letras.pfc_letras.controllers.api;
 
 import com.letras.pfc_letras.models.BookModel;
+import com.letras.pfc_letras.services.BookSearchService;
 import com.letras.pfc_letras.services.BookService;
 import jakarta.annotation.Resource;
 import org.springframework.http.ResponseEntity;
@@ -8,19 +9,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/books")
-public class BookController {
+public class ApiBookController {
 
     @Resource
     private BookService bookService;
+
+    @Resource
+    private BookSearchService bookSearchService;
 
     @GetMapping("/all")
     public ResponseEntity<?> getAuthors() {
@@ -45,7 +46,14 @@ public class BookController {
 
     @GetMapping("/author-id/{authorId}")
     public ResponseEntity<?> getByAuthor(@PathVariable String authorId) {
-        List<BookModel> listBooks = bookService.findByAuthorsContaining(authorId);
+        List<BookModel> listBooks = bookService.findByIdAuthorsContaining(authorId);
+        return listBooks.isEmpty() ? ResponseEntity.notFound().build()
+                                   : ResponseEntity.ok(listBooks);
+    }
+
+    @GetMapping("/search/{text}")
+    public ResponseEntity<?> getByText(@PathVariable String text) {
+        List<BookModel> listBooks = bookSearchService.KeywordsSearch(text);
         return listBooks.isEmpty() ? ResponseEntity.notFound().build()
                                    : ResponseEntity.ok(listBooks);
     }

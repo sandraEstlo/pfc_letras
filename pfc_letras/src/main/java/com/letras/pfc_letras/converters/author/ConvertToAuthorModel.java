@@ -1,6 +1,6 @@
 package com.letras.pfc_letras.converters.author;
 
-import com.letras.pfc_letras.dto.author.AuthorDto;
+import com.letras.pfc_letras.dtos.author.AuthorDto;
 import com.letras.pfc_letras.models.AuthorModel;
 import lombok.NonNull;
 import org.springframework.core.convert.converter.Converter;
@@ -14,6 +14,7 @@ public class ConvertToAuthorModel implements Converter<AuthorDto, AuthorModel> {
         return AuthorModel.builder()
                           .id(authorDetailsDto.getId())
                           .description(authorDetailsDto.getDescription())
+                          .image(authorDetailsDto.getImage())
                           .name(authorDetailsDto.getName())
                           .build();
     }

@@ -1,6 +1,6 @@
-package com.letras.pfc_letras.dto.book;
+package com.letras.pfc_letras.dtos.book;
 
-import com.letras.pfc_letras.dto.author.AuthorDto;
+import com.letras.pfc_letras.dtos.author.AuthorDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
