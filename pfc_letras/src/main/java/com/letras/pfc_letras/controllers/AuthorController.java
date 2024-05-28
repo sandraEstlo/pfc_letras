@@ -12,13 +12,4 @@ import java.util.Optional;
 @Controller
 public class AuthorController {
 
-//    @Resource
-//    private Facade facade;
-//
-//    @GetMapping("/author/{id}")
-//    public String getAuthorDetails(Model model, @PathVariable String id) {
-//        Optional<AuthorDetailsDto> authorDetailsDto = facade.findAuthorById(id);
-//        authorDetailsDto.ifPresent(author -> model.addAttribute("author", author));
-//        return "author-details";
-//    }
 }
