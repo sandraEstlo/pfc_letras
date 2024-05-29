@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="/css/styleIndex.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <style>
-
 </style>
     <body>
         <div class="home-001">
             <nav class="nave_bar">
                 <img class="logo" src="https://raw.githubusercontent.com/sanesloEduca/imagenes/main/logotipo.png" alt="logo-letras"/>
-                <button class="btn-login">Iniciar sesion</button>
+                <a href="/login" class="btn-login">Iniciar sesion</a>
             </nav>
             <main class="main">
                 <div class="advertisements"></div>
@@ -37,7 +36,7 @@
                                     <img class="img-libro" th:src="@{${book.getImage()}}" alt="image-@{${book.getTitle()}}"/>
                                 </div>
                                 <div class="frame-14"></div>
-                                <div class="title" th:text="@{${book.getTitle()}}"></div>
+                                <div class="title-book" th:text="@{${book.getTitle()}}"></div>
                                 <div class="author" th:text="@{${book.getAuthorsNames()}}"></div>
                             </a>
                         </div>
