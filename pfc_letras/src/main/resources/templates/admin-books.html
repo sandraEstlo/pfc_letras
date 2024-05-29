@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Libros</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.9.95/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.9.95/css/materialdesignicons.min.css">
+    <style>
+        body {
+            padding: 2%;
+        }
+        .color-blue {
+            color: #2042ea;
+        }
+        .logo {
+            flex-shrink: 0;
+            width: 120px;
+            height: 31px;
+            position: relative;
+            object-fit: contain;
+            margin-bottom: 30px;
+        }
+        .btn-login {
+            color: #2042ea;
+            background: #ffffff;
+            text-align: center;
+            font-family:"AnekTamil-SemiBold",sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            flex-shrink: 0;
+            width: 120px;
+            height: 36px;
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+            border: none;
+            margin-left: 78%;
+        }
+        .btn-login:hover {
+            color: #ffffff;
+            background: #2042ea;
+        }
+        .cont {
+            width: 80%;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="columns cont">
+        <div class="column is-one-fifth-desktop">
+            <aside class="menu">
+                <img class="logo" src="https://raw.githubusercontent.com/sanesloEduca/imagenes/main/logotipo.png" alt="logo-letras"/>
+                <p class="menu-label">Tablas</p>
+                <ul class="menu-list">
+                    <li class="menu-item">
+                        <span class="mdi mdi-bookshelf"></span>
+                        <span>Libros</span>
+                    </li>
+                    <li>
+                        <a>Autores</a>
+                    </li>
+                    <li>
+                        <a>Usuarios</a>
+                    </li>
+                    <li>
+                        <a>Prestamos</a>
+                    </li>
+                </ul>
+            </aside>
+        </div>
+        <div class="column m-3">
+            <div class="container m-3">
+                <span>Admin /</span>
+                <span class="icon"><i class="mdi mdi mdi-bookshelf"></i></span>
+                Libros
+                <button class="btn-login">Crear</button>
+            </div>
+            <div>
+                <div class="box">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th><abbr title="id" class="color-blue">#</abbr></th>
+                            <th><abbr title="title" class="color-blue">Titulo</abbr></th>
+                            <th><abbr title="id" class="color-blue">Isbn</abbr></th>
+                            <th><abbr title="id" class="color-blue">Etiquete</abbr></th>
+                            <th><abbr title="id" class="color-blue">Autores</abbr></th>
+                            <th><abbr title="id" class="color-blue">Descripción</abbr></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody th:each="book: ${books}">
+                            <tr>
+                                <td th:text="${book.id}" class="has-text-grey-light"> </td>
+                                <td th:text="${book.title}" class="has-text-link"> </td>
+                                <td th:text="${book.id}" class="has-text-grey-light"> </td>
+                                <td th:text="${book.id}" class="has-text-grey-light"> </td>
+                                <td th:text="${book.authorsNames}" class="has-text-link"> </td>
+                                <td th:text="${book.id}" class="has-text-link"> </td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
