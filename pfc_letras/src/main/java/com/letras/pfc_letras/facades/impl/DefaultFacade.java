@@ -5,17 +5,24 @@ import com.letras.pfc_letras.converters.author.ConvertToAuthorDto;
 import com.letras.pfc_letras.converters.author.ConvertToAuthorModel;
 import com.letras.pfc_letras.converters.book.ConvertToBookDetailsDto;
 import com.letras.pfc_letras.converters.book.ConvertToBookDto;
+import com.letras.pfc_letras.converters.user.ConvertToUserModel;
 import com.letras.pfc_letras.dtos.author.AuthorDetailsDto;
 import com.letras.pfc_letras.dtos.author.AuthorDto;
 import com.letras.pfc_letras.dtos.book.BookDetailsDto;
 import com.letras.pfc_letras.dtos.book.BookDto;
+import com.letras.pfc_letras.dtos.user.CreateUserDto;
+import com.letras.pfc_letras.errors.exceptions.NewUserWithDifferentPassword;
 import com.letras.pfc_letras.facades.Facade;
 import com.letras.pfc_letras.models.AuthorModel;
+import com.letras.pfc_letras.models.UsersModels.UserModel;
 import com.letras.pfc_letras.services.AuthorService;
 import com.letras.pfc_letras.services.BookSearchService;
 import com.letras.pfc_letras.services.BookService;
+import com.letras.pfc_letras.services.UserService;
 import jakarta.annotation.Resource;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.swing.text.html.Option;
 import java.util.List;
@@ -35,6 +42,9 @@ public class DefaultFacade implements Facade {
     private AuthorService authorService;
 
     @Resource
+    private UserService userService;
+
+    @Resource
     private ConvertToAuthorDetailsDto convertToAuthorDetailsDto;
 
     @Resource
@@ -49,6 +59,8 @@ public class DefaultFacade implements Facade {
     @Resource
     private ConvertToAuthorModel convertToAuthorModel;
 
+    @Resource
+    private ConvertToUserModel convertToUserModel;
 
     @Override
     public List<BookDto> findAllBooks() {
@@ -83,5 +95,13 @@ public class DefaultFacade implements Facade {
     @Override
     public Optional<AuthorDto> newAuthor(AuthorDto authorDto) {
         return Optional.ofNullable(convertToAuthorDto.convert(authorService.save(convertToAuthorModel.convert(authorDto))));
+    }
+
+    @Override
+    public Optional<UserModel> newUser(CreateUserDto createUserDto) {
+        if (!createUserDto.getPassword().equals(createUserDto.getConfirmPassword()))
+            throw new NewUserWithDifferentPassword();
+
+        return userService.saveUser(convertToUserModel.convert(createUserDto));
     }
 }

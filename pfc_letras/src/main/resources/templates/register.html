@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
@@ -13,15 +13,15 @@
                     <img class="image" src="https://raw.githubusercontent.com/sanesloEduca/imagenes/main/logo_blanco.png" />
                 </div>
             </div>
-            <div class="left">
+            <form class="left" action="/register" method="post" th:object="${createUserDto}">
                 <a href="/login" class="btn03">Iniciar sesión</a>
                 <div class="title">Registrarse</div>
-                <input class="input-name" placeholder="Nickname"/>
-                <input class="input-email" placeholder="Correo"/>
-                <input type="password" class="input-password" placeholder="Contraseña"/>
-                <input type="password" class="input-password02" placeholder="Repita la contraseña"/>
-                <a class="btn-validation">Validar</a>
-            </div>
+                <input class="input-name" type="text" placeholder="Nickname" th:field="*{userName}"/>
+                <input class="input-email" type="email" placeholder="Correo" th:field="*{email}"/>
+                <input type="password" class="input-password" placeholder="Contraseña" th:field="*{password}"/>
+                <input type="password" class="input-password02" placeholder="Repita la contraseña" th:field="*{confirmPassword}"/>
+                <button type="submit" class="btn-validation">Validar</button>
+            </form>
         </div>
     </body>
 </html>
