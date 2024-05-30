@@ -5,6 +5,8 @@ import com.letras.pfc_letras.dtos.book.BookDto;
 import com.letras.pfc_letras.facades.Facade;
 import jakarta.annotation.Resource;
 import org.apache.logging.log4j.util.Strings;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +24,7 @@ public class BookController {
 
     @GetMapping("/")
     public String books(Model model, @RequestParam(value = "text", required = false) String text) {
+
         List<BookDto> books = (Strings.isEmpty(text)) ? facade.findAllBooks()
                 : facade.searchBookByKey(text);
         model.addAttribute("books", books);

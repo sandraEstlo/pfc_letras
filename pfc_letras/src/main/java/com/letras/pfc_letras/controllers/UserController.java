@@ -14,6 +14,8 @@ import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.security.core.AuthenticationException;
 
+import java.util.Optional;
+
 @Controller
 public class UserController {
 
@@ -38,8 +40,7 @@ public class UserController {
     @PostMapping("/register")
     public String processRegister(Model model, CreateUserDto createUserDto, RedirectAttributes redirectAttributes) {
         try {
-            redirectAttributes.addFlashAttribute("createUserDto", facade.newUser(createUserDto).get());
-            return "redirect:/";
+            return (facade.newUser(createUserDto).isPresent()) ? "redirect:/login" : "redirect:/register";
 
         } catch (NewUserWithDifferentPassword | ResponseStatusException e) {
             model.addAttribute("error", e.getMessage());

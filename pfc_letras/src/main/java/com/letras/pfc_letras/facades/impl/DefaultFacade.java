@@ -11,6 +11,7 @@ import com.letras.pfc_letras.dtos.author.AuthorDto;
 import com.letras.pfc_letras.dtos.book.BookDetailsDto;
 import com.letras.pfc_letras.dtos.book.BookDto;
 import com.letras.pfc_letras.dtos.user.CreateUserDto;
+import com.letras.pfc_letras.dtos.user.GetUserDto;
 import com.letras.pfc_letras.errors.exceptions.NewUserWithDifferentPassword;
 import com.letras.pfc_letras.facades.Facade;
 import com.letras.pfc_letras.models.AuthorModel;
@@ -21,10 +22,12 @@ import com.letras.pfc_letras.services.BookService;
 import com.letras.pfc_letras.services.UserService;
 import jakarta.annotation.Resource;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.swing.text.html.Option;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -103,5 +106,16 @@ public class DefaultFacade implements Facade {
             throw new NewUserWithDifferentPassword();
 
         return userService.saveUser(convertToUserModel.convert(createUserDto));
+    }
+
+    @Override
+    public Optional<GetUserDto> createUserAutentificate (String username,
+                                                         Collection<? extends GrantedAuthority> authorities) {
+
+        return Optional.ofNullable(GetUserDto.builder()
+                                             .userName(username)
+                                             .roles(authorities.stream()
+                                                               .map(GrantedAuthority::getAuthority).collect(Collectors.toSet()))
+                                             .build());
     }
 }

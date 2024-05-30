@@ -9,9 +9,14 @@
 </style>
     <body>
         <div class="home-001">
-            <nav class="nave_bar">
+            <nav th:if="${user == null}" class="nave_bar">
                 <img class="logo" src="https://raw.githubusercontent.com/sanesloEduca/imagenes/main/logotipo.png" alt="logo-letras"/>
                 <a href="/login" class="btn-login">Iniciar sesion</a>
+            </nav>
+
+            <nav th:if="${user != null}" class="nave_bar">
+                <img class="logo" src="https://raw.githubusercontent.com/sanesloEduca/imagenes/main/logotipo.png" alt="logo-letras"/>
+<!--                <a href="/login" class="btn-login">Iniciar sesion</a>-->
             </nav>
             <main class="main">
                 <div class="advertisements"></div>
