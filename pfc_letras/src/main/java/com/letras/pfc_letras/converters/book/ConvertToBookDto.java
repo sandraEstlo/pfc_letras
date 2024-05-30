@@ -19,7 +19,7 @@ public class ConvertToBookDto implements Converter<BookModel, BookDto> {
                       .image(bookModel.getImage())
                       .category(bookModel.getCategory())
                       .authorsNames(bookModel.getAuthors()
-                              .stream().map(AuthorModel::getName).collect(Collectors.joining(", ")))
+                      .stream().map(AuthorModel::getName).collect(Collectors.joining(", ")))
                       .build();
     }
 }

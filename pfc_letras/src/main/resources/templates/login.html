@@ -20,9 +20,12 @@
                     <span class="foget-url">Recuperar</span>
                   </span>
                 </div>
-                <input class="input" placeholder="Usuario"/>
-                <input type="password" class="input02" placeholder="Contraseña"/>
-                <a class="elements-button">Validar</a>
+                <form th:action="@{/logincheck}" method="post">
+                    <input class="input" name="username" placeholder="Usuario"/>
+                    <input type="password" name="password" class="input02" placeholder="Contraseña"/>
+                    <button  type="submit" class="elements-button">Validar</button>
+                </form>
+
             </div>
         </div>
     </body>

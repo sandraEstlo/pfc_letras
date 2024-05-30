@@ -13,15 +13,17 @@
                     <img class="image" src="https://raw.githubusercontent.com/sanesloEduca/imagenes/main/logo_blanco.png" />
                 </div>
             </div>
-            <form class="left" action="/register" method="post" th:object="${createUserDto}">
+            <div class="left">
                 <a href="/login" class="btn03">Iniciar sesión</a>
                 <div class="title">Registrarse</div>
-                <input class="input-name" type="text" placeholder="Nickname" th:field="*{userName}"/>
-                <input class="input-email" type="email" placeholder="Correo" th:field="*{email}"/>
-                <input type="password" class="input-password" placeholder="Contraseña" th:field="*{password}"/>
-                <input type="password" class="input-password02" placeholder="Repita la contraseña" th:field="*{confirmPassword}"/>
-                <button type="submit" class="btn-validation">Validar</button>
-            </form>
+                <form action="/register"  th:action="@{/register}" th:object="${createUserDto}" method="post" >
+                    <input class="input-name" type="text" placeholder="Nickname" th:field="*{userName}"/>
+                    <input class="input-email" type="text" placeholder="Correo" th:field="*{email}"/>
+                    <input type="password" class="input-password" placeholder="Contraseña" th:field="*{password}"/>
+                    <input type="password" class="input-password02" placeholder="Repita la contraseña" th:field="*{confirmPassword}"/>
+                    <button type="submit" class="btn-validation">Validar</button>
+                </form>
+            </div>
         </div>
     </body>
 </html>
