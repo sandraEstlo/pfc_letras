@@ -15,7 +15,7 @@ public class MongoConfig {
     public MappingMongoConverter mappingMongoConverter(MongoDatabaseFactory factory, MongoMappingContext context, MongoCustomConversions conversions) {
         MappingMongoConverter converter = new MappingMongoConverter(factory, context);
         converter.setCustomConversions(conversions);
-        converter.setTypeMapper(defaultMongoTypeMapper()); // Configurar para evitar _class
+        converter.setTypeMapper(defaultMongoTypeMapper());
         return converter;
     }
 
