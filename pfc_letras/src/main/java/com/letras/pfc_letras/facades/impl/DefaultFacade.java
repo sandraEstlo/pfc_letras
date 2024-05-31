@@ -5,6 +5,7 @@ import com.letras.pfc_letras.converters.author.ConvertToAuthorDto;
 import com.letras.pfc_letras.converters.author.ConvertToAuthorModel;
 import com.letras.pfc_letras.converters.book.ConvertToBookDetailsDto;
 import com.letras.pfc_letras.converters.book.ConvertToBookDto;
+import com.letras.pfc_letras.converters.user.ConvertToGetUserDto;
 import com.letras.pfc_letras.converters.user.ConvertToUserModel;
 import com.letras.pfc_letras.dtos.author.AuthorDetailsDto;
 import com.letras.pfc_letras.dtos.author.AuthorDto;
@@ -14,20 +15,14 @@ import com.letras.pfc_letras.dtos.user.CreateUserDto;
 import com.letras.pfc_letras.dtos.user.GetUserDto;
 import com.letras.pfc_letras.errors.exceptions.NewUserWithDifferentPassword;
 import com.letras.pfc_letras.facades.Facade;
-import com.letras.pfc_letras.models.AuthorModel;
 import com.letras.pfc_letras.models.UsersModels.UserModel;
 import com.letras.pfc_letras.services.AuthorService;
 import com.letras.pfc_letras.services.BookSearchService;
 import com.letras.pfc_letras.services.BookService;
 import com.letras.pfc_letras.services.UserService;
 import jakarta.annotation.Resource;
-import org.springframework.http.HttpStatus;
-import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
-import org.springframework.web.server.ResponseStatusException;
-
-import javax.swing.text.html.Option;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -64,6 +59,9 @@ public class DefaultFacade implements Facade {
 
     @Resource
     private ConvertToUserModel convertToUserModel;
+
+    @Resource
+    private ConvertToGetUserDto convertToGetUserDto;
 
     @Override
     public List<BookDto> findAllBooks() {
@@ -109,13 +107,7 @@ public class DefaultFacade implements Facade {
     }
 
     @Override
-    public Optional<GetUserDto> createUserAutentificate (String username,
-                                                         Collection<? extends GrantedAuthority> authorities) {
-
-        return Optional.ofNullable(GetUserDto.builder()
-                                             .userName(username)
-                                             .roles(authorities.stream()
-                                                               .map(GrantedAuthority::getAuthority).collect(Collectors.toSet()))
-                                             .build());
+    public Optional<GetUserDto> getUserDto(UserDetails userDetails) {
+        return Optional.ofNullable(convertToGetUserDto.convert(userDetails));
     }
 }

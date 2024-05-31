@@ -1,23 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
-</head>
+<head th:replace="fragments/head :: head"></head>
 <style>
 </style>
     <body>
         <div class="home-001">
-            <nav th:if="${user == null}" class="nave_bar">
-                <img class="logo" src="https://raw.githubusercontent.com/sanesloEduca/imagenes/main/logotipo.png" alt="logo-letras"/>
-                <a href="/login" class="btn-login">Iniciar sesion</a>
-            </nav>
-
-            <nav th:if="${user != null}" class="nave_bar">
-                <img class="logo" src="https://raw.githubusercontent.com/sanesloEduca/imagenes/main/logotipo.png" alt="logo-letras"/>
-<!--                <a href="/login" class="btn-login">Iniciar sesion</a>-->
-            </nav>
+            <div th:if="${user == null}"><nav th:if="${user == null}" th:replace="fragments/component-nav01 :: nav"></nav></div>
+            <div th:if="${user != null}"><nav th:unless="${user == null}" th:replace="fragments/component-nav02 :: nav"></nav></div>
             <main class="main">
                 <div class="advertisements"></div>
                 <div class="header-search">
@@ -33,15 +22,15 @@
                     </form>
                 </div>
                 <div class="scrollbar-1">
-                    <div class="frame-12" >
-                        <div class="component-25" th:each="book: ${books}">
+                    <div class="box-image" >
+                        <div class="component-card" th:each="book: ${books}">
                             <a th:href="@{/book/{id}(id=${book.getId()})}">
-                                <div class="rectangle-15" ></div>
-                                <div class="frame-13">
-                                    <img class="img-libro" th:src="@{${book.getImage()}}" alt="image-@{${book.getTitle()}}"/>
+                                <div class="rectangle-25" ></div>
+                                <div class="image-container">
+                                    <img class="img-book" th:src="@{${book.getImage()}}" alt="image-@{${book.getTitle()}}"/>
                                 </div>
                                 <div class="frame-14"></div>
-                                <div class="title-book" th:text="@{${book.getTitle()}}"></div>
+                                <div class="title" th:text="@{${book.getTitle()}}"></div>
                                 <div class="author" th:text="@{${book.getAuthorsNames()}}"></div>
                             </a>
                         </div>

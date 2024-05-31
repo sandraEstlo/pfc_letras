@@ -7,9 +7,8 @@ import com.letras.pfc_letras.dtos.book.BookDto;
 import com.letras.pfc_letras.dtos.user.CreateUserDto;
 import com.letras.pfc_letras.dtos.user.GetUserDto;
 import com.letras.pfc_letras.models.UsersModels.UserModel;
-import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,6 +28,5 @@ public interface Facade {
 
     Optional<UserModel> newUser(CreateUserDto createUserDto);
 
-    Optional<GetUserDto> createUserAutentificate(String username,
-                                                 Collection<? extends GrantedAuthority> authorities);
+    Optional<GetUserDto> getUserDto(UserDetails userDetails);
 }

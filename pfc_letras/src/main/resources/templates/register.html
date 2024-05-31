@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head>
-    <meta charset="UTF-8">
-    <title>Register</title>
-    <link rel="stylesheet" type="text/css" href="/../css/style.css">
-</head>
+<head th:replace="fragments/head :: head"></head>
     <body>
         <div class="register">
             <div class="rectangle-6"></div>
@@ -15,7 +11,7 @@
             </div>
             <div class="left">
                 <a href="/login" class="btn03">Iniciar sesión</a>
-                <div class="title">Registrarse</div>
+                <div class="title-book-author">Registrarse</div>
                 <form action="/register"  th:action="@{/register}" th:object="${createUserDto}" method="post" >
                     <input class="input-name" type="text" placeholder="Nickname" th:field="*{userName}"/>
                     <input class="input-email" type="text" placeholder="Correo" th:field="*{email}"/>

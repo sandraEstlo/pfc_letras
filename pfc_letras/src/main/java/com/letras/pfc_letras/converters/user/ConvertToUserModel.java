@@ -17,7 +17,6 @@ public class ConvertToUserModel implements Converter<CreateUserDto, UserModel> {
 
     @Override
     public UserModel convert(CreateUserDto createUserDto) {
-
         return UserModel.builder()
                         .username(createUserDto.getUserName())
                         .email(createUserDto.getEmail())

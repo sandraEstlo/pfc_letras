@@ -24,7 +24,6 @@ public class DefaultUserService implements UserService {
     @Override
     public Optional<UserModel> saveUser(UserModel newUser) {
         return Optional.ofNullable(Optional.of(userRepository.save(newUser))
-                       .orElseThrow(() ->
-                               new ResponseStatusException(HttpStatus.BAD_REQUEST, "El nombre del usuario ya existe")));
+                       .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "El nombre del usuario ya existe")));
     }
 }
