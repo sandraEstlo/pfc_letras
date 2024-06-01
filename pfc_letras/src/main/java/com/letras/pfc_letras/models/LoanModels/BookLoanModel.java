@@ -1,47 +1,35 @@
 package com.letras.pfc_letras.models.LoanModels;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.letras.pfc_letras.models.UsersModels.UserModel;
+import com.letras.pfc_letras.models.BookModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
-import java.util.List;
 
 @Setter @Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "loan")
-public class LoanModel {
+public class BookLoanModel {
 
-    @Id
-    private String id;
-
-    @Field("user_id")
+    @Field("book_id")
     @DBRef(lazy = true)
     @DocumentReference(lookup = "{ '_id': ?#{#target} }")
-    private UserModel user;
+    private BookModel book;
 
-    @Field("loan_date")
+    @Field("book_satus")
+    private EnumState bookStatus;
+
+    @Field("returned_date")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @JsonFormat(pattern = "dd/MM/yyyy")
-    private Date loanDate;
-
-    @Field("due_date")
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    private Date dueDate;
-
-    @DBRef
-    @Field("books_loan")
-    private List<BookLoanModel> bookLoan;
+    private Date returned_date;
 }

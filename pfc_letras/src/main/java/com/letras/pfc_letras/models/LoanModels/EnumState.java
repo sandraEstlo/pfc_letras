@@ -1,5 +1,5 @@
 package com.letras.pfc_letras.models.LoanModels;
 
-public enum state {
+public enum EnumState {
     RESERVADO, PRESTADO, DEVUELTO, CANCELADO
 }
