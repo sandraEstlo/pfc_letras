@@ -28,5 +28,5 @@ public interface Facade {
 
     Optional<UserModel> newUser(CreateUserDto createUserDto);
 
-    Optional<GetUserDto> getUserDto(UserDetails userDetails);
+    Optional<GetUserDto> getUserDto(UserModel userModel);
 }

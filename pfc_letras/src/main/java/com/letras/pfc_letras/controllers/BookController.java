@@ -3,6 +3,7 @@ package com.letras.pfc_letras.controllers;
 import com.letras.pfc_letras.dtos.author.AuthorDetailsDto;
 import com.letras.pfc_letras.dtos.book.BookDto;
 import com.letras.pfc_letras.facades.Facade;
+import com.letras.pfc_letras.models.UsersModels.UserModel;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpSession;
 import org.apache.logging.log4j.util.Strings;
@@ -32,9 +33,9 @@ public class BookController {
 
         model.addAttribute("books", books);
 
-        UserDetails userDetails = (UserDetails) session.getAttribute("usersession");
-        if (userDetails != null) {
-            model.addAttribute("user", facade.getUserDto(userDetails).get());
+        UserModel userModel = (UserModel) session.getAttribute("usersession");
+        if (userModel != null) {
+            model.addAttribute("user", facade.getUserDto(userModel).get());
         }
         return "index";
     }
@@ -42,9 +43,9 @@ public class BookController {
     @GetMapping("/book/{id}")
     public String getBookDetails(Model model, @PathVariable String id, HttpSession session) {
         model.addAttribute("book", facade.findBookById(id).orElse(null));
-        UserDetails userDetails = (UserDetails) session.getAttribute("usersession");
-        if (userDetails != null) {
-            model.addAttribute("user", facade.getUserDto(userDetails).get());
+        UserModel userModel = (UserModel) session.getAttribute("usersession");
+        if (userModel != null) {
+            model.addAttribute("user", facade.getUserDto(userModel).get());
         }
         return "book-details";
     }
@@ -53,10 +54,10 @@ public class BookController {
     public String getAuthorDetails(Model model, @PathVariable String id, HttpSession session) {
         Optional<AuthorDetailsDto> authorDetailsDto = facade.findAuthorById(id);
         authorDetailsDto.ifPresent(author -> model.addAttribute("author", author));
-        UserDetails userDetails = (UserDetails) session.getAttribute("usersession");
+        UserModel userModel = (UserModel) session.getAttribute("usersession");
 
-        if (userDetails != null) {
-            model.addAttribute("user", facade.getUserDto(userDetails).get());
+        if (userModel != null) {
+            model.addAttribute("user", facade.getUserDto(userModel).get());
         }
         return "author-details";
     }

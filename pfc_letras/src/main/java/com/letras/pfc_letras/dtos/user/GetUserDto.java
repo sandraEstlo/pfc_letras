@@ -13,6 +13,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Builder
 public class GetUserDto {
+    private String id;
     private String userName;
     private Set<String> roles;
 }

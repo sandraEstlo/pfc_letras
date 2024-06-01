@@ -222,8 +222,8 @@
 </head>
 <body>
 <div class="book-details-001">
-    <div th:if="${user == null}"><nav th:if="${user == null}" th:replace="fragments/component-nav01 :: nav"></nav></div>
-    <div th:if="${user != null}"><nav th:unless="${user == null}" th:replace="fragments/component-nav02 :: nav"></nav></div>
+    <div th:if="${user == null}"><nav th:replace="~{fragments/component-nav01 :: nav}"></nav></div>
+    <div th:if="${user != null}"><nav th:replace="~{fragments/component-nav02 :: nav}"></nav></div>
     <main>
         <div>
             <img class="image" th:src="@{${book.image}}" />

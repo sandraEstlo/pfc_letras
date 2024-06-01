@@ -1,5 +1,6 @@
 package com.letras.pfc_letras.services.impl;
 
+import com.letras.pfc_letras.models.UsersModels.UserModel;
 import com.letras.pfc_letras.services.UserService;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpSession;
@@ -20,7 +21,7 @@ public class CustomUsersDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        UserDetails user = userService.findUserByUsername(username)
+        UserModel user = userService.findUserByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
 
         ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();

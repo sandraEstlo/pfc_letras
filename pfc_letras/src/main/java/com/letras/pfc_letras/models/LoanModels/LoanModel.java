@@ -1,7 +1,5 @@
 package com.letras.pfc_letras.models.LoanModels;
 
-import com.letras.pfc_letras.models.BookModel;
-
 import java.util.Date;
 
 public class LoanModel {

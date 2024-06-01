@@ -107,7 +107,7 @@ public class DefaultFacade implements Facade {
     }
 
     @Override
-    public Optional<GetUserDto> getUserDto(UserDetails userDetails) {
-        return Optional.ofNullable(convertToGetUserDto.convert(userDetails));
+    public Optional<GetUserDto> getUserDto(UserModel userModel) {
+        return Optional.ofNullable(convertToGetUserDto.convert(userModel));
     }
 }

@@ -3,8 +3,8 @@
 <head th:replace="fragments/head :: head"></head>
     <body>
         <div class="author-details-001">
-            <div th:if="${user == null}"><nav th:if="${user == null}" th:replace="fragments/component-nav01 :: nav"></nav></div>
-            <div th:if="${user != null}"><nav th:unless="${user == null}" th:replace="fragments/component-nav02 :: nav"></nav></div>
+            <div th:if="${user == null}"><nav th:replace="~{fragments/component-nav01 :: nav}"></nav></div>
+            <div th:if="${user != null}"><nav th:replace="~{fragments/component-nav02 :: nav}"></nav></div>
             <div class="group-1">
                 <img class="imagotipo2" th:src="${author.getImage()}"  alt=""/>
                 <div class="frame-8">
