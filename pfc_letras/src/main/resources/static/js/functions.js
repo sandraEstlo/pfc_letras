@@ -8,21 +8,88 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+document.addEventListener('DOMContentLoaded', (event) => {
+    const currentUrl = window.location.pathname;
+    const urlparam = new URLSearchParams(window.location.search);
+
+    if (currentUrl === '/login') {
+
+        if (urlparam.has('error')) {
+            if (currentUrl === '/login') {
+                createAlert('Error al iniciar sesión.','warning');
+            }
+            else if (currentUrl === '/register'){
+                const message = document.getElementById('message-error').getAttribute('data-error');
+
+                if (message!= null) {
+                    createAlert(message, 'warning')
+                }
+            }
+        }
+    }
+
+    else if (currentUrl === '/register') {
+        const urlparam = new URLSearchParams(window.location.search);
+        const message = document.getElementById('message-error').getAttribute('data-error');
+
+        if (urlparam.has('error') && message!= null) {
+            createAlert(message, 'warning')
+        }
+    }
+
+    (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+        const $notification = $delete.parentNode;
+        $delete.addEventListener('click', () => {
+            $notification.parentNode.removeChild($notification);
+        });
+    })
+});
+
+
+function createAlert(message, type) {
+    const alertPlaceholder = document.getElementById('liveAlertPlaceholder');
+    var color = '';
+
+    const appendAlert = (message, type) => {
+        const wrapper = document.createElement('div');
+        wrapper.className = `notification is-${type} is-light`;
+        wrapper.setAttribute('role', 'alert');
+
+        const icon = document.createElement('span');
+        icon.className = 'mdi';
+        switch (type) {
+            case 'warning':
+                color = '#EBAC75';
+                icon.classList.add('mdi-alert');
+                icon.style.color = color;
+                break;
+            default:
+                icon.className = '';
+        }
+
+        const messageDiv = document.createElement('div');
+        messageDiv.appendChild(icon);
+        messageDiv.appendChild(document.createTextNode(` ${message}`));
+        messageDiv.style.color = color;
+        wrapper.appendChild(messageDiv);
+
+        const closeButton = document.createElement('button');
+        closeButton.type = 'button';
+        closeButton.className = 'delete';
+        closeButton.style.background = color;
+        closeButton.setAttribute('data-bs-dismiss', 'alert');
+        closeButton.setAttribute('aria-label', 'Close');
+        wrapper.appendChild(closeButton);
+
+        alertPlaceholder.appendChild(wrapper);
+    };
+
+    appendAlert(message, type);
+}
+
+
 function createLoan() {
     const bookId = document.getElementById('book-id').getAttribute('data-bookId');
     const userId = document.getElementById('user-id').getAttribute('data-userId');
     alert('book id: '+ bookId + ' || user name: ' + userId);
-
-
-
-    // var iconElement = document.getElementById('icon-loan');
-    // var isLoanActive = false;
-    //
-    // if (!isLoanActive) {
-    //     iconElement.innerHTML = document.getElementById('icon-loan-true').innerHTML;
-    //     isLoanActive = true;
-    // } else {
-    //     iconElement.innerHTML = document.getElementById('icon-loan-false').innerHTML;
-    //     isLoanActive = false;
-    // }
 }

@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.CompoundIndex;
+import org.springframework.data.mongodb.core.index.CompoundIndexes;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
@@ -22,17 +24,19 @@ import java.util.stream.Collectors;
 @Getter @Setter
 @Builder
 @Document(collection = "user")
+@CompoundIndexes({
+        @CompoundIndex(def = "{'username': 1}", unique = true),
+        @CompoundIndex(def = "{'email': 1}", unique = true)
+})
 public class UserModel implements UserDetails {
 
     @Id
     private String id;
 
-    @Indexed(unique = true)
     private String username;
 
     private String password;
 
-    @Indexed(unique = true)
     private String email;
 
     private Set<UserRoles> roles;

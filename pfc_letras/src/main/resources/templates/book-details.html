@@ -1,225 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <style>
-        * {
-            padding: 0;
-            margin: 0;
-        }
-        .book-details-001,
-        .book-details-001 * {
-            box-sizing: border-box;
-            padding: 0;
-        }
-        .book-details-001 {
-            background: #ffffff;
-            height: 898px;
-            position: relative;
-            overflow: hidden;
-        }
-        .image {
-            border-radius: 20px;
-            width: 17.03%;
-            height: 52.95%;
-            position: absolute;
-            right: 64.79%;
-            left: 18.18%;
-            bottom: 23.55%;
-            top: 23.5%;
-            object-fit: cover;
-        }
-        .title-div {
-            padding: 10px 0px 10px 0px;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            width: 848.73px;
-            height: 46px;
-            position: absolute;
-            left: 722.27px;
-            top: 241px;
-        }
-        .title-book-author {
-            color: #2042ea;
-            text-align: left;
-            font-family:
-                    "AnekTamil-Bold",
-                    sans-serif;
-            font-size:36px;
-            font-weight: 700;
-            position: relative;
-            width: 849px;
-        }
-        .frame-10 {
-            display: flex;
-            flex-direction: row;
-            gap: 10px;
-            align-items: center;
-            justify-content: flex-start;
-            width: 848.73px;
-            position: absolute;
-            left: 722.27px;
-            top: 211px;
-        }
-        .category {
-            color: #2042ea;
-            text-align: left;
-            font-family: "Montserrat-Medium", sans-serif;
-            font-size: 14px;
-            font-weight: 500;
-            position: relative;
-            width: 849px;
-        }
-        .frame-14 {
-            display: flex;
-            flex-direction: row;
-            align-items: flex-start;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            width: 848.73px;
-            height: 306px;
-            position: absolute;
-            left: 722.27px;
-            top: 381px;
-        }
-        .description {
-            color: #2042ea;
-            text-align: left;
-            font-family:"Montserrat-Medium", sans-serif;
-            font-size: 14px;
-            font-weight:500;
-            position: relative;
-            width: 849px;
-        }
-        .frame-9 {
-            display: flex;
-            flex-direction: row;
-            gap: 10px;
-            align-items: flex-start;
-            justify-content: flex-start;
-            width: 850px;
-            height: 33px;
-            position: absolute;
-            left: 721px;
-            top: 300px;
-        }
-        .authorName {
-            color: #000000;
-            text-align: left;
-            font-family: "AnekTamil-Light", sans-serif;
-            font-size: 20px;
-            font-weight: 300;
-            position: relative;
-            width: 850px;
-        }
-        .frame-15 {
-            display: flex;
-            flex-direction: row;
-            align-items: flex-start;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            width: 850px;
-            position: absolute;
-            left: 722px;
-            top: 351px;
-        }
-        .frame-11 {
-            display: flex;
-            flex-direction: row;
-            gap: 10px;
-            align-items: center;
-            justify-content: flex-start;
-            flex-shrink: 0;
-            position: relative;
-        }
-        .isbn-9788416677399 {
-            color: #2042ea;
-            text-align: left;
-            font-family: "-", sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            opacity: 0.90;
-            position: relative;
-        }
-        .isbn-9788416677399-span {
-            color:#2042ea;
-            font-family: "Montserrat-Medium", sans-serif;
-            font-size: 14px;
-            font-weight: 500;
-        }
-        .isbn-9788416677399-span2 {
-            color:  #2042ea;
-            font-family: "Montserrat-Light", sans-serif;
-            font-size: 14px;
-            font-weight: 300;
-        }
-        .c-digo-n-gor-lam {
-            color: #2042ea;
-            text-align: left;
-            font-family: "-", sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            position: relative;
-        }
-        .c-digo-n-gor-lam-span {
-            color: #2042ea;
-            font-family: "Montserrat-Medium", sans-serif;
-            font-size: 14px;
-            font-weight: 500;
-        }
-        .c-digo-n-gor-lam-span2 {
-            color: #2042ea;
-            font-family: "Montserrat-Light", sans-serif;
-            font-size: 14px;
-            font-weight: 300;
-        }
-        .frame-bok {
-            display: flex;
-            flex-direction: row;
-            gap: 10px;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            position: relative;
-        }
-        .fecha-de-publicaci-n-2017-01-01 {
-            color: #2042ea;
-            text-align: left;
-            font-family: "-", sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            position: relative;
-        }
-        .fecha-de-publicaci-n-2017-01-01-span {
-            color: #2042ea;
-            font-family: "Montserrat-Medium", sans-serif;
-            font-size: 14px;
-            font-weight: 500;
-        }
-        .fecha-de-publicaci-n-2017-01-01-span2 {
-            color: #2042ea;
-            font-family: "Montserrat-Light", sans-serif;
-            font-size: 14px;
-            font-weight: 300;
-        }
-        .box-image {
-            display: flex;
-            flex-direction: row;
-            gap: 10px;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            width: 144px;
-            height: 17px;
-            position: relative;
-        }
-
-    </style>
-</head>
+<head th:replace="~{fragments/head :: head}"></head>
 <body>
 <div class="book-details-001">
     <div th:if="${user == null}"><nav th:replace="~{fragments/component-nav01 :: nav}"></nav></div>
@@ -288,3 +69,218 @@
 </div>
 </body>
 </html>
+
+<!--<style>-->
+<!--    * {-->
+<!--        padding: 0;-->
+<!--        margin: 0;-->
+<!--    }-->
+<!--    .book-details-001,-->
+<!--    .book-details-001 * {-->
+<!--        box-sizing: border-box;-->
+<!--        padding: 0;-->
+<!--    }-->
+<!--    .book-details-001 {-->
+<!--        background: #ffffff;-->
+<!--        height: 898px;-->
+<!--        position: relative;-->
+<!--        overflow: hidden;-->
+<!--    }-->
+<!--    .image {-->
+<!--        border-radius: 20px;-->
+<!--        width: 17.03%;-->
+<!--        height: 52.95%;-->
+<!--        position: absolute;-->
+<!--        right: 64.79%;-->
+<!--        left: 18.18%;-->
+<!--        bottom: 23.55%;-->
+<!--        top: 23.5%;-->
+<!--        object-fit: cover;-->
+<!--    }-->
+<!--    .title-div {-->
+<!--        padding: 10px 0px 10px 0px;-->
+<!--        display: flex;-->
+<!--        flex-direction: row;-->
+<!--        align-items: center;-->
+<!--        justify-content: space-between;-->
+<!--        flex-wrap: wrap;-->
+<!--        width: 848.73px;-->
+<!--        height: 46px;-->
+<!--        position: absolute;-->
+<!--        left: 722.27px;-->
+<!--        top: 241px;-->
+<!--    }-->
+<!--    .title-book-author {-->
+<!--        color: #2042ea;-->
+<!--        text-align: left;-->
+<!--        font-family:-->
+<!--                "AnekTamil-Bold",-->
+<!--                sans-serif;-->
+<!--        font-size:36px;-->
+<!--        font-weight: 700;-->
+<!--        position: relative;-->
+<!--        width: 849px;-->
+<!--    }-->
+<!--    .frame-10 {-->
+<!--        display: flex;-->
+<!--        flex-direction: row;-->
+<!--        gap: 10px;-->
+<!--        align-items: center;-->
+<!--        justify-content: flex-start;-->
+<!--        width: 848.73px;-->
+<!--        position: absolute;-->
+<!--        left: 722.27px;-->
+<!--        top: 211px;-->
+<!--    }-->
+<!--    .category {-->
+<!--        color: #2042ea;-->
+<!--        text-align: left;-->
+<!--        font-family: "Montserrat-Medium", sans-serif;-->
+<!--        font-size: 14px;-->
+<!--        font-weight: 500;-->
+<!--        position: relative;-->
+<!--        width: 849px;-->
+<!--    }-->
+<!--    .frame-14 {-->
+<!--        display: flex;-->
+<!--        flex-direction: row;-->
+<!--        align-items: flex-start;-->
+<!--        justify-content: space-between;-->
+<!--        flex-wrap: wrap;-->
+<!--        width: 848.73px;-->
+<!--        height: 306px;-->
+<!--        position: absolute;-->
+<!--        left: 722.27px;-->
+<!--        top: 381px;-->
+<!--    }-->
+<!--    .description {-->
+<!--        color: #2042ea;-->
+<!--        text-align: left;-->
+<!--        font-family:"Montserrat-Medium", sans-serif;-->
+<!--        font-size: 14px;-->
+<!--        font-weight:500;-->
+<!--        position: relative;-->
+<!--        width: 849px;-->
+<!--    }-->
+<!--    .frame-9 {-->
+<!--        display: flex;-->
+<!--        flex-direction: row;-->
+<!--        gap: 10px;-->
+<!--        align-items: flex-start;-->
+<!--        justify-content: flex-start;-->
+<!--        width: 850px;-->
+<!--        height: 33px;-->
+<!--        position: absolute;-->
+<!--        left: 721px;-->
+<!--        top: 300px;-->
+<!--    }-->
+<!--    .authorName {-->
+<!--        color: #000000;-->
+<!--        text-align: left;-->
+<!--        font-family: "AnekTamil-Light", sans-serif;-->
+<!--        font-size: 20px;-->
+<!--        font-weight: 300;-->
+<!--        position: relative;-->
+<!--        width: 850px;-->
+<!--    }-->
+<!--    .frame-15 {-->
+<!--        display: flex;-->
+<!--        flex-direction: row;-->
+<!--        align-items: flex-start;-->
+<!--        justify-content: space-between;-->
+<!--        flex-wrap: wrap;-->
+<!--        width: 850px;-->
+<!--        position: absolute;-->
+<!--        left: 722px;-->
+<!--        top: 351px;-->
+<!--    }-->
+<!--    .frame-11 {-->
+<!--        display: flex;-->
+<!--        flex-direction: row;-->
+<!--        gap: 10px;-->
+<!--        align-items: center;-->
+<!--        justify-content: flex-start;-->
+<!--        flex-shrink: 0;-->
+<!--        position: relative;-->
+<!--    }-->
+<!--    .isbn-9788416677399 {-->
+<!--        color: #2042ea;-->
+<!--        text-align: left;-->
+<!--        font-family: "-", sans-serif;-->
+<!--        font-size: 14px;-->
+<!--        font-weight: 400;-->
+<!--        opacity: 0.90;-->
+<!--        position: relative;-->
+<!--    }-->
+<!--    .isbn-9788416677399-span {-->
+<!--        color:#2042ea;-->
+<!--        font-family: "Montserrat-Medium", sans-serif;-->
+<!--        font-size: 14px;-->
+<!--        font-weight: 500;-->
+<!--    }-->
+<!--    .isbn-9788416677399-span2 {-->
+<!--        color:  #2042ea;-->
+<!--        font-family: "Montserrat-Light", sans-serif;-->
+<!--        font-size: 14px;-->
+<!--        font-weight: 300;-->
+<!--    }-->
+<!--    .c-digo-n-gor-lam {-->
+<!--        color: #2042ea;-->
+<!--        text-align: left;-->
+<!--        font-family: "-", sans-serif;-->
+<!--        font-size: 14px;-->
+<!--        font-weight: 400;-->
+<!--        position: relative;-->
+<!--    }-->
+<!--    .c-digo-n-gor-lam-span {-->
+<!--        color: #2042ea;-->
+<!--        font-family: "Montserrat-Medium", sans-serif;-->
+<!--        font-size: 14px;-->
+<!--        font-weight: 500;-->
+<!--    }-->
+<!--    .c-digo-n-gor-lam-span2 {-->
+<!--        color: #2042ea;-->
+<!--        font-family: "Montserrat-Light", sans-serif;-->
+<!--        font-size: 14px;-->
+<!--        font-weight: 300;-->
+<!--    }-->
+<!--    .frame-bok {-->
+<!--        display: flex;-->
+<!--        flex-direction: row;-->
+<!--        gap: 10px;-->
+<!--        align-items: center;-->
+<!--        justify-content: center;-->
+<!--        flex-shrink: 0;-->
+<!--        position: relative;-->
+<!--    }-->
+<!--    .fecha-de-publicaci-n-2017-01-01 {-->
+<!--        color: #2042ea;-->
+<!--        text-align: left;-->
+<!--        font-family: "-", sans-serif;-->
+<!--        font-size: 14px;-->
+<!--        font-weight: 400;-->
+<!--        position: relative;-->
+<!--    }-->
+<!--    .fecha-de-publicaci-n-2017-01-01-span {-->
+<!--        color: #2042ea;-->
+<!--        font-family: "Montserrat-Medium", sans-serif;-->
+<!--        font-size: 14px;-->
+<!--        font-weight: 500;-->
+<!--    }-->
+<!--    .fecha-de-publicaci-n-2017-01-01-span2 {-->
+<!--        color: #2042ea;-->
+<!--        font-family: "Montserrat-Light", sans-serif;-->
+<!--        font-size: 14px;-->
+<!--        font-weight: 300;-->
+<!--    }-->
+<!--    .box-image {-->
+<!--        display: flex;-->
+<!--        flex-direction: row;-->
+<!--        gap: 10px;-->
+<!--        align-items: center;-->
+<!--        justify-content: center;-->
+<!--        flex-shrink: 0;-->
+<!--        width: 144px;-->
+<!--        height: 17px;-->
+<!--        position: relative;-->
+<!--    }-->

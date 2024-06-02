@@ -13,7 +13,6 @@ public class DefaultLoanService implements LoanService {
 
     @Override
     public Optional<LoanModel> save(LoanModel loanModel) {
-
         return Optional.of(loanRepository.save(loanModel));
     }
 }

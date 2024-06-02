@@ -1,7 +1,7 @@
 package com.letras.pfc_letras.controllers;
 
 import com.letras.pfc_letras.dtos.user.CreateUserDto;
-import com.letras.pfc_letras.errors.exceptions.NewUserWithDifferentPassword;
+import com.letras.pfc_letras.errors.exceptions.User.NewUserWithDifferentPassword;
 import com.letras.pfc_letras.facades.Facade;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
@@ -10,11 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.security.core.AuthenticationException;
-
-import java.util.Optional;
 
 @Controller
 public class UserController {
@@ -39,12 +36,6 @@ public class UserController {
 
     @PostMapping("/register")
     public String processRegister(Model model, CreateUserDto createUserDto, RedirectAttributes redirectAttributes) {
-        try {
-            return (facade.newUser(createUserDto).isPresent()) ? "redirect:/login" : "redirect:/register";
-
-        } catch (NewUserWithDifferentPassword | ResponseStatusException e) {
-            model.addAttribute("error", e.getMessage());
-            return "register";
-        }
+        return (facade.newUser(createUserDto).isPresent()) ? "redirect:/login" : "redirect:/register";
     }
 }

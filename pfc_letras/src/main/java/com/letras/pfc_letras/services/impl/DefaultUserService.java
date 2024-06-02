@@ -3,6 +3,7 @@ package com.letras.pfc_letras.services.impl;
 import com.letras.pfc_letras.models.UsersModels.UserModel;
 import com.letras.pfc_letras.repositories.UserRepository;
 import com.letras.pfc_letras.services.UserService;
+import com.mongodb.DuplicateKeyException;
 import jakarta.annotation.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,6 @@ public class DefaultUserService implements UserService {
 
     @Override
     public Optional<UserModel> saveUser(UserModel newUser) {
-        return Optional.ofNullable(Optional.of(userRepository.save(newUser))
-                       .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "El nombre del usuario ya existe")));
+        return Optional.of(userRepository.save(newUser));
     }
 }
