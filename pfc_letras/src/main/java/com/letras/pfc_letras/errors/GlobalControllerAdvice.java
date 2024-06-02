@@ -13,7 +13,7 @@ public class GlobalControllerAdvice extends ResponseEntityExceptionHandler {
     @ExceptionHandler(DuplicateKeyException.class)
     public String handleDuplicateKeyException(DuplicateKeyException ex, RedirectAttributes redirectAttrs) {
         redirectAttrs.addFlashAttribute("error", "Ya existe un usuario con ese nombre y/o correo electrónico.");
-        return "redirect:/register?error"; // Nombre de la vista de error
+        return "redirect:/register?error";
     }
 
     @ExceptionHandler(NewUserWithDifferentPassword.class)

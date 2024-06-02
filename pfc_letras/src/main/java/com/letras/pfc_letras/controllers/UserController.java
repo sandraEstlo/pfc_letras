@@ -1,7 +1,6 @@
 package com.letras.pfc_letras.controllers;
 
 import com.letras.pfc_letras.dtos.user.CreateUserDto;
-import com.letras.pfc_letras.errors.exceptions.User.NewUserWithDifferentPassword;
 import com.letras.pfc_letras.facades.Facade;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
