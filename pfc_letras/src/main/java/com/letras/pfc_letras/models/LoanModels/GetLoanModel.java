@@ -2,31 +2,26 @@ package com.letras.pfc_letras.models.LoanModels;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.letras.pfc_letras.models.UsersModels.UserModel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Setter @Getter
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-@Document(collection = "loan")
-public class LoanModel {
+@Document
+public class GetLoanModel {
 
     @Id
     private String id;
 
     @Field("user_id")
-    private String userId;
+    @DBRef(lazy = true)
+    @DocumentReference(lookup = "{ '_id': ?#{#target} }")
+    private UserModel user;
 
     @Field("loan_date")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
@@ -40,4 +35,5 @@ public class LoanModel {
 
     @Field("books_loan")
     private List<BookLoanModel> bookLoan;
+
 }

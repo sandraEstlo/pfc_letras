@@ -14,6 +14,7 @@ function createLoan() {
     alert('book id: '+ bookId + ' || user name: ' + userId);
 
 
+
     // var iconElement = document.getElementById('icon-loan');
     // var isLoanActive = false;
     //

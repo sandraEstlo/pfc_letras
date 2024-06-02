@@ -1,11 +1,8 @@
 package com.letras.pfc_letras.controllers.api;
 
 import com.letras.pfc_letras.dtos.author.AuthorDetailsDto;
-import com.letras.pfc_letras.dtos.author.AuthorDto;
 import com.letras.pfc_letras.facades.Facade;
 import com.letras.pfc_letras.models.AuthorModel;
-import com.letras.pfc_letras.models.LoanModels.LoanModel;
-import com.letras.pfc_letras.repositories.LoanRepository;
 import com.letras.pfc_letras.services.AuthorService;
 import jakarta.annotation.Resource;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;

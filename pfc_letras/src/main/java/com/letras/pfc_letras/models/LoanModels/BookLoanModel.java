@@ -8,21 +8,21 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.DocumentReference;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Setter @Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class BookLoanModel {
 
     @Field("book_id")
     @DBRef(lazy = true)
-    @DocumentReference(lookup = "{ '_id': ?#{#target} }")
     private BookModel book;
 
     @Field("book_satus")
@@ -31,5 +31,5 @@ public class BookLoanModel {
     @Field("returned_date")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @JsonFormat(pattern = "dd/MM/yyyy")
-    private Date returned_date;
+    private LocalDateTime returned_date;
 }
