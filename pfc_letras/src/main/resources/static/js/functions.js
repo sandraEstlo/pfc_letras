@@ -12,37 +12,23 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const currentUrl = window.location.pathname;
     const urlparam = new URLSearchParams(window.location.search);
 
-    if (currentUrl === '/login') {
-
-        if (urlparam.has('error')) {
-            if (currentUrl === '/login') {
-                createAlert('Error al iniciar sesión.','warning');
-            }
-            else if (currentUrl === '/register'){
-                const message = document.getElementById('message-error').getAttribute('data-error');
-
-                if (message!= null) {
-                    createAlert(message, 'warning')
-                }
-            }
+    if (urlparam.has('error')) {
+        switch(currentUrl){
+            case '/login'    : createAlert('Error al iniciar sesión.','warning'); break;
+            case '/register' : const message = document.getElementById('message-error').getAttribute('data-error');
+                               if (message != null)
+                                   createAlert(message, 'warning');
+                               break;
         }
     }
 
-    else if (currentUrl === '/register') {
-        const urlparam = new URLSearchParams(window.location.search);
-        const message = document.getElementById('message-error').getAttribute('data-error');
-
-        if (urlparam.has('error') && message!= null) {
-            createAlert(message, 'warning')
-        }
-    }
-
+    // Add event listener for notification delete buttons
     (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
         const $notification = $delete.parentNode;
         $delete.addEventListener('click', () => {
             $notification.parentNode.removeChild($notification);
         });
-    })
+    });
 });
 
 
