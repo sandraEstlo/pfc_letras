@@ -493,9 +493,8 @@ a {
     border-radius: 8px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
     border: none;
-    padding-top: 10px;
     width: 300px;
-    position: absolute;
+    position: relative;
     left: 49px;
     top: 367px;
 }
@@ -778,14 +777,14 @@ a {
     font-weight: 500;
     height: 38px;
     border: none;
-    position: absolute;
+    position: relative;
     padding: 10px;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     width: 150px;
     left: 300px;
-    top: 0px;
+    margin-bottom: 50px;
 }
 .btn03:hover {
     border-radius: 8px;
