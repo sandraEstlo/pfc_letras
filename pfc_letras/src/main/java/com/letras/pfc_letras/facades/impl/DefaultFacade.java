@@ -100,7 +100,7 @@ public class DefaultFacade implements Facade {
     @Override
     public Optional<UserModel> newUser(CreateUserDto createUserDto) {
         if (!createUserDto.getPassword().equals(createUserDto.getConfirmPassword()))
-            throw new NewUserWithDifferentPassword();
+            throw new NewUserWithDifferentPassword(createUserDto);
 
         return userService.saveUser(convertToUserModel.convert(createUserDto));
     }

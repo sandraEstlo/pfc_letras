@@ -655,7 +655,7 @@ a {
     width: 300px;
     height: 36px;
     left: 65px;
-    top: 170px;
+    top: 135px;
     box-shadow: 0 2px 5px 1px rgba(32, 66, 234, 0.1);
     color: #2042ea;
     padding: 5%;
@@ -674,7 +674,7 @@ a {
     width: 300px;
     height: 36px;
     left: 65px;
-    top: 230px;
+    top: 205px;
     box-shadow: 0 2px 5px 1px rgba(32, 66, 234, 0.1);
     color: #2042ea;
     padding: 5%;
@@ -693,7 +693,7 @@ a {
     width: 300px;
     height: 36px;
     left: 65px;
-    top: 290px;
+    top: 275px;
     box-shadow: 0 2px 5px 1px rgba(32, 66, 234, 0.1);
     color: #2042ea;
     padding: 5%;
@@ -712,7 +712,7 @@ a {
     width: 300px;
     height: 36px;
     left: 65px;
-    top: 350px;
+    top: 345px;
     box-shadow: 0 2px 5px 1px rgba(32, 66, 234, 0.1);
     color: #2042ea;
     padding: 5%;
@@ -760,7 +760,7 @@ a {
     left: 65px;
     top: 414px;
 }
-.title-book-author {
+.title-register {
     color: #2042ea;
     text-align: left;
     font-family: "AnekTamil-Bold", sans-serif;
@@ -768,7 +768,7 @@ a {
     font-weight: 700;
     position: absolute;
     left: 65px;
-    top: 105px;
+    top: 60px;
 }
 .btn03 {
     color: #2042ea;
@@ -811,6 +811,7 @@ a {
     left: 65px;
     top: 410px;
 }
+
 
 /*---- AUTHOR-DETAILS ----*/
 .author-details-001,
@@ -1048,5 +1049,32 @@ a {
     align-items: center;
     justify-content: flex-start;
 }
-
+#error-username {
+    color: #f5913b;
+    font-size: 12px;
+    position: absolute;
+    margin-left: 65px;
+    margin-top: 85px;
+}
+#error-email {
+    color: #f5913b;
+    font-size: 12px;
+    position: absolute;
+    margin-left: 65px;
+    margin-top: 155px;
+}
+#error-password {
+    color: #f5913b;
+    font-size: 12px;
+    position: absolute;
+    margin-left: 65px;
+    margin-top: 225px;
+}
+#error-confirmpassword {
+    color: #f5913b;
+    font-size: 12px;
+    position: absolute;
+    margin-left: 65px;
+    margin-top: 295px;
+}
 /*---- BOOK DETAILS ----*/
