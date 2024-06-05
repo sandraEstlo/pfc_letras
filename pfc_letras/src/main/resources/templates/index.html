@@ -26,18 +26,19 @@
                     <div class="box-image" >
                         <div class="component-card" th:each="book: ${books}">
                                 <div id="book-id" th:data-bookId="@{${book.getId()}}"></div>
-                                <div class="rectangle-25" ></div>
-                                <div  type="button" th:if="${user != null}">
-                                    <div th:replace="~{fragments/component-button-loan :: div}"></div>
+                                    <div class="rectangle-25" >
+                                    <div  type="button" th:if="${user != null}">
+                                        <div th:replace="~{fragments/component-button-loan :: div}"></div>
+                                    </div>
+                                    <div class="image-container">
+                                        <img class="img-book" th:src="@{${book.getImage()}}" alt="image-@{${book.getTitle()}}"/>
+                                    </div>
+                                    <div class="frame-14"></div>
+                                    <a th:href="@{/book/{id}(id=${book.getId()})}">
+                                        <div class="title" th:text="@{${book.getTitle()}}"></div>
+                                    </a>
+                                    <div class="author" th:text="@{${book.getAuthorsNames()}}"></div>
                                 </div>
-                                <div class="image-container">
-                                    <img class="img-book" th:src="@{${book.getImage()}}" alt="image-@{${book.getTitle()}}"/>
-                                </div>
-                                <div class="frame-14"></div>
-                                <a th:href="@{/book/{id}(id=${book.getId()})}">
-                                    <div class="title" th:text="@{${book.getTitle()}}"></div>
-                                </a>
-                                <div class="author" th:text="@{${book.getAuthorsNames()}}"></div>
                         </div>
                     </div>
                 </div>

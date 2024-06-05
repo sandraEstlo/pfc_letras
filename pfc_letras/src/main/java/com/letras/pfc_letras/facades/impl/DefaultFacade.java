@@ -11,15 +11,19 @@ import com.letras.pfc_letras.dtos.author.AuthorDetailsDto;
 import com.letras.pfc_letras.dtos.author.AuthorDto;
 import com.letras.pfc_letras.dtos.book.BookDetailsDto;
 import com.letras.pfc_letras.dtos.book.BookDto;
+import com.letras.pfc_letras.dtos.loan.CreateLoanDto;
 import com.letras.pfc_letras.dtos.user.CreateUserDto;
 import com.letras.pfc_letras.dtos.user.GetUserDto;
 import com.letras.pfc_letras.errors.exceptions.User.NewUserWithDifferentPassword;
 import com.letras.pfc_letras.facades.Facade;
+import com.letras.pfc_letras.models.LoanModels.EnumState;
+import com.letras.pfc_letras.models.LoanModels.LoanModel;
 import com.letras.pfc_letras.models.UsersModels.UserModel;
-import com.letras.pfc_letras.services.AuthorService;
-import com.letras.pfc_letras.services.BookSearchService;
-import com.letras.pfc_letras.services.BookService;
+import com.letras.pfc_letras.services.authors.AuthorService;
+import com.letras.pfc_letras.services.books.BookSearchService;
+import com.letras.pfc_letras.services.books.BookService;
 import com.letras.pfc_letras.services.UserService;
+import com.letras.pfc_letras.services.loans.LoanService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Component;
 import java.util.List;
@@ -40,6 +44,9 @@ public class DefaultFacade implements Facade {
 
     @Resource
     private UserService userService;
+
+    @Resource
+    private LoanService loanService;
 
     @Resource
     private ConvertToAuthorDetailsDto convertToAuthorDetailsDto;
@@ -108,5 +115,11 @@ public class DefaultFacade implements Facade {
     @Override
     public Optional<GetUserDto> getUserDto(UserModel userModel) {
         return Optional.ofNullable(convertToGetUserDto.convert(userModel));
+    }
+
+    @Override
+    public Optional<LoanModel> newLoan(CreateLoanDto createLoanDto, EnumState state) {
+
+        return Optional.empty();
     }
 }

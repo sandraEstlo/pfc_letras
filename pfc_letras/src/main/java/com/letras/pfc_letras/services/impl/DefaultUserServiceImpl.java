@@ -3,16 +3,13 @@ package com.letras.pfc_letras.services.impl;
 import com.letras.pfc_letras.models.UsersModels.UserModel;
 import com.letras.pfc_letras.repositories.UserRepository;
 import com.letras.pfc_letras.services.UserService;
-import com.mongodb.DuplicateKeyException;
 import jakarta.annotation.Resource;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
 
 @Service
-public class DefaultUserService implements UserService {
+public class DefaultUserServiceImpl implements UserService {
 
     @Resource
     private UserRepository userRepository;

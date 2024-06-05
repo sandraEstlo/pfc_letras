@@ -1,7 +1,7 @@
-package com.letras.pfc_letras.services;
+package com.letras.pfc_letras.services.books;
 
 import com.letras.pfc_letras.models.BookModel;
-import org.springframework.stereotype.Component;
+
 import java.util.List;
 import java.util.Optional;
 

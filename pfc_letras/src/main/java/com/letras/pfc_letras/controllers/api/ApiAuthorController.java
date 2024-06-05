@@ -3,7 +3,7 @@ package com.letras.pfc_letras.controllers.api;
 import com.letras.pfc_letras.dtos.author.AuthorDetailsDto;
 import com.letras.pfc_letras.facades.Facade;
 import com.letras.pfc_letras.models.AuthorModel;
-import com.letras.pfc_letras.services.AuthorService;
+import com.letras.pfc_letras.services.authors.AuthorService;
 import jakarta.annotation.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
