@@ -4,8 +4,11 @@ import com.letras.pfc_letras.dtos.author.AuthorDetailsDto;
 import com.letras.pfc_letras.dtos.author.AuthorDto;
 import com.letras.pfc_letras.dtos.book.BookDetailsDto;
 import com.letras.pfc_letras.dtos.book.BookDto;
+import com.letras.pfc_letras.dtos.loan.CreateLoanDto;
 import com.letras.pfc_letras.dtos.user.CreateUserDto;
 import com.letras.pfc_letras.dtos.user.GetUserDto;
+import com.letras.pfc_letras.models.LoanModels.EnumState;
+import com.letras.pfc_letras.models.LoanModels.LoanModel;
 import com.letras.pfc_letras.models.UsersModels.UserModel;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -29,4 +32,6 @@ public interface Facade {
     Optional<UserModel> newUser(CreateUserDto createUserDto);
 
     Optional<GetUserDto> getUserDto(UserModel userModel);
+
+    Optional<LoanModel> newLoan(CreateLoanDto createLoanDto, EnumState state);
 }

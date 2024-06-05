@@ -2,7 +2,7 @@ package com.letras.pfc_letras.services.impl;
 
 import com.letras.pfc_letras.models.CategoryModel;
 import com.letras.pfc_letras.repositories.CategoryRepository;
-import com.letras.pfc_letras.services.CategoryService;
+import com.letras.pfc_letras.services.books.CategoryService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 

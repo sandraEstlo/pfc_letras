@@ -587,7 +587,7 @@ a {
 .input-name::-webkit-input-placeholder,
 .input-email::-webkit-input-placeholder,
 .input-password::-webkit-input-placeholder,
-.input-password02::-webkit-input-placeholder{
+.input-password02::-webkit-input-placeholder {
     color: #2042ea;
     opacity: 50%;
 }

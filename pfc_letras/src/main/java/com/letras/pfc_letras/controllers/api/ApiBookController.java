@@ -1,8 +1,8 @@
 package com.letras.pfc_letras.controllers.api;
 
 import com.letras.pfc_letras.models.BookModel;
-import com.letras.pfc_letras.services.BookSearchService;
-import com.letras.pfc_letras.services.BookService;
+import com.letras.pfc_letras.services.books.BookSearchService;
+import com.letras.pfc_letras.services.books.BookService;
 import jakarta.annotation.Resource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

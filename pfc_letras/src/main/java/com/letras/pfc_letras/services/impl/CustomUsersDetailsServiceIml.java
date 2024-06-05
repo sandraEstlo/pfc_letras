@@ -13,7 +13,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import java.util.Objects;
 
 @Service
-public class CustomUsersDetailsService implements UserDetailsService {
+public class CustomUsersDetailsServiceIml implements UserDetailsService {
 
     @Resource
     private UserService userService;

@@ -3,6 +3,7 @@ package com.letras.pfc_letras.controllers;
 import com.letras.pfc_letras.dtos.book.BookDto;
 import com.letras.pfc_letras.facades.Facade;
 import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpSession;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,7 @@ public class AdminBookController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/books")
-    public String books(Model model, @RequestParam(value = "text", required = false) String text) {
+    public String books(Model model, @RequestParam(value = "text", required = false) String text, HttpSession httpSession) {
         List<BookDto> books = (Strings.isEmpty(text)) ? facade.findAllBooks()
                                                       : facade.searchBookByKey(text);
         model.addAttribute("books", books);

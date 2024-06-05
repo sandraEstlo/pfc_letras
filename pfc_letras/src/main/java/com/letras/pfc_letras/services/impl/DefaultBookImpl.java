@@ -2,7 +2,7 @@ package com.letras.pfc_letras.services.impl;
 
 import com.letras.pfc_letras.models.BookModel;
 import com.letras.pfc_letras.repositories.BookRepository;
-import com.letras.pfc_letras.services.BookService;
+import com.letras.pfc_letras.services.books.BookService;
 import jakarta.annotation.Resource;
 import lombok.NonNull;
 import org.springframework.stereotype.Service;

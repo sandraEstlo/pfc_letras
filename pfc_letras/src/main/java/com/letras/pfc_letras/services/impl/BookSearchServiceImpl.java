@@ -2,7 +2,7 @@ package com.letras.pfc_letras.services.impl;
 
 import com.letras.pfc_letras.models.BookModel;
 import com.letras.pfc_letras.repositories.BookRepository;
-import com.letras.pfc_letras.services.BookSearchService;
+import com.letras.pfc_letras.services.books.BookSearchService;
 import jakarta.annotation.Resource;
 import lombok.AllArgsConstructor;
 import org.springframework.data.mongodb.core.MongoTemplate;

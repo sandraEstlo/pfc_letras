@@ -4,6 +4,7 @@ import com.letras.pfc_letras.dtos.author.AuthorDetailsDto;
 import com.letras.pfc_letras.dtos.book.BookDto;
 import com.letras.pfc_letras.facades.Facade;
 import com.letras.pfc_letras.models.UsersModels.UserModel;
+import com.letras.pfc_letras.models.UsersModels.UserRoles;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpSession;
 import org.apache.logging.log4j.util.Strings;
@@ -36,7 +37,9 @@ public class BookController {
         UserModel userModel = (UserModel) session.getAttribute("usersession");
         if (userModel != null) {
             model.addAttribute("user", facade.getUserDto(userModel).get());
+            return (userModel.getRoles().contains(UserRoles.USER)) ? "index" : "admin-books";
         }
+
         return "index";
     }
 

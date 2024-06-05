@@ -1,4 +1,4 @@
-package com.letras.pfc_letras.services;
+package com.letras.pfc_letras.services.books;
 
 import com.letras.pfc_letras.models.CategoryModel;
 import org.springframework.stereotype.Component;
