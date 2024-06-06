@@ -13,10 +13,11 @@ public class CheckAvailabilityLoanServiceImpl implements CheckAvailabilityLoanSe
     @Resource
     private LoanRepository loanRepository;
 
+
     @Override
     public void isUserAvailableForLoan(String UserId, int numberOfBooksToRequest) {
         int MAX_LOANS_FOR_USERS = 3;
-        int activeLoans = loanRepository.countActivesLoansForUserId(UserId);
+        int activeLoans = loanRepository.countActivesLoansForUserId(UserId).orElse(0);
 
         if(activeLoans + numberOfBooksToRequest >= MAX_LOANS_FOR_USERS)
             throw new UserNotAvailableException();
@@ -24,7 +25,7 @@ public class CheckAvailabilityLoanServiceImpl implements CheckAvailabilityLoanSe
 
     @Override
     public void isBookAvailableForLoan(String BookId, int numberOfCopies) {
-        int activeLoansForBook = loanRepository.countActivesLoansForBookId(BookId);
+        int activeLoansForBook = loanRepository.countActivesLoansForBookId(BookId).orElse(0);
 
         if (activeLoansForBook >= numberOfCopies)
             throw new BookNotAvailableException();

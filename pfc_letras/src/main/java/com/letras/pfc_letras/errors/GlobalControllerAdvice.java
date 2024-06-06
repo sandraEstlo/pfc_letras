@@ -1,12 +1,16 @@
 package com.letras.pfc_letras.errors;
 
-import com.letras.pfc_letras.dtos.user.CreateUserDto;
 import com.letras.pfc_letras.errors.exceptions.User.NewUserWithDifferentPassword;
+import com.letras.pfc_letras.errors.exceptions.loans.BookNotAvailableException;
+import com.letras.pfc_letras.errors.exceptions.loans.UserNotAvailableException;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import java.time.LocalDateTime;
 
 @ControllerAdvice
 public class GlobalControllerAdvice extends ResponseEntityExceptionHandler {
@@ -24,5 +28,15 @@ public class GlobalControllerAdvice extends ResponseEntityExceptionHandler {
         redirectAttrs.addFlashAttribute("createUserDto", ex.getCreateUserDto());
         redirectAttrs.addFlashAttribute("error", ex.getMessage());
         return "redirect:/register?error";
+    }
+
+    @ExceptionHandler({UserNotAvailableException.class, BookNotAvailableException.class})
+    public ResponseEntity<ApiError> handleUserNotAvailableException(Exception ex) {
+        HttpStatus status = (ex instanceof UserNotAvailableException) ? HttpStatus.FORBIDDEN : HttpStatus.NOT_FOUND;
+        return ResponseEntity.status(status).body(ApiError.builder()
+                                                          .status(status)
+                                                          .dateTime(LocalDateTime.now())
+                                                          .message(ex.getMessage())
+                                                          .build());
     }
 }
