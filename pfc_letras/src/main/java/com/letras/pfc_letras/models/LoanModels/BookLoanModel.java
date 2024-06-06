@@ -12,7 +12,6 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Setter @Getter
 @Builder
@@ -31,5 +30,5 @@ public class BookLoanModel {
     @Field("returned_date")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDateTime returned_date;
+    private LocalDateTime returnedDate;
 }

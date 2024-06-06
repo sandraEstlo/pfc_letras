@@ -1,6 +1,7 @@
 package com.letras.pfc_letras.services.loans.impl;
 
 import com.letras.pfc_letras.models.LoanModels.LoanModel;
+import com.letras.pfc_letras.repositories.BookRepository;
 import com.letras.pfc_letras.repositories.LoanRepository;
 import com.letras.pfc_letras.services.loans.CheckAvailabilityLoanService;
 import com.letras.pfc_letras.services.loans.LoanService;
@@ -15,13 +16,23 @@ public class DefaultLoanServiceImpl implements LoanService {
     private LoanRepository loanRepository;
 
     @Resource
+    private BookRepository bookRepository;
+
+    @Resource
     private CheckAvailabilityLoanService checkAvailabilityLoanService;
 
     @Override
     public Optional<LoanModel> save(LoanModel loanModel) {
 
         checkAvailabilityLoanService.isUserAvailableForLoan(loanModel.getUserId(), loanModel.getBookLoan().size());
-        checkAvailabilityLoanService.isBookAvailableForLoan(loanModel.getBookLoan().get(0).getBook().getId(),loanModel.getBookLoan().get(0).getBook().getCopies());
+
+        loanModel.getBookLoan().forEach(loanBook -> {
+            checkAvailabilityLoanService.isBookAvailableForLoan(
+                    loanBook.getBook().getId(),
+                    bookRepository.returnCopiesFromBookId(loanBook.getBook().getId()).orElse(0)
+            );
+        });
+
         return Optional.of(loanRepository.save(loanModel));
     }
 }

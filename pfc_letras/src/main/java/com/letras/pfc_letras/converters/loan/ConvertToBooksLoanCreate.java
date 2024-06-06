@@ -15,8 +15,8 @@ public class ConvertToBooksLoanCreate implements Converter<CreateBookLoanDto, Bo
 
         return BookLoanModel.builder()
                             .book(BookModel.builder().id(createBookLoanDto.getBookId()).build())
-                            .bookStatus(EnumState.valueOf(String.valueOf(createBookLoanDto.getStatus())))
-                            .returned_date(createBookLoanDto.getReturnedDate())
+                            .bookStatus(createBookLoanDto.getStatus())
+                            .returnedDate(createBookLoanDto.getReturnedDate())
                             .build();
     }
 }

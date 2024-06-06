@@ -21,14 +21,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
                                break;
         }
     }
-
-    // Add event listener for notification delete buttons
-    (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
-        const $notification = $delete.parentNode;
-        $delete.addEventListener('click', () => {
-            $notification.parentNode.removeChild($notification);
-        });
-    });
 });
 
 
@@ -40,6 +32,12 @@ function createAlert(message, type) {
         const wrapper = document.createElement('div');
         wrapper.className = `notification is-${type} is-light`;
         wrapper.setAttribute('role', 'alert');
+        wrapper.style.position = 'fixed';
+        wrapper.style.right = '10px';
+        wrapper.style.padding = '10px';
+        wrapper.style.width = 'auto';
+        wrapper.style.height = 'auto';
+        wrapper.style.zIndex = '999';
 
         const icon = document.createElement('span');
         icon.className = 'mdi';
@@ -49,14 +47,20 @@ function createAlert(message, type) {
                 icon.classList.add('mdi-alert');
                 icon.style.color = color;
                 break;
+            case 'success':
+                color = '#95B26D';
+                icon.classList.add('mdi-check-circle');
+                icon.style.color = color;
+                break;
             default:
-                icon.className = '';
+
         }
 
         const messageDiv = document.createElement('div');
         messageDiv.appendChild(icon);
         messageDiv.appendChild(document.createTextNode(` ${message}`));
         messageDiv.style.color = color;
+        messageDiv.style.margin = '10px 40px 10px 10px'
         wrapper.appendChild(messageDiv);
 
         const closeButton = document.createElement('button');
@@ -71,11 +75,58 @@ function createAlert(message, type) {
     };
 
     appendAlert(message, type);
+
+    (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+        const $notification = $delete.parentNode;
+        $delete.addEventListener('click', () => {
+            $notification.parentNode.removeChild($notification);
+        });
+    });
 }
 
 
-function createLoan() {
-    const bookId = document.getElementById('book-id').getAttribute('data-bookId');
-    const userId = document.getElementById('user-id').getAttribute('data-userId');
-    alert('book id: '+ bookId + ' || user name: ' + userId);
+function createLoan(bookId) {
+
+    // const bookId = document.getElementById('book-id').getAttribute('data-bookId');
+    // const userId = document.getElementById('user-id').getAttribute('data-userId');
+    // alert('book id: '+ bookId + ' || user name: ' + userId);
+
+    const data = {
+        userId: document.getElementById('user-id').getAttribute('data-userId'),
+        bookIds: [bookId],
+        operation: 'PRESTAR'
+    };
+
+    const options = {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data) // Aquí se convierte el objeto en JSON
+    };
+
+    fetch("/new", options)
+        .then(response => {
+            switch (response.status){
+                case 201:
+                    createAlert('La reserva se ha creado correctamente.','success')
+                    break;
+                case 403:
+                    return response.json().then(data => {
+                        createAlert(data.message, 'warning');
+                        throw new Error(data.message);
+                    });
+                default:
+                    createAlert('Ha ocurrido un error inesperado.','warning')
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Manejar la respuesta del servidor si es necesario
+            console.log('Respuesta del servidor:', data);
+        })
+        .catch(error => {
+            console.error('Error en la solicitud:', error);
+        });
+
 }
