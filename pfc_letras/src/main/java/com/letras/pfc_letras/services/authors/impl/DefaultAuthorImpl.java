@@ -1,4 +1,4 @@
-package com.letras.pfc_letras.services.impl;
+package com.letras.pfc_letras.services.authors.impl;
 
 import com.letras.pfc_letras.services.authors.AuthorService;
 import jakarta.annotation.Resource;
