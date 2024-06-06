@@ -1,6 +1,8 @@
 package com.letras.pfc_letras.errors;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -12,6 +14,9 @@ import java.time.LocalDateTime;
 @Setter @Getter
 @RequiredArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
+
 public class ApiError {
 
     @NonNull
