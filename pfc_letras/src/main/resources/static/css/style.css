@@ -829,14 +829,15 @@ a {
     height: 80pt;
     position: absolute;
     right: 70.89%;
-    left: 23.18%;
+    left: 450px;
     bottom: 65.37%;
     top: 21.94%;
     object-fit: cover;
 }
 .group-1 {
     width: 917px;
-    height: 213px;
+    margin-left: 50px;
+    height: fit-content;
     position: static;
 }
 .name {
@@ -1077,3 +1078,156 @@ a {
     margin-top: 295px;
 }
 /*---- BOOK DETAILS ----*/
+.book-details-001,
+.book-details-001 * {
+    box-sizing: border-box;
+}
+.book-details-001 {
+    background: #ffffff;
+    height: 898px;
+    position: relative;
+    overflow: hidden;
+}
+.box-container-book-details {
+    width: 1233px;
+    height: 476px;
+    position: absolute;
+    left: 353px;
+    top: 200px;
+}
+.book-details-image {
+    position: absolute;
+    inset: 0;
+}
+.image-book-details {
+    border-radius: 20px;
+    width: 26.03%;
+    height: 99.9%;
+    position: absolute;
+    right: 73.97%;
+    left: 0%;
+    bottom: 0.1%;
+    top: 0%;
+    object-fit: cover;
+}
+.container-details {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 867px;
+    height: fit-content;
+    position: absolute;
+    left: 364px;
+    top: 0px;
+}
+.book-details-category {
+    color: #2042ea;
+    text-align: left;
+    font-family: "Montserrat-Medium", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+    width: 850px;
+}
+.book-details-author {
+    color: #000000;
+    text-align: left;
+    font-family:"AnekTamil-Light", sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    position: relative;
+    width: 867px;
+}
+.book-details-title {
+    color: #2042ea;
+    text-align: left;
+    font-family: "AnekTamil-Bold", sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    position: relative;
+    flex: 1;
+}
+.book-details-info {
+    display: flex;
+    flex-direction: row;
+    gap: 43px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+    width: 869px;
+    position: relative;
+}
+.book-details-info-label {
+    color: #2042ea;
+    text-align: left;
+    font-family: "-", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    position: relative;
+}
+.book-details-info-label-span {
+    color: #2042ea;
+    font-family: "Montserrat-Bold", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+}
+.book-details-info-label-span2 {
+    color: #2042ea;
+    font-family: "Montserrat-Light", sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+}
+.book-details-info-isbn {
+    color: #2042ea;
+    text-align: left;
+    font-family: "-", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    opacity: 0.8999999761581421;
+    position: relative;
+}
+.book-details-info-isbn-span {
+    color: #2042ea;
+    font-family: "Montserrat-Medium", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+}
+.book-details-info-isbn-span2 {
+    color: #2042ea;
+    font-family: "Montserrat-Light", sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+}
+.book-details-info-date {
+    color: #2042ea;
+    text-align: left;
+    font-family: "-", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    position: relative;
+}
+.book-details-info-date-span {
+    color: #2042ea;
+    font-family: "Montserrat-Medium", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+}
+.book-details-info-date-span2 {
+    color: #2042ea;
+    font-family: "Montserrat-Light", sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+}
+.book-details-description {
+    color: #2042ea;
+    text-align: left;
+    font-family: "Montserrat-Medium", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+    width: 867px;
+    height: auto;
+}

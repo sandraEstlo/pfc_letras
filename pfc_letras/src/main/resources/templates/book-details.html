@@ -1,286 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head th:replace="~{fragments/head :: head}"></head>
-<body>
-<div class="book-details-001">
-    <div th:if="${user == null}"><nav th:replace="~{fragments/component-nav01 :: nav}"></nav></div>
-    <div th:if="${user != null}"><nav th:replace="~{fragments/component-nav02 :: nav}"></nav></div>
-    <main>
-        <div>
-            <img class="image" th:src="@{${book.image}}" />
+    <head th:replace="~{fragments/head :: head}"></head>
+    <body>
+        <div class="book-details-001">
+            <div th:if="${user == null}"><nav th:replace="~{fragments/component-nav01 :: nav}"></nav></div>
+            <div th:if="${user != null}"><nav th:replace="~{fragments/component-nav02 :: nav}"></nav></div>
+            <main>
+                <div class="box-container-book-details">
+                    <img class="image-book-details" th:src="@{${book.image}}" />
+                    <div class="container-details">
+                        <div class="book-details-category" th:text="@{${book.getCategory()}}"></div>
+                        <div class="book-details-title" th:text="@{${book.getTitle()}}"></div>
+                        <div class="book-details-author">
+                            <span th:each="author, iterStat : ${book.authorsDto}">
+                                <a th:href="@{/author/{id}(id=${author.id})}">
+                                    <span th:text="${author.name}"></span>
+                                </a>
+                                <span th:if="${not iterStat.last}">, </span>
+                            </span>
+                        </div>
+                        <div class="book-details-info">
+                            <div class="book-details-info-label">
+                                <span>
+                                    <span class="book-details-info-label-span">Código:</span>
+                                    <span class="book-details-info-label-span2"  th:text="@{${book.getLabel()}}"></span>
+                                </span>
+                            </div>
+                            <div class="book-details-info-isbn">
+                                <span>
+                                    <span class="book-details-info-isbn-span">ISBN:</span>
+                                    <span class="book-details-info-isbn-span2" th:text="@{${book.getIsbn()}}"></span>
+                                </span>
+                            </div>
+                            <div class="book-details-info-date">
+                                <span>
+                                    <span class="book-details-info-date-span">Fecha de publicación:</span>
+                                    <span class="book-details-info-date-span2" th:text="@{${book.getPublishDate()}}"></span>
+                                 </span>
+                            </div>
+                        </div>
+                        <div class="book-details-description" th:text="@{${book.getDescription()}}"></div>
+                    </div>
+                </div>
+            </main>
         </div>
-        <div>
-            <div class="frame-10">
-                <div class="category" th:text="@{${book.getCategory()}}"></div>
-            </div>
-            <div class="title-div">
-                <div class="title" th:text="@{${book.getTitle()}}"> </div>
-            </div>
-            <div class="frame-14">
-                <div class="description" th:text="@{${book.getDescription()}}"></div>
-            </div>
-            <div class="frame-9">
-                <span class="authorNames">
-                    <span th:each="author, iterStat : ${book.authorsDto}">
-                        <a th:href="@{/author/{id}(id=${author.id})}">
-                            <span th:text="${author.name}"></span>
-                        </a>
-                        <span th:if="${not iterStat.last}">, </span>
-                    </span>
-                </span>
-                <span>
-                  <span class="isbn-9788416677399-span">ISBN:</span>
-                  <span class="isbn-9788416677399-span2">9788416677399</span>
-                </span>
-            </div>
-            <div>
-
-            </div>
-
-        </div>
-    </main>
-
-
-
-    <div class="frame-15">
-        <div class="frame-11">
-            <div class="isbn-9788416677399">
-
-            </div>
-        </div>
-        <div class="c-digo-n-gor-lam">
-      <span>
-        <span class="c-digo-n-gor-lam-span">Código:</span>
-        <span class="c-digo-n-gor-lam-span2">N-GOR-LAM</span>
-      </span>
-        </div>
-        <div class="frame-13">
-            <div class="fecha-de-publicaci-n-2017-01-01">
-        <span>
-          <span class="fecha-de-publicaci-n-2017-01-01-span">
-            Fecha de publicación:
-          </span>
-          <span class="fecha-de-publicaci-n-2017-01-01-span2">2017-01-01</span>
-        </span>
-            </div>
-        </div>
-        <div class="frame-12"></div>
-    </div>
-</div>
-</body>
+    </body>
 </html>
 
-<!--<style>-->
-<!--    * {-->
-<!--        padding: 0;-->
-<!--        margin: 0;-->
-<!--    }-->
-<!--    .book-details-001,-->
-<!--    .book-details-001 * {-->
-<!--        box-sizing: border-box;-->
-<!--        padding: 0;-->
-<!--    }-->
-<!--    .book-details-001 {-->
-<!--        background: #ffffff;-->
-<!--        height: 898px;-->
-<!--        position: relative;-->
-<!--        overflow: hidden;-->
-<!--    }-->
-<!--    .image {-->
-<!--        border-radius: 20px;-->
-<!--        width: 17.03%;-->
-<!--        height: 52.95%;-->
-<!--        position: absolute;-->
-<!--        right: 64.79%;-->
-<!--        left: 18.18%;-->
-<!--        bottom: 23.55%;-->
-<!--        top: 23.5%;-->
-<!--        object-fit: cover;-->
-<!--    }-->
-<!--    .title-div {-->
-<!--        padding: 10px 0px 10px 0px;-->
-<!--        display: flex;-->
-<!--        flex-direction: row;-->
-<!--        align-items: center;-->
-<!--        justify-content: space-between;-->
-<!--        flex-wrap: wrap;-->
-<!--        width: 848.73px;-->
-<!--        height: 46px;-->
-<!--        position: absolute;-->
-<!--        left: 722.27px;-->
-<!--        top: 241px;-->
-<!--    }-->
-<!--    .title-book-author {-->
-<!--        color: #2042ea;-->
-<!--        text-align: left;-->
-<!--        font-family:-->
-<!--                "AnekTamil-Bold",-->
-<!--                sans-serif;-->
-<!--        font-size:36px;-->
-<!--        font-weight: 700;-->
-<!--        position: relative;-->
-<!--        width: 849px;-->
-<!--    }-->
-<!--    .frame-10 {-->
-<!--        display: flex;-->
-<!--        flex-direction: row;-->
-<!--        gap: 10px;-->
-<!--        align-items: center;-->
-<!--        justify-content: flex-start;-->
-<!--        width: 848.73px;-->
-<!--        position: absolute;-->
-<!--        left: 722.27px;-->
-<!--        top: 211px;-->
-<!--    }-->
-<!--    .category {-->
-<!--        color: #2042ea;-->
-<!--        text-align: left;-->
-<!--        font-family: "Montserrat-Medium", sans-serif;-->
-<!--        font-size: 14px;-->
-<!--        font-weight: 500;-->
-<!--        position: relative;-->
-<!--        width: 849px;-->
-<!--    }-->
-<!--    .frame-14 {-->
-<!--        display: flex;-->
-<!--        flex-direction: row;-->
-<!--        align-items: flex-start;-->
-<!--        justify-content: space-between;-->
-<!--        flex-wrap: wrap;-->
-<!--        width: 848.73px;-->
-<!--        height: 306px;-->
-<!--        position: absolute;-->
-<!--        left: 722.27px;-->
-<!--        top: 381px;-->
-<!--    }-->
-<!--    .description {-->
-<!--        color: #2042ea;-->
-<!--        text-align: left;-->
-<!--        font-family:"Montserrat-Medium", sans-serif;-->
-<!--        font-size: 14px;-->
-<!--        font-weight:500;-->
-<!--        position: relative;-->
-<!--        width: 849px;-->
-<!--    }-->
-<!--    .frame-9 {-->
-<!--        display: flex;-->
-<!--        flex-direction: row;-->
-<!--        gap: 10px;-->
-<!--        align-items: flex-start;-->
-<!--        justify-content: flex-start;-->
-<!--        width: 850px;-->
-<!--        height: 33px;-->
-<!--        position: absolute;-->
-<!--        left: 721px;-->
-<!--        top: 300px;-->
-<!--    }-->
-<!--    .authorName {-->
-<!--        color: #000000;-->
-<!--        text-align: left;-->
-<!--        font-family: "AnekTamil-Light", sans-serif;-->
-<!--        font-size: 20px;-->
-<!--        font-weight: 300;-->
-<!--        position: relative;-->
-<!--        width: 850px;-->
-<!--    }-->
-<!--    .frame-15 {-->
-<!--        display: flex;-->
-<!--        flex-direction: row;-->
-<!--        align-items: flex-start;-->
-<!--        justify-content: space-between;-->
-<!--        flex-wrap: wrap;-->
-<!--        width: 850px;-->
-<!--        position: absolute;-->
-<!--        left: 722px;-->
-<!--        top: 351px;-->
-<!--    }-->
-<!--    .frame-11 {-->
-<!--        display: flex;-->
-<!--        flex-direction: row;-->
-<!--        gap: 10px;-->
-<!--        align-items: center;-->
-<!--        justify-content: flex-start;-->
-<!--        flex-shrink: 0;-->
-<!--        position: relative;-->
-<!--    }-->
-<!--    .isbn-9788416677399 {-->
-<!--        color: #2042ea;-->
-<!--        text-align: left;-->
-<!--        font-family: "-", sans-serif;-->
-<!--        font-size: 14px;-->
-<!--        font-weight: 400;-->
-<!--        opacity: 0.90;-->
-<!--        position: relative;-->
-<!--    }-->
-<!--    .isbn-9788416677399-span {-->
-<!--        color:#2042ea;-->
-<!--        font-family: "Montserrat-Medium", sans-serif;-->
-<!--        font-size: 14px;-->
-<!--        font-weight: 500;-->
-<!--    }-->
-<!--    .isbn-9788416677399-span2 {-->
-<!--        color:  #2042ea;-->
-<!--        font-family: "Montserrat-Light", sans-serif;-->
-<!--        font-size: 14px;-->
-<!--        font-weight: 300;-->
-<!--    }-->
-<!--    .c-digo-n-gor-lam {-->
-<!--        color: #2042ea;-->
-<!--        text-align: left;-->
-<!--        font-family: "-", sans-serif;-->
-<!--        font-size: 14px;-->
-<!--        font-weight: 400;-->
-<!--        position: relative;-->
-<!--    }-->
-<!--    .c-digo-n-gor-lam-span {-->
-<!--        color: #2042ea;-->
-<!--        font-family: "Montserrat-Medium", sans-serif;-->
-<!--        font-size: 14px;-->
-<!--        font-weight: 500;-->
-<!--    }-->
-<!--    .c-digo-n-gor-lam-span2 {-->
-<!--        color: #2042ea;-->
-<!--        font-family: "Montserrat-Light", sans-serif;-->
-<!--        font-size: 14px;-->
-<!--        font-weight: 300;-->
-<!--    }-->
-<!--    .frame-bok {-->
-<!--        display: flex;-->
-<!--        flex-direction: row;-->
-<!--        gap: 10px;-->
-<!--        align-items: center;-->
-<!--        justify-content: center;-->
-<!--        flex-shrink: 0;-->
-<!--        position: relative;-->
-<!--    }-->
-<!--    .fecha-de-publicaci-n-2017-01-01 {-->
-<!--        color: #2042ea;-->
-<!--        text-align: left;-->
-<!--        font-family: "-", sans-serif;-->
-<!--        font-size: 14px;-->
-<!--        font-weight: 400;-->
-<!--        position: relative;-->
-<!--    }-->
-<!--    .fecha-de-publicaci-n-2017-01-01-span {-->
-<!--        color: #2042ea;-->
-<!--        font-family: "Montserrat-Medium", sans-serif;-->
-<!--        font-size: 14px;-->
-<!--        font-weight: 500;-->
-<!--    }-->
-<!--    .fecha-de-publicaci-n-2017-01-01-span2 {-->
-<!--        color: #2042ea;-->
-<!--        font-family: "Montserrat-Light", sans-serif;-->
-<!--        font-size: 14px;-->
-<!--        font-weight: 300;-->
-<!--    }-->
-<!--    .box-image {-->
-<!--        display: flex;-->
-<!--        flex-direction: row;-->
-<!--        gap: 10px;-->
-<!--        align-items: center;-->
-<!--        justify-content: center;-->
-<!--        flex-shrink: 0;-->
-<!--        width: 144px;-->
-<!--        height: 17px;-->
-<!--        position: relative;-->
-<!--    }-->
