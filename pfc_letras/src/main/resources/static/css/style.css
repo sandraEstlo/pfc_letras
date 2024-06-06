@@ -358,8 +358,7 @@ a {
     background: #f5f5f5;
     border-radius: 30px;
     height: 648px;
-    position: relative; /* Asegura que el elemento sea relativo para que el z-index funcione */
-    z-index: 1; /* Establece un z-index bajo */
+    position: relative;
 }
 
 .header-search {

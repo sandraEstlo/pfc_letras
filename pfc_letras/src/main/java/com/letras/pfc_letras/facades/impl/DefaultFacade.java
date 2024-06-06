@@ -7,17 +7,20 @@ import com.letras.pfc_letras.converters.book.ConvertToBookDetailsDto;
 import com.letras.pfc_letras.converters.book.ConvertToBookDto;
 import com.letras.pfc_letras.converters.loan.ConvertToLoanModelCreate;
 import com.letras.pfc_letras.converters.loan.ConverterRequestDtoToCreateLoanDto;
+import com.letras.pfc_letras.converters.loan.ConverterToCreateLoanDto;
 import com.letras.pfc_letras.converters.user.ConvertToGetUserDto;
 import com.letras.pfc_letras.converters.user.ConvertToUserModel;
 import com.letras.pfc_letras.dtos.author.AuthorDetailsDto;
 import com.letras.pfc_letras.dtos.author.AuthorDto;
 import com.letras.pfc_letras.dtos.book.BookDetailsDto;
 import com.letras.pfc_letras.dtos.book.BookDto;
+import com.letras.pfc_letras.dtos.loan.CreateLoanDto;
 import com.letras.pfc_letras.dtos.loan.CreateLoanRequestDto;
 import com.letras.pfc_letras.dtos.user.CreateUserDto;
 import com.letras.pfc_letras.dtos.user.GetUserDto;
 import com.letras.pfc_letras.errors.exceptions.User.NewUserWithDifferentPassword;
 import com.letras.pfc_letras.errors.exceptions.loans.ErrorToConverterModel;
+import com.letras.pfc_letras.errors.exceptions.loans.ErrorToCreateLoan;
 import com.letras.pfc_letras.facades.Facade;
 import com.letras.pfc_letras.models.LoanModels.LoanModel;
 import com.letras.pfc_letras.models.UsersModels.UserModel;
@@ -78,6 +81,9 @@ public class DefaultFacade implements Facade {
     @Resource
     private ConverterRequestDtoToCreateLoanDto converterRequestDtoToCreateLoanDto;
 
+    @Resource
+    private ConverterToCreateLoanDto converterToCreateLoanDto;
+
     @Override
     public List<BookDto> findAllBooks() {
         return bookService.findAllBooks()
@@ -127,11 +133,12 @@ public class DefaultFacade implements Facade {
     }
 
     @Override
-    public Optional<LoanModel> newLoan(CreateLoanRequestDto createLoanRequestDto) {
+    public Optional<CreateLoanDto> newLoan(CreateLoanRequestDto createLoanRequestDto) {
         LoanModel newLoanModel = Optional.of(Objects.requireNonNull(
                                                 convertToLoanModelCreate.convert(Objects.requireNonNull(
                                                 converterRequestDtoToCreateLoanDto.convert(createLoanRequestDto))))
                                              ).orElseThrow(ErrorToConverterModel::new);
-        return loanService.save(newLoanModel);
+        return Optional.ofNullable(converterToCreateLoanDto
+                                       .convert(loanService.save(newLoanModel).orElseThrow(ErrorToCreateLoan::new)));
     }
 }

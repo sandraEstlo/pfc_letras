@@ -13,9 +13,6 @@ public class ConvertToLoanModelCreate implements Converter<CreateLoanDto, LoanMo
     @Resource
     public ConvertToBooksLoanCreate convertToBooksLoanCreate;
 
-    @Resource
-    public UserRepository userRepository;
-
     @Override
     public LoanModel convert(CreateLoanDto createLoanDto) {
 

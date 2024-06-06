@@ -19,7 +19,7 @@ public class CheckAvailabilityLoanServiceImpl implements CheckAvailabilityLoanSe
         int MAX_LOANS_FOR_USERS = 3;
         int activeLoans = loanRepository.countActivesLoansForUserId(UserId).orElse(0);
 
-        if(activeLoans + numberOfBooksToRequest >= MAX_LOANS_FOR_USERS)
+        if((activeLoans + numberOfBooksToRequest) > MAX_LOANS_FOR_USERS)
             throw new UserNotAvailableException();
     }
 

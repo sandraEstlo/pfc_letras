@@ -8,6 +8,7 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Component
@@ -16,25 +17,24 @@ public class ConverterRequestDtoToCreateLoanDto implements Converter<CreateLoanR
     @Override
     public CreateLoanDto convert(CreateLoanRequestDto createLoanRequestDto) {
 
+        EnumState enumState = (createLoanRequestDto.getOperation().equals("PRESTAR") ? EnumState.PRESTADO : EnumState.RESERVADO);
+
         final int PLUS_DAYS_LOAN = 60;
         final int PLUS_DAYS_BOOK = 3;
 
-//        int plusDays = (createLoanRequestDto.getState().equals(EnumState.PRESTADO)) ? PLUS_DAYS_LOAN
-//                                                                                    : PLUS_DAYS_BOOK;
+        int plusDays = (Objects.equals(enumState,EnumState.PRESTADO)) ? PLUS_DAYS_LOAN : PLUS_DAYS_BOOK;
 
         return CreateLoanDto.builder()
                             .userId(createLoanRequestDto.getUserId())
                             .loanDate(LocalDateTime.now())
-                            .dueDate(LocalDateTime.now().plusDays(PLUS_DAYS_BOOK))
+                            .dueDate(LocalDateTime.now().plusDays(plusDays))
                             .booksLoan(createLoanRequestDto.getBookIds()
-                                                           .stream()
-                                                           .map(idBook ->
-                                                                   CreateBookLoanDto
-                                                                            .builder()
-                                                                            .bookId(idBook)
-                                                                            .status(EnumState.RESERVADO)
-                                                                            .returnedDate(null)
-                                                                            .build())
+                                                           .stream().map(idBook -> CreateBookLoanDto
+                                                                                    .builder()
+                                                                                    .bookId(idBook)
+                                                                                    .status(enumState)
+                                                                                    .returnedDate(null)
+                                                                                    .build())
                                                            .collect(Collectors.toList()))
 
                             .build();

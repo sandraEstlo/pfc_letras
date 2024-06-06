@@ -1,6 +1,5 @@
 package com.letras.pfc_letras.dtos.loan;
 
-import com.letras.pfc_letras.models.LoanModels.EnumState;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,5 +14,5 @@ import java.util.List;
 public class CreateLoanRequestDto {
     private String userId;
     private List<String> bookIds;
-    private EnumState state;
+    private String operation;
 }

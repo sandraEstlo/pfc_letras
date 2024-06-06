@@ -28,4 +28,9 @@ public interface BookRepository extends MongoRepository<BookModel, String> {
 
     @Query("{'_id': {'$oid': ?0 }}")
     Optional<BookModel> findById(@NonNull String id);
-}
+
+    @Aggregation(pipeline = {
+            "{ $match: { '_id': ObjectId(?0) } }",
+            "{ $project: { '_id': 0, 'copies': 1 } }"
+    })
+    Optional<Integer> returnCopiesFromBookId(String bookId);}

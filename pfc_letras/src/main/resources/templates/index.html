@@ -8,6 +8,7 @@
             <div th:if="${user == null}"><nav th:replace="~{fragments/component-nav01 :: nav}"></nav></div>
             <div th:if="${user != null}"><nav th:replace="~{fragments/component-nav02 :: nav}"></nav></div>
             <div th:if="${user != null}" id="user-id" th:data-userId="${user.id}"></div>
+            <div id="liveAlertPlaceholder"></div>
             <main class="main">
                 <div class="advertisements"></div>
                 <div class="header-search">
@@ -25,10 +26,13 @@
                 <div class="scrollbar-1">
                     <div class="box-image" >
                         <div class="component-card" th:each="book: ${books}">
-                                <div id="book-id" th:data-bookId="@{${book.getId()}}"></div>
-                                    <div class="rectangle-25" >
+                                <div></div>
+                                    <div class="rectangle-25">
                                     <div  type="button" th:if="${user != null}">
-                                        <div th:replace="~{fragments/component-button-loan :: div}"></div>
+                                        <div type="button" id="btn-loan" th:data-bookid = "@{${book.getId()}}" onclick="createLoan(this.getAttribute('data-bookid'))">
+                                            <div th:replace="~{fragments/element-icon-loan-false :: div}"></div>
+                                            <div id="loan">Reservar</div>
+                                        </div>
                                     </div>
                                     <div class="image-container">
                                         <img class="img-book" th:src="@{${book.getImage()}}" alt="image-@{${book.getTitle()}}"/>
@@ -38,6 +42,7 @@
                                         <div class="title" th:text="@{${book.getTitle()}}"></div>
                                     </a>
                                     <div class="author" th:text="@{${book.getAuthorsNames()}}"></div>
+                                    <div id="book-id" th:data-bookId="@{${book.getId()}}"></div>
                                 </div>
                         </div>
                     </div>
