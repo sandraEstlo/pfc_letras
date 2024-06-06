@@ -1,4 +1,4 @@
-package com.letras.pfc_letras.services.impl;
+package com.letras.pfc_letras.services.books.impl;
 
 import com.letras.pfc_letras.models.BookModel;
 import com.letras.pfc_letras.repositories.BookRepository;
