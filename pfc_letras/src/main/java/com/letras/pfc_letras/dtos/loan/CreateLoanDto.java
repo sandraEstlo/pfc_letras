@@ -19,7 +19,7 @@ public class CreateLoanDto {
     @Builder.Default
     private LocalDateTime loanDate = LocalDateTime.now();
 
-    private LocalDateTime dueDate;
+//    private LocalDateTime dueDate;
 
     private List<CreateBookLoanDto> booksLoan;
 }

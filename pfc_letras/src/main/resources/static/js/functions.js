@@ -94,7 +94,7 @@ function createLoan(bookId) {
     const data = {
         userId: document.getElementById('user-id').getAttribute('data-userId'),
         bookIds: [bookId],
-        operation: 'PRESTAR'
+        operation: 'RESERVAR'
     };
 
     const options = {

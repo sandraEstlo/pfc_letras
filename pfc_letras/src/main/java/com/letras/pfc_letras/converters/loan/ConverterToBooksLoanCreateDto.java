@@ -14,7 +14,7 @@ public class ConverterToBooksLoanCreateDto implements Converter<BookLoanModel, C
         return CreateBookLoanDto.builder()
                 .bookId(bookLoanModel.getBook().getId())
                 .status(bookLoanModel.getBookStatus())
-                .returnedDate(bookLoanModel.getReturnedDate())
+                .dueDate(bookLoanModel.getReturnedDate())
                 .build();
     }
 }

@@ -27,7 +27,7 @@ public class BookLoanModel {
     @Field("book_satus")
     private EnumState bookStatus;
 
-    @Field("returned_date")
+    @Field("due_date")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDateTime returnedDate;

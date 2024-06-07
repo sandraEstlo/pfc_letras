@@ -20,7 +20,7 @@ public interface LoanRepository extends MongoRepository<LoanModel, String> {
             "{ $unwind: '$booksloan' }",
             "{ $unwind: '$books_loan' }",
             "{ $match: {'books_loan.book_satus': ?0, 'user_id': ?1 } }",
-            "{ $project: { '_id': 1, 'user_id': 1,'loan_date': 1, 'due_date': 1, 'book_id': '$booksloan._id', 'book_satus': '$books_loan.book_satus',title: '$booksloan.title' } }"
+            "{ $project: { '_id': 1, 'user_id': 1,'loan_date': 1, 'due_date': '$books_loan.due_date', 'book_id': '$booksloan._id', 'book_satus': '$books_loan.book_satus',title: '$booksloan.title' } }"
     })
     List<ViewLoanModel> findByUserId(String status, String userid);
 
