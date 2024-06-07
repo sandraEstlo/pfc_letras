@@ -25,7 +25,7 @@ public class ViewLoanModel {
     private String userId;
 
     @Field("loan_date")
-    private LocalDateTime loanDate;
+    private LocalDate loanDate;
 
     @Field("due_date")
     private LocalDate dueDate;
@@ -35,4 +35,7 @@ public class ViewLoanModel {
 
     @Field("book_satus")
     private String bookStatus;
+
+    @Field("title")
+    private String title;
 }

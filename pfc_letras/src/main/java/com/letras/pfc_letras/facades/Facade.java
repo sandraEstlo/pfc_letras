@@ -6,6 +6,7 @@ import com.letras.pfc_letras.dtos.book.BookDetailsDto;
 import com.letras.pfc_letras.dtos.book.BookDto;
 import com.letras.pfc_letras.dtos.loan.CreateLoanDto;
 import com.letras.pfc_letras.dtos.loan.CreateLoanRequestDto;
+import com.letras.pfc_letras.dtos.loan.ViewLoanDto;
 import com.letras.pfc_letras.dtos.user.CreateUserDto;
 import com.letras.pfc_letras.dtos.user.GetUserDto;
 import com.letras.pfc_letras.models.LoanModels.LoanModel;
@@ -32,4 +33,6 @@ public interface Facade {
     Optional<GetUserDto> getUserDto(UserModel userModel);
 
     Optional<CreateLoanDto> newLoan(CreateLoanRequestDto createLoanRequestDto);
+
+    List<ViewLoanDto> getLoansById(String status, String idUser);
 }

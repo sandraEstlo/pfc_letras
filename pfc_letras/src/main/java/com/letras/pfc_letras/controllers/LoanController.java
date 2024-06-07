@@ -2,6 +2,7 @@ package com.letras.pfc_letras.controllers;
 
 import com.letras.pfc_letras.dtos.loan.CreateLoanDto;
 import com.letras.pfc_letras.dtos.loan.CreateLoanRequestDto;
+import com.letras.pfc_letras.errors.exceptions.User.UserNotFound;
 import com.letras.pfc_letras.errors.exceptions.loans.ErrorToCreateLoan;
 import com.letras.pfc_letras.facades.Facade;
 import com.letras.pfc_letras.models.UsersModels.UserModel;
@@ -13,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,12 +26,16 @@ public class LoanController {
     @Resource
     private Facade facade;
 
-    @GetMapping("/loan/user")
-    public String viewLoans(Model model, HttpSession session) {
+    @GetMapping("/loan/user/{option}")
+    public String viewLoans(Model model,
+                            HttpSession session,
+                            @PathVariable String option) {
 
         UserModel userModel = (UserModel) session.getAttribute("usersession");
         if (userModel != null && userModel.getRoles().contains(UserRoles.USER)) {
-            model.addAttribute("user", facade.getUserDto(userModel).get());
+            model.addAttribute("user", facade.getUserDto(userModel).orElseThrow(UserNotFound::new));
+            model.addAttribute("loans", facade.getLoansById(option, userModel.getId()));
+
             return "loans-user";
         }
         return "index";

@@ -2,9 +2,11 @@ package com.letras.pfc_letras.controllers.api;
 
 import com.letras.pfc_letras.dtos.loan.CreateLoanDto;
 import com.letras.pfc_letras.dtos.loan.CreateLoanRequestDto;
+import com.letras.pfc_letras.dtos.loan.ViewLoanDto;
 import com.letras.pfc_letras.errors.exceptions.loans.ErrorToCreateLoan;
 import com.letras.pfc_letras.facades.Facade;
 import com.letras.pfc_letras.models.LoanModels.LoanModel;
+import com.letras.pfc_letras.models.LoanModels.ViewLoanModel;
 import com.letras.pfc_letras.repositories.LoanRepository;
 import com.letras.pfc_letras.services.loans.LoanService;
 import jakarta.annotation.Resource;
@@ -49,5 +51,10 @@ public class ApiLoanController {
     @GetMapping("/countUser")
     public int getCountUserId() {
         return loanRepository.countActivesLoansForUserId("665b53c34e5fe0e78d03739f").orElse(0);
+    }
+
+    @GetMapping("/loan-user")
+    public List<ViewLoanDto> getById() {
+        return facade.getLoansById("PRESTADO", "665d036aca33673abc8039ca");
     }
 }
