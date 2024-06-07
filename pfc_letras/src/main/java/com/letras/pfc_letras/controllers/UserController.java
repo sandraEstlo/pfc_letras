@@ -49,12 +49,3 @@ public class UserController {
         return "redirect:/login";
     }
 }
-
-//                          List<String> errors = bindingResult.getFieldErrors()
-//                                               .stream()
-//                                               .map(error -> error.getField() + "," + error.getDefaultMessage())
-//                                               .collect(Collectors.toList());
-//
-//            model.addAttribute("errors", errors);
-//            model.addAttribute("result", bindingResult);
-//            model.addAttribute("createUserDto", createUserDto);

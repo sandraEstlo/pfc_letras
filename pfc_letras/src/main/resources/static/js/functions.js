@@ -102,7 +102,7 @@ function createLoan(bookId) {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(data) // Aquí se convierte el objeto en JSON
+        body: JSON.stringify(data)
     };
 
     fetch("/new", options)
@@ -122,7 +122,6 @@ function createLoan(bookId) {
             return response.json();
         })
         .then(data => {
-            // Manejar la respuesta del servidor si es necesario
             console.log('Respuesta del servidor:', data);
         })
         .catch(error => {
