@@ -28,14 +28,14 @@
                             </div>
                             <div class="book-details-info-isbn">
                                 <span>
-                                    <span class="book-details-info-isbn-span">ISBN:</span>
+                                    <b><span class="book-details-info-isbn-span">ISBN:</span></b>
                                     <span class="book-details-info-isbn-span2" th:text="@{${book.getIsbn()}}"></span>
                                 </span>
                             </div>
                             <div class="book-details-info-date">
                                 <span>
                                     <span class="book-details-info-date-span">Fecha de publicación:</span>
-                                    <span class="book-details-info-date-span2" th:text="@{${book.getPublishDate()}}"></span>
+                                    <span class="book-details-info-date-span2" th:text="@{${#dates.format(book.getPublishDate(),'dd-MM-yyyy')}}"></span>
                                  </span>
                             </div>
                         </div>
