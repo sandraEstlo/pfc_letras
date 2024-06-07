@@ -8,6 +8,7 @@ import com.letras.pfc_letras.converters.book.ConvertToBookDto;
 import com.letras.pfc_letras.converters.loan.ConvertToLoanModelCreate;
 import com.letras.pfc_letras.converters.loan.ConverterRequestDtoToCreateLoanDto;
 import com.letras.pfc_letras.converters.loan.ConverterToCreateLoanDto;
+import com.letras.pfc_letras.converters.loan.ConverterToViewLoansDto;
 import com.letras.pfc_letras.converters.user.ConvertToGetUserDto;
 import com.letras.pfc_letras.converters.user.ConvertToUserModel;
 import com.letras.pfc_letras.dtos.author.AuthorDetailsDto;
@@ -16,6 +17,7 @@ import com.letras.pfc_letras.dtos.book.BookDetailsDto;
 import com.letras.pfc_letras.dtos.book.BookDto;
 import com.letras.pfc_letras.dtos.loan.CreateLoanDto;
 import com.letras.pfc_letras.dtos.loan.CreateLoanRequestDto;
+import com.letras.pfc_letras.dtos.loan.ViewLoanDto;
 import com.letras.pfc_letras.dtos.user.CreateUserDto;
 import com.letras.pfc_letras.dtos.user.GetUserDto;
 import com.letras.pfc_letras.errors.exceptions.User.NewUserWithDifferentPassword;
@@ -84,6 +86,9 @@ public class DefaultFacade implements Facade {
     @Resource
     private ConverterToCreateLoanDto converterToCreateLoanDto;
 
+    @Resource
+    private ConverterToViewLoansDto converterToViewLoansDto;
+
     @Override
     public List<BookDto> findAllBooks() {
         return bookService.findAllBooks()
@@ -139,6 +144,11 @@ public class DefaultFacade implements Facade {
                                                 converterRequestDtoToCreateLoanDto.convert(createLoanRequestDto))))
                                              ).orElseThrow(ErrorToConverterModel::new);
         return Optional.ofNullable(converterToCreateLoanDto
-                                       .convert(loanService.save(newLoanModel).orElseThrow(ErrorToCreateLoan::new)));
+                                       .convert(loanService.create(newLoanModel).orElseThrow(ErrorToCreateLoan::new)));
+    }
+    @Override
+    public List<ViewLoanDto> getLoansById(String status, String idUser) {
+        return loanService.findByUserId(status, idUser).stream()
+                                                       .map(converterToViewLoansDto::convert).collect(Collectors.toList());
     }
 }

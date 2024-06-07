@@ -32,9 +32,8 @@ public class GlobalControllerAdvice extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler({UserNotAvailableException.class, BookNotAvailableException.class})
     public ResponseEntity<ApiError> handleUserNotAvailableException(Exception ex) {
-        HttpStatus status = (ex instanceof UserNotAvailableException) ? HttpStatus.FORBIDDEN : HttpStatus.NOT_FOUND;
-        return ResponseEntity.status(status).body(ApiError.builder()
-                                                          .status(status)
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ApiError.builder()
+                                                          .status(HttpStatus.FORBIDDEN)
                                                           .dateTime(LocalDateTime.now())
                                                           .message(ex.getMessage())
                                                           .build());

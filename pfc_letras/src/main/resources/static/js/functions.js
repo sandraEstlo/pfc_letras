@@ -105,7 +105,7 @@ function createLoan(bookId) {
         body: JSON.stringify(data)
     };
 
-    fetch("/new", options)
+    fetch("/letras/new", options)
         .then(response => {
             switch (response.status){
                 case 201:
@@ -127,5 +127,4 @@ function createLoan(bookId) {
         .catch(error => {
             console.error('Error en la solicitud:', error);
         });
-
 }

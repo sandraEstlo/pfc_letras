@@ -1,10 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head th:replace="~{fragments/head :: head}"></head>
+<style>
+
+</style>
 <body>
     <div class="loans-001">
-        <div th:if="${user == null}"><nav th:replace="~{fragments/component-nav01 :: nav}"></nav></div>
-        <div th:if="${user != null}"><nav th:replace="~{fragments/component-nav02 :: nav}"></nav></div>
+        <div th:if="${user != null}"><nav th:replace="~{fragments/component-nav-03 :: nav}"></nav></div>
+    </div>
+    <div class="columns cont" id="container">
+        <div class="column is-one-fifth-desktop" id="menu">
+            <aside class="menu">
+                <ul class="menu-list">
+                    <li>
+                        <a th:href="@{/letras/loan/user/{option}(option='PRESTADO')}">
+                            <span class="mdi mdi-bookshelf"></span>
+                            <span>Prestamos</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/letras/loan/user/{option}(option='RESERVADO')}">
+                            <span class="mdi mdi-bookmark-check"></span>
+                            <span>Reservas</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a th:href="@{/letras/loan/user/{option}(option='DEVUELTO')}">
+                            <span class="mdi mdi-bookmark-minus"></span>
+                            <span>Devoluciones</span>
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+        </div>
+        <div class="column m-3">
+            <div class="container m-3">
+                <span th:text="@{${user.getUserName()}}"> /</span>
+                <span class="icon"><i class="mdi mdi mdi-bookshelf"></i></span>
+            </div>
+            <div>
+                <div class="box">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th><abbr title="id" class="color-blue">#</abbr></th>
+                            <th><abbr title="title" class="color-blue">Titulo</abbr></th>
+                            <th><abbr title="id" class="color-blue">Inicio</abbr></th>
+                            <th><abbr title="id" class="color-blue">Fin</abbr></th>
+                            <th><abbr title="id" class="color-blue">Estado</abbr></th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody th:each="loan: ${loans}">
+                        <tr>
+                            <td th:text="@{${loan.getId()}}" class="has-text-grey-light"></td>
+                            <td th:text="@{${loan.getTitle()}}" class="has-text-link"></td>
+                            <td th:text="${loan.getLoanDate()}" class="has-text-grey-light"></td>
+                            <td th:text="${loan.getDueDate()}" class="has-text-link"></td>
+                            <td th:text="${loan.getBookStatus()}" class="has-text-grey-light"></td>
+                            <td th:text="${loan.isRenew()}" class="has-text-grey-light"></td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

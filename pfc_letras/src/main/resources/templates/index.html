@@ -6,7 +6,7 @@
     <body>
         <div class="home-001">
             <div th:if="${user == null}"><nav th:replace="~{fragments/component-nav01 :: nav}"></nav></div>
-            <div th:if="${user != null}"><nav th:replace="~{fragments/component-nav02 :: nav}"></nav></div>
+            <div th:if="${user != null}"><nav th:replace="~{fragments/component-nav-03 :: nav}"></nav></div>
             <div th:if="${user != null}" id="user-id" th:data-userId="${user.id}"></div>
             <div id="liveAlertPlaceholder"></div>
             <main class="main">
