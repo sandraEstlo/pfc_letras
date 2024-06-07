@@ -14,7 +14,11 @@ import java.util.Optional;
 @Repository
 public interface LoanRepository extends MongoRepository<LoanModel, String> {
 
-    @Query( "{ 'user_id': ?0 }" )
+    @Aggregation(pipeline = {
+            "{ $unwind: '$books_loan' }",
+            "{ $match: {'books_loan.book_satus': '?0', 'user_id': '?0' } }",
+            "{ $project: { '_id': 1, 'loan_date': 1, 'due_date': 1, 'book_id': '$books_loan.book_id', 'book_satus': '$books_loan.book_satus' } }"
+    })
     List<LoanModel> findByUserId(String userid);
 
     @Aggregation(pipeline = {
