@@ -20,7 +20,6 @@ public class ConverterToCreateLoanDto implements Converter<LoanModel, CreateLoan
         return CreateLoanDto.builder()
                             .userId(loanModel.getUserId())
                             .loanDate(loanModel.getLoanDate())
-                            .dueDate(loanModel.getDueDate())
                             .booksLoan(loanModel.getBookLoan()
                                                 .stream()
                                                 .map(converterToBooksLoanCreateDto::convert).collect(Collectors.toList()))

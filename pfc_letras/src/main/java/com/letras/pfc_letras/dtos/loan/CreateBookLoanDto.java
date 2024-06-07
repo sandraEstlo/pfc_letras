@@ -19,5 +19,5 @@ public class CreateBookLoanDto {
 
     private String bookId;
     private EnumState status;
-    private LocalDateTime returnedDate;
+    private LocalDateTime dueDate;
 }

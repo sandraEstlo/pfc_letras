@@ -27,13 +27,12 @@ public class ConverterRequestDtoToCreateLoanDto implements Converter<CreateLoanR
         return CreateLoanDto.builder()
                             .userId(createLoanRequestDto.getUserId())
                             .loanDate(LocalDateTime.now())
-                            .dueDate(LocalDateTime.now().plusDays(plusDays))
                             .booksLoan(createLoanRequestDto.getBookIds()
                                                            .stream().map(idBook -> CreateBookLoanDto
                                                                                     .builder()
                                                                                     .bookId(idBook)
                                                                                     .status(enumState)
-                                                                                    .returnedDate(null)
+                                                                                    .dueDate(LocalDateTime.now().plusDays(plusDays))
                                                                                     .build())
                                                            .collect(Collectors.toList()))
 
