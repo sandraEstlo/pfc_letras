@@ -8,18 +8,19 @@
     <div class="loans-001">
         <div th:if="${user != null}"><nav th:replace="~{fragments/component-nav-03 :: nav}"></nav></div>
     </div>
+    <div id="liveAlertPlaceholder"></div>
     <div class="columns cont" id="container">
         <div class="column is-one-fifth-desktop" id="menu">
             <aside class="menu">
                 <ul class="menu-list">
                     <li>
-                        <a th:href="@{/letras/loan/user/{option}(option='PRESTADO')}">
+                        <a th:href="@{/letras/loan/user/{option}(option='PRESTADO,RENOVADO')}">
                             <span class="mdi mdi-bookshelf"></span>
                             <span>Prestamos</span>
                         </a>
                     </li>
                     <li>
-                        <a th:href="@{/letras/loan/user/{option}(option='RESERVADO')}">
+                        <a th:href="@{/letras/loan/user/{option}(option='RESERVADO,CANCELADO')}">
                             <span class="mdi mdi-bookmark-check"></span>
                             <span>Reservas</span>
                         </a>
@@ -47,6 +48,7 @@
                             <th><abbr title="title" class="color-blue">Titulo</abbr></th>
                             <th><abbr title="id" class="color-blue">Inicio</abbr></th>
                             <th><abbr title="id" class="color-blue">Fin</abbr></th>
+                            <th><abbr title="id" class="color-blue">Estado</abbr></th>
                             <th></th>
                         </tr>
                         </thead>
@@ -56,10 +58,15 @@
                             <td th:text="@{${loan.getTitle()}}" class="has-text-link"></td>
                             <td th:text="${loan.getLoanDate()}" class="has-text-grey-light"></td>
                             <td th:text="${loan.getDueDate()}" class="has-text-link"></td>
+                            <td th:text="${loan.getBookStatus()}" class="has-text-link"></td>
                             <td th:if="${loan.isRenew()}">
-                                <button class="btn-renew">
+                                <button type="button" class="btn-renew"
+                                        th:data-loan-id="${loan.getId()}"
+                                        th:data-user-id="@{${user.getId()}}"
+                                        th:data-book-id="${loan.getBookId()}"
+                                        onclick="updateLoan(this)">
                                     <span class="mdi mdi-reload"></span>
-                                    <span >Renovar</span>
+                                    <span> Renovar </span>
                                 </button>
                             </td>
                         </tr>

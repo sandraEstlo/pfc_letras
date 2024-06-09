@@ -117,9 +117,46 @@ function createLoan(bookId) {
                         throw new Error(data.message);
                     });
                 default:
-                    createAlert('Ha ocurrido un error inesperado.','warning')
+                    createAlert('Ha ocurrido un error al intentar renovar el prestamo.','warning')
             }
             return response.json();
+        })
+        .then(data => {
+            console.log('Respuesta del servidor:', data);
+        })
+        .catch(error => {
+            console.error('Error en la solicitud:', error);
+        });
+}
+
+function updateLoan(button) {
+    const data = {
+        loanId: button.getAttribute('data-loan-id'),
+        userId: button.getAttribute('data-user-id'),
+        bookIds: [button.getAttribute('data-book-id')],
+        operation: 'RENOVAR'
+    };
+
+    const options = {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    }
+
+    fetch("/letras/renovate", options)
+        .then(response => {
+            switch (response.status){
+                case 200:
+                    createAlert('La reserva se ha actualizado correctamente.','success')
+                    break;
+                case 403:
+                    return response.json().then(data => {
+                        createAlert(data.message, 'warning');
+                        throw new Error(data.message);
+                    });
+                default:
+                    createAlert('Ha ocurrido un error inesperado.','warning')
+            }
         })
         .then(data => {
             console.log('Respuesta del servidor:', data);

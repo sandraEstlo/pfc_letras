@@ -2,6 +2,7 @@ package com.letras.pfc_letras.errors;
 
 import com.letras.pfc_letras.errors.exceptions.User.NewUserWithDifferentPassword;
 import com.letras.pfc_letras.errors.exceptions.loans.BookNotAvailableException;
+import com.letras.pfc_letras.errors.exceptions.loans.ErrorToUpdateLoan;
 import com.letras.pfc_letras.errors.exceptions.loans.UserNotAvailableException;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
@@ -30,7 +31,7 @@ public class GlobalControllerAdvice extends ResponseEntityExceptionHandler {
         return "redirect:/register?error";
     }
 
-    @ExceptionHandler({UserNotAvailableException.class, BookNotAvailableException.class})
+    @ExceptionHandler({UserNotAvailableException.class, BookNotAvailableException.class, ErrorToUpdateLoan.class})
     public ResponseEntity<ApiError> handleUserNotAvailableException(Exception ex) {
         return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ApiError.builder()
                                                           .status(HttpStatus.FORBIDDEN)
