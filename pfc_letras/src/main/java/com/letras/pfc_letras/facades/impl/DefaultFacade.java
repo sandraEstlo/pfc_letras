@@ -15,7 +15,7 @@ import com.letras.pfc_letras.dtos.author.AuthorDetailsDto;
 import com.letras.pfc_letras.dtos.author.AuthorDto;
 import com.letras.pfc_letras.dtos.book.BookDetailsDto;
 import com.letras.pfc_letras.dtos.book.BookDto;
-import com.letras.pfc_letras.dtos.loan.CreateLoanDto;
+import com.letras.pfc_letras.dtos.loan.CreateUpdateLoanDto;
 import com.letras.pfc_letras.dtos.loan.CreateLoanRequestDto;
 import com.letras.pfc_letras.dtos.loan.ViewLoanDto;
 import com.letras.pfc_letras.dtos.user.CreateUserDto;
@@ -29,10 +29,12 @@ import com.letras.pfc_letras.models.UsersModels.UserModel;
 import com.letras.pfc_letras.services.authors.AuthorService;
 import com.letras.pfc_letras.services.books.BookSearchService;
 import com.letras.pfc_letras.services.books.BookService;
-import com.letras.pfc_letras.services.UserService;
+import com.letras.pfc_letras.services.users.UserService;
 import com.letras.pfc_letras.services.loans.LoanService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -138,17 +140,36 @@ public class DefaultFacade implements Facade {
     }
 
     @Override
-    public Optional<CreateLoanDto> newLoan(CreateLoanRequestDto createLoanRequestDto) {
-        LoanModel newLoanModel = Optional.of(Objects.requireNonNull(
+    public Optional<CreateUpdateLoanDto> newLoan(CreateLoanRequestDto createLoanRequestDto) {
+        LoanModel newLoanModel = Optional.of(Objects.requireNonNull
+                                            (
                                                 convertToLoanModelCreate.convert(Objects.requireNonNull(
                                                 converterRequestDtoToCreateLoanDto.convert(createLoanRequestDto))))
                                              ).orElseThrow(ErrorToConverterModel::new);
-        return Optional.ofNullable(converterToCreateLoanDto
-                                       .convert(loanService.create(newLoanModel).orElseThrow(ErrorToCreateLoan::new)));
+        return Optional.ofNullable(
+                converterToCreateLoanDto.convert(loanService.create(newLoanModel).orElseThrow(ErrorToCreateLoan::new)));
     }
+
     @Override
-    public List<ViewLoanDto> getLoansById(String status, String idUser) {
-        return loanService.findByUserId(status, idUser).stream()
+    public Optional<CreateUpdateLoanDto> renewLoan(ViewLoanDto viewLoanDto) {
+
+        return Optional.ofNullable(converterToCreateLoanDto
+                                    .convert(loanService.renewLoan(viewLoanDto.getId(), viewLoanDto.getBookId())
+                                    .orElseThrow(() -> new ErrorToCreateLoan("Ha ocurrido un error al crear el prestamo."))));
+    }
+
+    @Override
+    public Optional<CreateUpdateLoanDto> renovateLoan(CreateLoanRequestDto createLoanRequestDto) {
+        return Optional.ofNullable(converterToCreateLoanDto.convert(loanService.renovateLoan(
+                                                                        createLoanRequestDto.getUserId(),
+                                                                        createLoanRequestDto.getBookIds().get(0),
+                                                                        createLoanRequestDto.getLoanId())
+                                                                    ));
+    }
+
+    @Override
+    public List<ViewLoanDto> getLoansById(String idUser, ArrayList<String> status) {
+        return loanService.findByUserId(idUser, status).stream()
                                                        .map(converterToViewLoansDto::convert).collect(Collectors.toList());
     }
 }

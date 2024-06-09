@@ -12,14 +12,14 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateLoanDto {
+public class CreateUpdateLoanDto {
+
+    private String loanId;
 
     private String userId;
 
     @Builder.Default
     private LocalDateTime loanDate = LocalDateTime.now();
-
-//    private LocalDateTime dueDate;
 
     private List<CreateBookLoanDto> booksLoan;
 }

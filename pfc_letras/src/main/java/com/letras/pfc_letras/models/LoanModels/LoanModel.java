@@ -32,11 +32,6 @@ public class LoanModel {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDateTime loanDate;
 
-//    @Field("due_date")
-//    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-//    @JsonFormat(pattern = "dd/MM/yyyy")
-//    private LocalDateTime dueDate;
-
     @Field("books_loan")
     private List<BookLoanModel> bookLoan;
 }

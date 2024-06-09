@@ -14,14 +14,16 @@ public class ConverterToViewLoansDto implements Converter<ViewLoanModel, ViewLoa
 
     @Override
     public ViewLoanDto convert(ViewLoanModel viewLoanModel) {
-        boolean isRenew = viewLoanModel.getDueDate().isAfter(LocalDate.now())
-                            && viewLoanModel.getDueDate().isBefore(LocalDate.now().plusDays(4));
+        boolean isRenew = viewLoanModel.getBookStatus().equalsIgnoreCase(EnumState.PRESTADO.toString())
+                          && viewLoanModel.getDueDate().isAfter(LocalDate.now())
+                          && viewLoanModel.getDueDate().isBefore(LocalDate.now().plusDays(4));
 
         return ViewLoanDto.builder()
                           .id(viewLoanModel.getId())
                           .userId(viewLoanModel.getUserId())
                           .loanDate(viewLoanModel.getLoanDate())
                           .dueDate(viewLoanModel.getDueDate())
+                          .bookId(viewLoanModel.getBookId())
                           .bookStatus(viewLoanModel.getBookStatus())
                           .title(viewLoanModel.getTitle())
                           .renew((isRenew))

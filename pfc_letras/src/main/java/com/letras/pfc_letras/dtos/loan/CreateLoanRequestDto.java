@@ -12,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class CreateLoanRequestDto {
+    private String loanId;
     private String userId;
     private List<String> bookIds;
     private String operation;
