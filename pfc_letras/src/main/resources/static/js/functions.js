@@ -86,11 +86,6 @@ function createAlert(message, type) {
 
 
 function createLoan(bookId) {
-
-    // const bookId = document.getElementById('book-id').getAttribute('data-bookId');
-    // const userId = document.getElementById('user-id').getAttribute('data-userId');
-    // alert('book id: '+ bookId + ' || user name: ' + userId);
-
     const data = {
         userId: document.getElementById('user-id').getAttribute('data-userId'),
         bookIds: [bookId],
