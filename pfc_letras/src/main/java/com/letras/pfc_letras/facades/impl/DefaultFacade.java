@@ -24,8 +24,8 @@ import com.letras.pfc_letras.errors.exceptions.User.NewUserWithDifferentPassword
 import com.letras.pfc_letras.errors.exceptions.loans.ErrorToConverterModel;
 import com.letras.pfc_letras.errors.exceptions.loans.ErrorToCreateLoan;
 import com.letras.pfc_letras.facades.Facade;
-import com.letras.pfc_letras.models.LoanModels.LoanModel;
-import com.letras.pfc_letras.models.UsersModels.UserModel;
+import com.letras.pfc_letras.models.loans.LoanModel;
+import com.letras.pfc_letras.models.users.UserModel;
 import com.letras.pfc_letras.services.authors.AuthorService;
 import com.letras.pfc_letras.services.books.BookSearchService;
 import com.letras.pfc_letras.services.books.BookService;
@@ -103,7 +103,7 @@ public class DefaultFacade implements Facade {
     }
 
     @Override
-    public List<BookDto> findByCategories(String... paths) {
+    public List<BookDto> findByCategories(List<String> paths) {
         return bookService.findByCategories(paths)
                           .stream()
                           .map(convertToBookDto::convert).collect(Collectors.toList());

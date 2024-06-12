@@ -1,10 +1,9 @@
 package com.letras.pfc_letras.converters.user;
 
 import com.letras.pfc_letras.dtos.user.GetUserDto;
-import com.letras.pfc_letras.models.UsersModels.UserModel;
+import com.letras.pfc_letras.models.users.UserModel;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import java.util.stream.Collectors;
 

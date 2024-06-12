@@ -1,9 +1,9 @@
 package com.letras.pfc_letras.services.loans.impl;
 
 import com.letras.pfc_letras.errors.exceptions.loans.NotFoundLoan;
-import com.letras.pfc_letras.models.LoanModels.EnumState;
-import com.letras.pfc_letras.models.LoanModels.LoanModel;
-import com.letras.pfc_letras.models.LoanModels.ViewLoanModel;
+import com.letras.pfc_letras.models.loans.EnumState;
+import com.letras.pfc_letras.models.loans.LoanModel;
+import com.letras.pfc_letras.models.loans.ViewLoanModel;
 import com.letras.pfc_letras.repositories.BookRepository;
 import com.letras.pfc_letras.repositories.LoanRepository;
 import com.letras.pfc_letras.services.loans.CheckAvailabilityLoanService;

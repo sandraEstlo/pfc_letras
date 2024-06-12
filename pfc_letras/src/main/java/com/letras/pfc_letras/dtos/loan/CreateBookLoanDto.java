@@ -1,6 +1,6 @@
 package com.letras.pfc_letras.dtos.loan;
 
-import com.letras.pfc_letras.models.LoanModels.EnumState;
+import com.letras.pfc_letras.models.loans.EnumState;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;

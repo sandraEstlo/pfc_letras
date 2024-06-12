@@ -1,7 +1,7 @@
 package com.letras.pfc_letras.services.loans;
 
-import com.letras.pfc_letras.models.LoanModels.LoanModel;
-import com.letras.pfc_letras.models.LoanModels.ViewLoanModel;
+import com.letras.pfc_letras.models.loans.LoanModel;
+import com.letras.pfc_letras.models.loans.ViewLoanModel;
 
 import java.util.ArrayList;
 import java.util.List;

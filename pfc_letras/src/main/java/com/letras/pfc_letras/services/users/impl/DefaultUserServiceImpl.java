@@ -1,6 +1,6 @@
 package com.letras.pfc_letras.services.users.impl;
 
-import com.letras.pfc_letras.models.UsersModels.UserModel;
+import com.letras.pfc_letras.models.users.UserModel;
 import com.letras.pfc_letras.repositories.UserRepository;
 import com.letras.pfc_letras.services.users.UserService;
 import jakarta.annotation.Resource;
