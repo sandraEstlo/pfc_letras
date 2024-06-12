@@ -1,7 +1,7 @@
 package com.letras.pfc_letras.repositories;
 
-import com.letras.pfc_letras.models.LoanModels.LoanModel;
-import com.letras.pfc_letras.models.LoanModels.ViewLoanModel;
+import com.letras.pfc_letras.models.loans.LoanModel;
+import com.letras.pfc_letras.models.loans.ViewLoanModel;
 import org.springframework.data.mongodb.repository.Aggregation;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;

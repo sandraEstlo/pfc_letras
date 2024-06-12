@@ -29,7 +29,7 @@ public class BookSearchServiceImpl implements BookSearchService {
             Criteria.where("title").regex(".*" + text + ".*", "i"),
             Criteria.where("description").regex(".*" + text + ".*", "i"),
             Criteria.where("isbn").regex(".*" + text + ".*", "i"),
-            Criteria.where("lable").regex(".*" + text + ".*", "i")
+            Criteria.where("label").regex(".*" + text + ".*", "i")
         );
 
         Query query = new Query(criteria);

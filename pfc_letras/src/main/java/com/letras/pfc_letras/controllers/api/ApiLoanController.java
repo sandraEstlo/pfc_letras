@@ -5,7 +5,7 @@ import com.letras.pfc_letras.dtos.loan.CreateLoanRequestDto;
 import com.letras.pfc_letras.dtos.loan.ViewLoanDto;
 import com.letras.pfc_letras.errors.exceptions.loans.ErrorToCreateLoan;
 import com.letras.pfc_letras.facades.Facade;
-import com.letras.pfc_letras.models.LoanModels.LoanModel;
+import com.letras.pfc_letras.models.loans.LoanModel;
 import com.letras.pfc_letras.repositories.LoanRepository;
 import com.letras.pfc_letras.services.loans.LoanService;
 import jakarta.annotation.Resource;

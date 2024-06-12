@@ -9,7 +9,7 @@ public interface BookService {
 
     List<BookModel> findAllBooks();
 
-    List<BookModel> findByCategories(String ... paths);
+    List<BookModel> findByCategories(List<String> paths);
 
     List<BookModel> findByAuthorNameContainingIgnoreCase(String authorName);
 

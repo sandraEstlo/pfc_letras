@@ -13,8 +13,11 @@ import java.util.Optional;
 @Repository
 public interface BookRepository extends MongoRepository<BookModel, String> {
 
-    @Query("{ 'category': { $in: ?0 } }")
-    List<BookModel> findByCategories(String ... category);
+    @Aggregation(pipeline = {
+            "{ $addFields: { categoryArray: { $split: ['$category', ',']}}}",
+            "{ $match: {categoryArray: {$in: ?0}}}"
+    })
+    List<BookModel> findByCategories(List<String> categories);
 
     @Aggregation(pipeline = {
             "{ '$lookup': { 'from': 'author', 'localField': 'authors', 'foreignField': '_id', 'as': 'authorDetails' } }",

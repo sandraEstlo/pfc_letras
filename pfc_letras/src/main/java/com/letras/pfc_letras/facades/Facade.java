@@ -9,7 +9,7 @@ import com.letras.pfc_letras.dtos.loan.CreateLoanRequestDto;
 import com.letras.pfc_letras.dtos.loan.ViewLoanDto;
 import com.letras.pfc_letras.dtos.user.CreateUserDto;
 import com.letras.pfc_letras.dtos.user.GetUserDto;
-import com.letras.pfc_letras.models.UsersModels.UserModel;
+import com.letras.pfc_letras.models.users.UserModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ public interface Facade {
 
     Optional<BookDetailsDto> findBookById(String idBook);
 
-    List<BookDto> findByCategories(String ... paths);
+    List<BookDto> findByCategories(List<String> paths);
 
     List<BookDto> searchBookByKey(String text);
 

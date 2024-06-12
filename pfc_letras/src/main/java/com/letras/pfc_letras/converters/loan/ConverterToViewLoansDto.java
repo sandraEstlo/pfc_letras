@@ -1,13 +1,12 @@
 package com.letras.pfc_letras.converters.loan;
 
 import com.letras.pfc_letras.dtos.loan.ViewLoanDto;
-import com.letras.pfc_letras.models.LoanModels.EnumState;
-import com.letras.pfc_letras.models.LoanModels.ViewLoanModel;
+import com.letras.pfc_letras.models.loans.EnumState;
+import com.letras.pfc_letras.models.loans.ViewLoanModel;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 @Component
 public class ConverterToViewLoansDto implements Converter<ViewLoanModel, ViewLoanDto> {

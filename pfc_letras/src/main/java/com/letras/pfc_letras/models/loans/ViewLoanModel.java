@@ -1,4 +1,4 @@
-package com.letras.pfc_letras.models.LoanModels;
+package com.letras.pfc_letras.models.loans;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Getter @Setter
 @Builder
