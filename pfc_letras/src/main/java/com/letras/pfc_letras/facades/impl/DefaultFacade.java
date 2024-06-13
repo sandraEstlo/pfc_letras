@@ -5,6 +5,7 @@ import com.letras.pfc_letras.converters.author.ConvertToAuthorDto;
 import com.letras.pfc_letras.converters.author.ConvertToAuthorModel;
 import com.letras.pfc_letras.converters.book.ConvertToBookDetailsDto;
 import com.letras.pfc_letras.converters.book.ConvertToBookDto;
+import com.letras.pfc_letras.converters.category.ConverterToCategoryDto;
 import com.letras.pfc_letras.converters.loan.ConvertToLoanModelCreate;
 import com.letras.pfc_letras.converters.loan.ConverterRequestDtoToCreateLoanDto;
 import com.letras.pfc_letras.converters.loan.ConverterToCreateLoanDto;
@@ -15,6 +16,7 @@ import com.letras.pfc_letras.dtos.author.AuthorDetailsDto;
 import com.letras.pfc_letras.dtos.author.AuthorDto;
 import com.letras.pfc_letras.dtos.book.BookDetailsDto;
 import com.letras.pfc_letras.dtos.book.BookDto;
+import com.letras.pfc_letras.dtos.category.CategoryDto;
 import com.letras.pfc_letras.dtos.loan.CreateUpdateLoanDto;
 import com.letras.pfc_letras.dtos.loan.CreateLoanRequestDto;
 import com.letras.pfc_letras.dtos.loan.ViewLoanDto;
@@ -29,6 +31,7 @@ import com.letras.pfc_letras.models.users.UserModel;
 import com.letras.pfc_letras.services.authors.AuthorService;
 import com.letras.pfc_letras.services.books.BookSearchService;
 import com.letras.pfc_letras.services.books.BookService;
+import com.letras.pfc_letras.services.categories.CategoryService;
 import com.letras.pfc_letras.services.users.UserService;
 import com.letras.pfc_letras.services.loans.LoanService;
 import jakarta.annotation.Resource;
@@ -57,6 +60,9 @@ public class DefaultFacade implements Facade {
 
     @Resource
     private LoanService loanService;
+
+    @Resource
+    private CategoryService categoryService;
 
     @Resource
     private ConvertToAuthorDetailsDto convertToAuthorDetailsDto;
@@ -90,6 +96,9 @@ public class DefaultFacade implements Facade {
 
     @Resource
     private ConverterToViewLoansDto converterToViewLoansDto;
+
+    @Resource
+    private ConverterToCategoryDto converterToCategoryDto;
 
     @Override
     public List<BookDto> findAllBooks() {
@@ -165,6 +174,12 @@ public class DefaultFacade implements Facade {
                                                                         createLoanRequestDto.getBookIds().get(0),
                                                                         createLoanRequestDto.getLoanId())
                                                                     ));
+    }
+
+    @Override
+    public List<CategoryDto> getAllGroupCategories() {
+        return categoryService.getAllGroupCategories().stream()
+                                                      .map(converterToCategoryDto::convert).collect(Collectors.toList());
     }
 
     @Override
