@@ -5,17 +5,17 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Setter
-@Getter
+import java.util.List;
+
+@Getter @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-@Builder
-@Document(collection = "category")
+
+@Document("category")
 public class CategoryModel {
 
     @Id
@@ -24,4 +24,6 @@ public class CategoryModel {
     private String name;
 
     private String path;
+
+    private List<CategoryModel> subcategories;
 }

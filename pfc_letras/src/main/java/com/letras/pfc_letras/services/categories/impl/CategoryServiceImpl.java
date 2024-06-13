@@ -1,8 +1,8 @@
-package com.letras.pfc_letras.services.books.impl;
+package com.letras.pfc_letras.services.categories.impl;
 
 import com.letras.pfc_letras.models.CategoryModel;
 import com.letras.pfc_letras.repositories.CategoryRepository;
-import com.letras.pfc_letras.services.books.CategoryService;
+import com.letras.pfc_letras.services.categories.CategoryService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +15,7 @@ public class CategoryServiceImpl implements CategoryService {
     private CategoryRepository categoryRepository;
 
     @Override
-    public List<CategoryModel> AllCategories() {
-
-        return categoryRepository.findAll();
+    public List<CategoryModel> getAllGroupCategories() {
+        return categoryRepository.findAllUsingAggregation();
     }
 }

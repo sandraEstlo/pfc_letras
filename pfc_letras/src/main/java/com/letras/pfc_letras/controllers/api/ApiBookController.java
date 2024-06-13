@@ -1,7 +1,9 @@
 package com.letras.pfc_letras.controllers.api;
 
 import com.letras.pfc_letras.models.BookModel;
+import com.letras.pfc_letras.models.CategoryModel;
 import com.letras.pfc_letras.repositories.BookRepository;
+import com.letras.pfc_letras.repositories.CategoryRepository;
 import com.letras.pfc_letras.services.books.BookSearchService;
 import com.letras.pfc_letras.services.books.BookService;
 import jakarta.annotation.Resource;
@@ -27,6 +29,10 @@ public class ApiBookController {
 
     @Resource
     private BookRepository bookRepository;
+
+
+    @Resource
+    private CategoryRepository categoriesRepository;
 
     @GetMapping("/all")
     public ResponseEntity<?> getAuthors() {
@@ -66,5 +72,10 @@ public class ApiBookController {
     @PostMapping("/find-by-category")
     public List<BookModel> findByCategory(@RequestBody List<String> categories) {
         return bookRepository.findByCategories(categories);
+    }
+
+    @GetMapping("/categories")
+    public List<CategoryModel> getCategories() {
+        return categoriesRepository.findAllUsingAggregation();
     }
 }

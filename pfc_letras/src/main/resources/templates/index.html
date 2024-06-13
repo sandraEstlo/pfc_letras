@@ -12,7 +12,7 @@
             <main class="main">
                 <div class="advertisements"></div>
                 <div class="header-search">
-                    <p class="title-catalog">Catalogo</p>
+                    <p class="title-catalog">Catálogo</p>
                     <form action="/" method="get" class="component-search">
                         <input name="text" class="bar-search">
                             <button type="submit" class="btn-search">
@@ -23,9 +23,46 @@
                         </input>
                     </form>
                 </div>
-<!--                <aside class="category-tree">-->
-<!--                    -->
-<!--                </aside>-->
+
+                <aside class="category-tree-container">
+                    <div class="category-tree">
+                        <ul class="tree">
+                            <li id="category" th:each="category : ${categories}">
+                                <label  th:for="'category' + ${category.id}" th:text="${category.name}"></label>
+                                <ul class="subtree" th:if="${category.subcategories != null and category.subcategories.size() > 0}">
+                                    <li th:each="subcategory : ${category.subcategories}">
+
+                                        <input type="checkbox" th:id="'subcategory' + ${subcategory.id}" onchange="updateChecked(this)" />
+                                        <label th:for="'subcategory' + ${subcategory.id}" th:text="${subcategory.name}"></label>
+                                        <ul class="subsubtree" th:if="${subcategory.subcategories != null and subcategory.subcategories.size() > 0}">
+                                            <li th:each="subsubcategory : ${subcategory.subcategories}">
+                                                <input type="checkbox" th:id="'subsubcategory' + ${subsubcategory.id}" onchange="updateChecked(this)" />
+                                                <label th:for="'subsubcategory' + ${subsubcategory.id}" th:text="${subsubcategory.name}"></label>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </aside>
+                <script th:inline="javascript">
+                    var selectedNames = [];
+
+                    function updateChecked(checkbox) {
+                        var name = checkbox.nextElementSibling.textContent.trim();
+                        if (checkbox.checked) {
+                            selectedNames.push(name);
+                        } else {
+                            var index = selectedNames.indexOf(name);
+                            if (index !== -1) {
+                                selectedNames.splice(index, 1);
+                            }
+                        }
+                        console.log(selectedNames);
+                    }
+                </script>
+
                 <div class="scrollbar-1">
                     <div class="box-image" >
                         <div class="component-card" th:each="book: ${books}">
@@ -36,15 +73,15 @@
                                         <div id="loan">Reservar</div>
                                     </div>
                                 </div>
-                                <div class="image-container">
-                                    <img class="img-book" th:src="@{${book.getImage()}}" alt="image-@{${book.getTitle()}}"/>
-                                </div>
-                                <div class="frame-14"></div>
                                 <a th:href="@{/book/{id}(id=${book.getId()})}">
+                                    <div class="image-container">
+                                        <img class="img-book" th:src="@{${book.getImage()}}" alt="image-@{${book.getTitle()}}"/>
+                                    </div>
+                                    <div class="frame-14"></div>
                                     <div class="title" th:text="@{${book.getTitle()}}"></div>
+                                    <div class="author" th:text="@{${book.getAuthorsNames()}}"></div>
+                                    <div id="book-id" th:data-bookId="@{${book.getId()}}"></div>
                                 </a>
-                                <div class="author" th:text="@{${book.getAuthorsNames()}}"></div>
-                                <div id="book-id" th:data-bookId="@{${book.getId()}}"></div>
                             </div>
                         </div>
                     </div>

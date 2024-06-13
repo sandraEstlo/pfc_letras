@@ -28,10 +28,9 @@ public class BookController {
                         @RequestParam(value = "text", required = false) String text,
                         HttpSession session) {
 
-        List<BookDto> books = (Strings.isEmpty(text)) ? facade.findAllBooks()
-                : facade.searchBookByKey(text);
-
-        model.addAttribute("books", books);
+        model.addAttribute("books", (Strings.isEmpty(text)) ? facade.findAllBooks()
+                                                                        : facade.searchBookByKey(text));
+        model.addAttribute("categories", facade.getAllGroupCategories());
 
         UserModel userModel = (UserModel) session.getAttribute("usersession");
         if (userModel != null) {
