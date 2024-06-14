@@ -118,8 +118,8 @@ public class DefaultFacade implements Facade {
                           .map(convertToBookDto::convert).collect(Collectors.toList());
     }
     @Override
-    public List<BookDto> searchBookByKey(String text) {
-        return bookSearchService.KeywordsSearch(text)
+    public List<BookDto> searchBookByKey(String text, List<String> filter) {
+        return bookSearchService.KeywordsSearch(text, filter)
                                 .stream()
                                 .map(convertToBookDto::convert).collect(Collectors.toList());
     }

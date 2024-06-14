@@ -9,7 +9,10 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.stereotype.Service;
+
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
@@ -24,18 +27,23 @@ public class BookSearchServiceImpl implements BookSearchService {
     private final BookRepository bookRepository;
 
     @Override
-    public List<BookModel> KeywordsSearch(String text) {
-        Criteria criteria = new Criteria().orOperator(
-            Criteria.where("title").regex(".*" + text + ".*", "i"),
-            Criteria.where("description").regex(".*" + text + ".*", "i"),
-            Criteria.where("isbn").regex(".*" + text + ".*", "i"),
-            Criteria.where("label").regex(".*" + text + ".*", "i")
-        );
+    public List<BookModel> KeywordsSearch(String text, List<String> filter) {
+        Set<BookModel> resultSearch = new HashSet<>();
 
-        Query query = new Query(criteria);
+        if (!text.isEmpty()) {
+            Criteria criteria = new Criteria().orOperator(
+                    Criteria.where("title").regex(".*" + text + ".*", "i"),
+                    Criteria.where("description").regex(".*" + text + ".*", "i"),
+                    Criteria.where("isbn").regex(".*" + text + ".*", "i"),
+                    Criteria.where("label").regex(".*" + text + ".*", "i")
+            );
+            Query query = new Query(criteria);
 
-        List<BookModel> resultSearch = mongoTemplate.find(query, BookModel.class);
-        resultSearch.addAll(bookRepository.findByAuthorsNameContainingIgnoreCase(text));
+            resultSearch.addAll(mongoTemplate.find(query, BookModel.class));
+            resultSearch.addAll(bookRepository.findByAuthorsNameContainingIgnoreCase(text));
+        }
+        if (!filter.isEmpty())
+            resultSearch.addAll(bookRepository.findByCategories(filter));
 
         return resultSearch.stream().distinct().collect(Collectors.toList());
     }

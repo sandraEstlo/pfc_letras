@@ -24,7 +24,7 @@ public interface Facade {
 
     List<BookDto> findByCategories(List<String> paths);
 
-    List<BookDto> searchBookByKey(String text);
+    List<BookDto> searchBookByKey(String text, List<String> filter);
 
     Optional<AuthorDetailsDto> findAuthorById(String idAuthor);
 

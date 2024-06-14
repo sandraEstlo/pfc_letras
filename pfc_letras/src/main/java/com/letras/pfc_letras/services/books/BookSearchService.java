@@ -7,5 +7,5 @@ import java.util.List;
 @Component
 public interface BookSearchService {
 
-    List<BookModel> KeywordsSearch(String text);
+    List<BookModel> KeywordsSearch(String text, List<String> filter);
 }

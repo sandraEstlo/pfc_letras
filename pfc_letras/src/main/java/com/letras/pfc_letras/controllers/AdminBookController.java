@@ -23,10 +23,13 @@ public class AdminBookController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/books")
-    public String books(Model model, @RequestParam(value = "text", required = false) String text, HttpSession httpSession) {
+    public String books(Model model,
+                        @RequestParam(value = "text", required = false) String text,
+                        @RequestParam(value = "filter", required = false) List<String> filter,
+                        HttpSession httpSession) {
         List<BookDto> books = (Strings.isEmpty(text)) ? facade.findAllBooks()
-                                                      : facade.searchBookByKey(text);
-        model.addAttribute("books", books);
+                                                      : facade.searchBookByKey(text, filter);
+        model.addAttribute("books", facade.findAllBooks());
         return "admin-books";
     }
 }
