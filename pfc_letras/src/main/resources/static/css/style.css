@@ -1291,21 +1291,22 @@ a {
 /*---- Tree  */
 
 .category-tree {
-    font-family: Arial, sans-serif;
+    font-family: Montserrat-Light, sans-serif;
+    font-size: 14px;
 }
 
 .subtree {
-    margin-top: 10px;
+    margin-top: 8px;
 }
 .subsubtree {
     list-style-type: none;
-    margin-left: 5px;
+    margin-left: 10px;
     padding: 0;
 }
 
 .subsubtree > li {
     margin-bottom: 5px;
-    margin-left: 15px;
+    margin-left: 5px;
 }
 
 #category {

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="~{fragments/head :: head}"></head>
-<style>
-</style>
+<script src="/js/tree-functions.js"></script>
     <body>
         <div class="home-001">
             <div th:if="${user == null}"><nav th:replace="~{fragments/component-nav01 :: nav}"></nav></div>
@@ -14,6 +13,7 @@
                 <div class="header-search">
                     <p class="title-catalog">Catálogo</p>
                     <form action="/" method="get" class="component-search">
+                        <input type="hidden" id="filter" th:value="${filter}"/>
                         <input name="text" class="bar-search">
                             <button type="submit" class="btn-search">
                                 <svg class = elements-icons width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -23,20 +23,18 @@
                         </input>
                     </form>
                 </div>
-
                 <aside class="category-tree-container">
                     <div class="category-tree">
                         <ul class="tree">
                             <li id="category" th:each="category : ${categories}">
-                                <label  th:for="'category' + ${category.id}" th:text="${category.name}"></label>
+                                <label  th:for="'category' + ${category.name}" th:text="${category.name}"></label>
                                 <ul class="subtree" th:if="${category.subcategories != null and category.subcategories.size() > 0}">
                                     <li th:each="subcategory : ${category.subcategories}">
-
-                                        <input type="checkbox" th:id="'subcategory' + ${subcategory.id}" onchange="updateChecked(this)" />
+                                        <input type="checkbox" th:id="'subcategory' + ${subcategory.name}" onchange="updateChecked(this)"/>
                                         <label th:for="'subcategory' + ${subcategory.id}" th:text="${subcategory.name}"></label>
                                         <ul class="subsubtree" th:if="${subcategory.subcategories != null and subcategory.subcategories.size() > 0}">
                                             <li th:each="subsubcategory : ${subcategory.subcategories}">
-                                                <input type="checkbox" th:id="'subsubcategory' + ${subsubcategory.id}" onchange="updateChecked(this)" />
+                                                <input type="checkbox" th:id="'subsubcategory' + ${subsubcategory.name}" onchange="updateChecked(this)" th:class="${subsubcategory.classGroup}"/>
                                                 <label th:for="'subsubcategory' + ${subsubcategory.id}" th:text="${subsubcategory.name}"></label>
                                             </li>
                                         </ul>
@@ -46,23 +44,6 @@
                         </ul>
                     </div>
                 </aside>
-                <script th:inline="javascript">
-                    var selectedNames = [];
-
-                    function updateChecked(checkbox) {
-                        var name = checkbox.nextElementSibling.textContent.trim();
-                        if (checkbox.checked) {
-                            selectedNames.push(name);
-                        } else {
-                            var index = selectedNames.indexOf(name);
-                            if (index !== -1) {
-                                selectedNames.splice(index, 1);
-                            }
-                        }
-                        console.log(selectedNames);
-                    }
-                </script>
-
                 <div class="scrollbar-1">
                     <div class="box-image" >
                         <div class="component-card" th:each="book: ${books}">

@@ -1,5 +1,7 @@
 package com.letras.pfc_letras.controllers.api;
 
+import com.letras.pfc_letras.dtos.category.CategoryDto;
+import com.letras.pfc_letras.facades.Facade;
 import com.letras.pfc_letras.models.BookModel;
 import com.letras.pfc_letras.models.CategoryModel;
 import com.letras.pfc_letras.repositories.BookRepository;
@@ -29,6 +31,9 @@ public class ApiBookController {
 
     @Resource
     private BookRepository bookRepository;
+
+    @Resource
+    private Facade facade;
 
 
     @Resource
@@ -62,12 +67,12 @@ public class ApiBookController {
                                    : ResponseEntity.ok(listBooks);
     }
 
-    @GetMapping("/search/{text}")
-    public ResponseEntity<?> getByText(@PathVariable String text) {
-        List<BookModel> listBooks = bookSearchService.KeywordsSearch(text);
-        return listBooks.isEmpty() ? ResponseEntity.notFound().build()
-                                   : ResponseEntity.ok(listBooks);
-    }
+//    @GetMapping("/search/{text}")
+//    public ResponseEntity<?> getByText(@PathVariable String text) {
+//        List<BookModel> listBooks = bookSearchService.KeywordsSearch(text);
+//        return listBooks.isEmpty() ? ResponseEntity.notFound().build()
+//                                   : ResponseEntity.ok(listBooks);
+//    }
 
     @PostMapping("/find-by-category")
     public List<BookModel> findByCategory(@RequestBody List<String> categories) {
@@ -75,7 +80,7 @@ public class ApiBookController {
     }
 
     @GetMapping("/categories")
-    public List<CategoryModel> getCategories() {
-        return categoriesRepository.findAllUsingAggregation();
+    public List<CategoryDto> getCategories() {
+        return facade.getAllGroupCategories();
     }
 }
