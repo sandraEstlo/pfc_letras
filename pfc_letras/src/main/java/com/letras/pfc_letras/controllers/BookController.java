@@ -27,12 +27,14 @@ public class BookController {
     @GetMapping("/")
     public String books(Model model,
                         @RequestParam(value = "text", required = false) String text,
+                        @RequestParam(value = "filter", required = false) List<String> filter,
                         HttpSession session) {
+        System.out.println("Filtro recibido: " + filter);
 
         model.addAttribute("categories", facade.getAllGroupCategories());
-        model.addAttribute("filter", new ArrayList<String>());
-        model.addAttribute("books", (Strings.isEmpty(text)) ? facade.findAllBooks()
-                                                                        : facade.searchBookByKey(text));
+        model.addAttribute("filter", filter);
+        model.addAttribute("books", (Strings.isEmpty(text) && (filter==null || filter.isEmpty()))
+                                                         ? facade.findAllBooks(): facade.searchBookByKey(text, filter));
 
         UserModel userModel = (UserModel) session.getAttribute("usersession");
         if (userModel != null) {
