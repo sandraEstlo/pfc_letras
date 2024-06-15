@@ -29,7 +29,9 @@ public class BookController {
                         @RequestParam(value = "text", required = false) String text,
                         @RequestParam(value = "filter", required = false) List<String> filter,
                         HttpSession session) {
-        System.out.println("Filtro recibido: " + filter);
+
+        if(filter!= null)
+            filter.remove("[]");
 
         model.addAttribute("categories", facade.getAllGroupCategories());
         model.addAttribute("filter", filter);
@@ -41,6 +43,7 @@ public class BookController {
             model.addAttribute("user", facade.getUserDto(userModel).get());
             return (userModel.getRoles().contains(UserRoles.USER)) ? "index" : "admin-books";
         }
+
         return "index";
     }
 
