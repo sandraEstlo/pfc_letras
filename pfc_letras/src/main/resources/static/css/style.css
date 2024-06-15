@@ -366,7 +366,7 @@ a {
     box-sizing: border-box;
     background: #f5f5f5;
     border-radius: 30px;
-    height: 705px;
+    height: 28%;
     position: relative;
 }
 
@@ -582,7 +582,8 @@ a {
 }
 .input:focus, .input02:focus,
 .input-name:focus, .input-email:focus,
-.input-password:focus, .input-password02:focus
+.input-password:focus, .input-password02:focus,
+.input-search:focus
 {
     outline: none;
     border-radius: 8px;
@@ -595,7 +596,8 @@ a {
 .input-name::-webkit-input-placeholder,
 .input-email::-webkit-input-placeholder,
 .input-password::-webkit-input-placeholder,
-.input-password02::-webkit-input-placeholder {
+.input-password02::-webkit-input-placeholder,
+.input-search::-webkit-input-placeholder, .component-search::-webkit-input-placeholder{
     color: #2042ea;
     opacity: 50%;
 }
@@ -1296,7 +1298,7 @@ a {
 }
 
 .subtree {
-    margin-top: 8px;
+    margin-top: 9px;
 }
 .subsubtree {
     list-style-type: none;
