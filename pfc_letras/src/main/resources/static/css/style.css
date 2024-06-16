@@ -10,6 +10,134 @@ a {
 .property-1-header-02 * {
     box-sizing: border-box;
 }
+
+.container-banner {
+    border-radius: 28px;
+    /*box-shadow: 0px 5px 20.6px -2px rgba(0, 0, 0, 0.18);*/
+    background-color: #fff;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+@media (max-width: 991px) {
+    .container-banner {
+        max-width: 100%;
+        /*padding: 0 10px;*/
+    }
+}
+.container-banner .div-2 {
+    width: 100%;
+    max-width: 845px;
+}
+@media (max-width: 991px) {
+    .container-banner .div-2 {
+        max-width: 100%;
+    }
+}
+.container-banner .div-3 {
+    gap: 80px;
+    width: 100%;
+    display: flex;
+}
+@media (max-width: 991px) {
+    .container-banner .div-3 {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+}
+.div-3 .column {
+    display: flex;
+    flex-direction: column;
+    line-height: initial;
+    width: 100%;
+    margin: 2%;
+}
+@media (max-width: 991px) {
+    .container-banner .column {
+        margin: 2%;
+        left: 5%;
+        width: 100%;
+    }
+}
+.column .img {
+    object-fit: contain;
+    object-position: center;
+    width: 100%;
+    flex-grow: 1;
+    position: relative;
+    left: -20%;
+}
+@media (max-width: 1300px) {
+    .column .img {
+        width: 80%;
+        object-position: center;
+        margin-left: 4%;
+        left: 0;
+    }
+}
+.div-2 .column-2 {
+    display: flex;
+    padding: 20px;
+    width: 52%;
+
+}
+@media (max-width: 991px) {
+    .container-banner .column-2 {
+        width: 100%;
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+}
+.column-2 .div-4 {
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+    color: #2042ea;
+    margin: auto 0;
+}
+@media (max-width: 991px) {
+    .div-2 .div-4 {
+        padding: 8%;
+        margin-top: 40px;
+    }
+}
+.column-2 .div-5 {
+    width: 100%;
+    font: 700 28px Anek Tamil, sans-serif;
+}
+.column-2 .div-6 {
+    width: 100%;
+    margin-top: 20px;
+    font: 400 20px Anek Tamil, sans-serif;
+}
+.column-2 .div-7 {
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+    background-color: #2042ea;
+    align-self: end;
+    display: flex;
+    margin-top: 35px;
+    align-items: center;
+    gap: 20px;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+    justify-content: space-between;
+    padding: 12px 16px 12px 0;
+    height: 30px;
+}
+.column-2 .div-8 {
+    font-family: Anek Tamil, sans-serif;
+    margin-left: 30px;
+}
+.column-2 .img-2 {
+    aspect-ratio: 0.57;
+    object-position: center;
+    width: 8px;
+}
+
 .property-1-header-02 {
     background: #ffffff;
     padding: 21px 200px 21px 200px;
@@ -364,14 +492,31 @@ a {
 
 .advertisements {
     box-sizing: border-box;
-    background: #f5f5f5;
     border-radius: 30px;
     height: 28%;
     position: relative;
+    border: 2px #2042ea;
+    /*border-color: #2042ea;*/
 }
+.img-advertisements {
+    position: relative;
+    height: 700px;
+    margin-top: 60px;
+    width: auto;
+    object-fit: scale-down;
+}
+/*.advertisements-end {*/
+/*    box-sizing: border-box;*/
+/*    background: #f5f1eb;*/
+/*    border-radius: 30px;*/
+/*    height: 28%;*/
+/*    position: relative;*/
+/*}*/
 
 .header-search {
-    margin-top: 2%;
+    margin-top: 5%;
+    padding-top: 5px;
+    padding-right: 2%;
     height: 50pt;
     display: flex;
     flex-direction: row;
@@ -391,12 +536,13 @@ a {
     justify-content: flex-start;
 }
 .component-search {
-    width: 300pt;
+    width: 400pt;
     height: 60%;
-    position: absolute;
-    right: 0.2%;
-    bottom: 19.51%;
-    top: 19.51%;
+    position: relative;
+    /*left: 30%;*/
+    /*right: 0.2%;*/
+    /*bottom: 19.5s1%;*/
+    /*top: 19.51%;*/
     border: none;
 }
 
@@ -597,7 +743,7 @@ a {
 .input-email::-webkit-input-placeholder,
 .input-password::-webkit-input-placeholder,
 .input-password02::-webkit-input-placeholder,
-.input-search::-webkit-input-placeholder, .component-search::-webkit-input-placeholder{
+input.bar-search::-webkit-input-placeholder, .component-search::-webkit-input-placeholder{
     color: #2042ea;
     opacity: 50%;
 }
