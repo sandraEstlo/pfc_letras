@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (filterInput) {
         var filterValue = filterInput.value.trim();
-        filterValue = filterValue.replace(/^\[|\]$/g, '');
+        console.log('Filter value antes del remplace', filterValue)
+        filterValue = filterValue.replace(/^(\[+)|(\]+$)/g, '');
 
         console.log('Valor del atributo value:', filterValue);
 
@@ -14,8 +15,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 return item.trim();
             });
         }
-
         console.log('Valor del filtro después del parseo:', filter);
+        console.log('Valor del filtro después del parseo con flat:', filter.flat(Infinity));
 
         filter.forEach(function(name) {
             var checkbox = document.getElementById('subsubcategory' + name);
@@ -26,6 +27,10 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         console.error('No se encontró ningún elemento con ID "filter"');
     }
+
+    console.log(filter);
+    document.getElementById('filter').value = filter;
+    localStorage.setItem('filter', JSON.stringify(filter));
 });
 
 function updateChecked(checkbox) {

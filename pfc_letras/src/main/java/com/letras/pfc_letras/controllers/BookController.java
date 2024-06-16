@@ -30,9 +30,6 @@ public class BookController {
                         @RequestParam(value = "filter", required = false) List<String> filter,
                         HttpSession session) {
 
-        if(filter != null)
-            filter.remove("[]");
-
         model.addAttribute("categories", facade.getAllGroupCategories());
         model.addAttribute("filter", filter);
         model.addAttribute("books", (Strings.isEmpty(text) && (filter==null || filter.isEmpty()))
