@@ -5,9 +5,12 @@ import com.letras.pfc_letras.dtos.book.BookDto;
 import com.letras.pfc_letras.facades.Facade;
 import com.letras.pfc_letras.models.users.UserModel;
 import com.letras.pfc_letras.models.users.UserRoles;
+import com.letras.pfc_letras.services.books.BookService;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpSession;
 import org.apache.logging.log4j.util.Strings;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,14 +29,17 @@ public class BookController {
 
     @GetMapping("/")
     public String books(Model model,
+                        @PageableDefault(size = 2) Pageable pageable,
                         @RequestParam(value = "text", required = false) String text,
                         @RequestParam(value = "filter", required = false) List<String> filter,
                         HttpSession session) {
 
         model.addAttribute("categories", facade.getAllGroupCategories());
         model.addAttribute("filter", filter);
+        model.addAttribute("text", text);
+
         model.addAttribute("books", (Strings.isEmpty(text) && (filter==null || filter.isEmpty()))
-                                                         ? facade.findAllBooks(): facade.searchBookByKey(text, filter));
+                                                         ? facade.findAllBooks(pageable): facade.searchBookByKey(text, filter, pageable));
 
         UserModel userModel = (UserModel) session.getAttribute("usersession");
         if (userModel != null) {

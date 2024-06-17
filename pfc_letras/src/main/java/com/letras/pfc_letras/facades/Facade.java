@@ -11,6 +11,9 @@ import com.letras.pfc_letras.dtos.loan.ViewLoanDto;
 import com.letras.pfc_letras.dtos.user.CreateUserDto;
 import com.letras.pfc_letras.dtos.user.GetUserDto;
 import com.letras.pfc_letras.models.users.UserModel;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.parameters.P;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,11 +23,13 @@ public interface Facade {
 
     List<BookDto> findAllBooks();
 
+    Page<BookDto> findAllBooks(Pageable pageable);
+
     Optional<BookDetailsDto> findBookById(String idBook);
 
     List<BookDto> findByCategories(List<String> paths);
 
-    List<BookDto> searchBookByKey(String text, List<String> filter);
+    Page<BookDto> searchBookByKey(String text, List<String> filter, Pageable pageable);
 
     Optional<AuthorDetailsDto> findAuthorById(String idAuthor);
 
