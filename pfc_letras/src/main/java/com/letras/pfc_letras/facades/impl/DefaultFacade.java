@@ -35,6 +35,8 @@ import com.letras.pfc_letras.services.categories.CategoryService;
 import com.letras.pfc_letras.services.users.UserService;
 import com.letras.pfc_letras.services.loans.LoanService;
 import jakarta.annotation.Resource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -106,6 +108,12 @@ public class DefaultFacade implements Facade {
                           .stream()
                           .map(convertToBookDto::convert).collect(Collectors.toList());
     }
+
+    @Override
+    public Page<BookDto> findAllBooks(Pageable pageable) {
+        return bookService.findAllBooks(pageable).map(convertToBookDto::convert);
+    }
+
     @Override
     public Optional<BookDetailsDto> findBookById(String idBook) {
         return bookService.findById(idBook).map(convertToBookDetailsDto::convert);
@@ -118,10 +126,9 @@ public class DefaultFacade implements Facade {
                           .map(convertToBookDto::convert).collect(Collectors.toList());
     }
     @Override
-    public List<BookDto> searchBookByKey(String text, List<String> filter) {
-        return bookSearchService.KeywordsSearch(text, filter)
-                                .stream()
-                                .map(convertToBookDto::convert).collect(Collectors.toList());
+    public Page<BookDto> searchBookByKey(String text, List<String> filter, Pageable pageable) {
+        return bookSearchService.KeywordsSearch(text, filter, pageable)
+                                .map(convertToBookDto::convert);
     }
 
     @Override

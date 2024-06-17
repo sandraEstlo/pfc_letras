@@ -5,6 +5,8 @@ import com.letras.pfc_letras.repositories.BookRepository;
 import com.letras.pfc_letras.services.books.BookService;
 import jakarta.annotation.Resource;
 import lombok.NonNull;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,6 +22,11 @@ public class DefaultBookImpl implements BookService {
     @Override
     public List<BookModel> findAllBooks() {
         return bookRepository.findAll();
+    }
+
+    @Override
+    public Page<BookModel> findAllBooks(Pageable pageable) {
+        return bookRepository.findAll(pageable);
     }
 
     @Override

@@ -27,8 +27,8 @@ public class AdminBookController {
                         @RequestParam(value = "text", required = false) String text,
                         @RequestParam(value = "filter", required = false) List<String> filter,
                         HttpSession httpSession) {
-        List<BookDto> books = (Strings.isEmpty(text)) ? facade.findAllBooks()
-                                                      : facade.searchBookByKey(text, filter);
+//        List<BookDto> books = (Strings.isEmpty(text)) ? facade.findAllBooks()
+//                                                      : facade.searchBookByKey(text, filter);
         model.addAttribute("books", facade.findAllBooks());
         return "admin-books";
     }

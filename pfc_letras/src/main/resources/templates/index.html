@@ -93,6 +93,31 @@
                     </div>
                 </div>
             </main>
+            <footer class="footer">
+                <div class="pagination is-rounded"  aria-label="pagination">
+                    <ul class="pagination-list">
+                        <li th:class="${books.number == 0} ? disabled">
+                            <a th:href="@{/(page=${books.number - 1}, filter=${filter}, text=${text})}" class="pagination-link" aria-label="Goto page 1"> < </a>
+                        </li>
+                        <li th:if="${books.number != 0}">
+                            <a th:href="@{/(page=0, filter=${filter}, text=${text})}" class="pagination-link" aria-label="Goto page 1">1</a>
+                            <span class="pagination-ellipsis">&hellip; </span>
+                        </li>
+                        <li>
+                            <a href="#" class="pagination-link is-current" aria-label="Goto page 45" th:text="${books.number + 1}"></a>
+                            <span th:if="${books.number + 1 < books.totalPages}" class="pagination-ellipsis">&hellip; </span>
+                        </li>
+                        <li th:if="${books.number + 1 < books.totalPages}">
+                            <a th:href="@{/(page=${books.totalPages - 1}, filter=${filter}, text=${text})}" class="pagination-link" th:text="${books.totalPages}"></a>
+                        </li>
+                        <li th:class="${books.number + 1 >= books.totalPages} ? 'disabled'">
+                            <a th:if="${books.number + 1 < books.totalPages}" th:href="@{/(page=${books.number + 1}, filter=${filter}, text=${text})}" class="pagination-link"> > </a>
+                            <span th:if="${books.number + 1 >= books.totalPages}" class="pagination-link disabled"> > </span>
+                        </li>
+                    </ul>
+                </div>
+            </footer>
         </div>
+
     </body>
 </html>

@@ -9,12 +9,15 @@ import com.letras.pfc_letras.repositories.CategoryRepository;
 import com.letras.pfc_letras.services.books.BookSearchService;
 import com.letras.pfc_letras.services.books.BookService;
 import jakarta.annotation.Resource;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -44,6 +47,11 @@ public class ApiBookController {
         List<BookModel> listBooks = bookService.findAllBooks();
         return listBooks.isEmpty() ? ResponseEntity.noContent().build()
                                    : ResponseEntity.ok(listBooks);
+    }
+
+    @GetMapping("/all-page")
+    public ResponseEntity<?> getBooksByPage( @PageableDefault(size = 2) Pageable pageable) {
+        return ResponseEntity.ok(bookService.findAllBooks(pageable));
     }
 
     @GetMapping("/category")
