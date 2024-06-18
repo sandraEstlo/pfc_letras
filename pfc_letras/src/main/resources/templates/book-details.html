@@ -2,44 +2,60 @@
 <html lang="en">
     <head th:replace="~{fragments/head :: head}"></head>
     <body>
+
         <div class="book-details-001">
             <div th:if="${user == null}"><nav th:replace="~{fragments/component-nav01 :: nav}"></nav></div>
             <div th:if="${user != null}"><nav th:replace="~{fragments/component-nav-03 :: nav}"></nav></div>
-            <main>
-                <div class="box-container-book-details">
-                    <img class="image-book-details" th:src="@{${book.image}}" />
-                    <div class="container-details">
-                        <div class="book-details-category" th:text="@{${book.getCategory()}}"></div>
-                        <div class="book-details-title" th:text="@{${book.getTitle()}}"></div>
-                        <div class="book-details-author">
-                            <span th:each="author, iterStat : ${book.authorsDto}">
-                                <a th:href="@{/author/{id}(id=${author.id})}">
-                                    <span th:text="${author.name}"></span>
-                                </a>
-                                <span th:if="${not iterStat.last}">, </span>
-                            </span>
+            <div th:if="${user != null}" id="user-id" th:data-userId="${user.id}"></div>
+            <div id="liveAlertPlaceholder"></div>
+            <main class="box-container-book-details">
+                <div class="container-content-book-details">
+                    <div class="container-content-book-details-2">
+                        <div class="column-image-book-details">
+                            <img loading="lazy"  th:src="${book.image}" class="image-book-details"/>
                         </div>
-                        <div class="book-details-info">
-                            <div class="book-details-info-label">
-                                <span>
-                                    <span class="book-details-info-label-span">Código:</span>
-                                    <span class="book-details-info-label-span2"  th:text="@{${book.getLabel()}}"></span>
+                        <div class="column-content-description-book">
+                            <div class="content-description-book">
+                                <span class="content-btn-booking" th:if="${user != null}">
+                                    <div type="button" id="btn-loan-details" th:data-bookid = "${book.getId()}"
+                                         onclick="createLoan(this.getAttribute('data-bookid'))">
+                                        <div th:replace="~{fragments/element-icon-loan-details :: div}"></div>
+                                        <span id="loan-details">Reservar</span>
+                                    </div>
                                 </span>
-                            </div>
-                            <div class="book-details-info-isbn">
-                                <span>
-                                    <b><span class="book-details-info-isbn-span">ISBN:</span></b>
-                                    <span class="book-details-info-isbn-span2" th:text="@{${book.getIsbn()}}"></span>
-                                </span>
-                            </div>
-                            <div class="book-details-info-date">
-                                <span>
-                                    <span class="book-details-info-date-span">Fecha de publicación:</span>
-                                    <span class="book-details-info-date-span2" th:text="@{${#dates.format(book.getPublishDate(),'dd-MM-yyyy')}}"></span>
-                                 </span>
+                                <span class="book-details-category" th:text="@{${book.getCategory()}}"></span>
+                                <div class="book-details-title" th:text="@{${book.getTitle()}}"></div>
+                                <div class="book-details-author">
+                                    <span th:each="author, iterStat : ${book.authorsDto}">
+                                        <a th:href="@{/author/{id}(id=${author.id})}">
+                                            <span th:text="${author.name}"></span>
+                                        </a>
+                                        <span th:if="${not iterStat.last}">, </span>
+                                    </span>
+                                </div>
+                                <div class="book-details-info">
+                                    <div class="book-details-info-label">
+                                        <span>
+                                            <b><span class="book-details-info-label-span">Código:</span></b>
+                                            <span class="book-details-info-label-span2"  th:text="@{${book.getLabel()}}"></span>
+                                        </span>
+                                    </div>
+                                    <div class="book-details-info-isbn">
+                                        <span>
+                                            <b><span class="book-details-info-isbn-span">ISBN:</span></b>
+                                            <span class="book-details-info-isbn-span2" th:text="@{${book.getIsbn()}}"></span>
+                                        </span>
+                                    </div>
+                                    <div class="book-details-info-date">
+                                        <span>
+                                            <b><span class="book-details-info-date-span">Fecha de publicación:</span></b>
+                                            <span class="book-details-info-date-span2" th:text="@{${#dates.format(book.getPublishDate(),'dd-MM-yyyy')}}"></span>
+                                         </span>
+                                    </div>
+                                </div>
+                                <div class="book-details-description" th:text="@{${book.getDescription()}}"></div>
                             </div>
                         </div>
-                        <div class="book-details-description" th:text="@{${book.getDescription()}}"></div>
                     </div>
                 </div>
             </main>

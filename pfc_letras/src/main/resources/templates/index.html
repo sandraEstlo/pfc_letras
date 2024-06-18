@@ -72,23 +72,7 @@
                 <div class="scrollbar-1">
                     <div class="box-image" >
                         <div class="component-card" th:each="book: ${books}">
-                            <div class="rectangle-25">
-                                <div  type="button" th:if="${user != null}">
-                                    <div type="button" id="btn-loan" th:data-bookid = "@{${book.getId()}}" onclick="createLoan(this.getAttribute('data-bookid'))">
-                                        <div th:replace="~{fragments/element-icon-loan-false :: div}"></div>
-                                        <div id="loan">Reservar</div>
-                                    </div>
-                                </div>
-                                <a th:href="@{/book/{id}(id=${book.getId()})}">
-                                    <div class="image-container">
-                                        <img class="img-book" th:src="@{${book.getImage()}}" alt="image-@{${book.getTitle()}}"/>
-                                    </div>
-                                    <div class="frame-14"></div>
-                                    <div class="title" th:text="@{${book.getTitle()}}"></div>
-                                    <div class="author" th:text="@{${book.getAuthorsNames()}}"></div>
-                                    <div id="book-id" th:data-bookId="@{${book.getId()}}"></div>
-                                </a>
-                            </div>
+                            <div th:replace="(~{fragments/card-book :: card-book(book=${book}, user=${user})})"></div>
                         </div>
                     </div>
                 </div>
