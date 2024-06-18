@@ -29,7 +29,7 @@ public class BookController {
 
     @GetMapping("/")
     public String books(Model model,
-                        @PageableDefault(size = 2) Pageable pageable,
+                        @PageableDefault(size = 16) Pageable pageable,
                         @RequestParam(value = "text", required = false) String text,
                         @RequestParam(value = "filter", required = false) List<String> filter,
                         HttpSession session) {
