@@ -73,6 +73,8 @@ function createAlert(message, type) {
             $notification.parentNode.removeChild($notification);
         });
     });
+
+    setTimeout("location.reload()", 2000);
 }
 
 
@@ -91,28 +93,7 @@ function createLoan(bookId) {
         body: JSON.stringify(data)
     };
 
-    fetch("/letras/new", options)
-        .then(response => {
-            switch (response.status){
-                case 201:
-                    createAlert('La reserva se ha creado correctamente.','success')
-                    break;
-                case 403:
-                    return response.json().then(data => {
-                        createAlert(data.message, 'warning');
-                        throw new Error(data.message);
-                    });
-                default:
-                    createAlert('Ha ocurrido un error al intentar renovar el prestamo.','warning')
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Respuesta del servidor:', data);
-        })
-        .catch(error => {
-            console.error('Error en la solicitud:', error);
-        });
+    sendRequest("/letras/new", options)
 }
 
 function updateLoan(button) {
@@ -129,7 +110,11 @@ function updateLoan(button) {
         body: JSON.stringify(data)
     }
 
-    fetch("/letras/renovate", options)
+    sendRequest("/letras/renovate", options)
+}
+
+function sendRequest(route, options) {
+    fetch(route, options)
         .then(response => {
             switch (response.status){
                 case 200:
