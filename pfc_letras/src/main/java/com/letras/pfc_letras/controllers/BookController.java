@@ -2,6 +2,7 @@ package com.letras.pfc_letras.controllers;
 
 import com.letras.pfc_letras.dtos.author.AuthorDetailsDto;
 import com.letras.pfc_letras.dtos.book.BookDto;
+import com.letras.pfc_letras.errors.exceptions.User.UserNotFound;
 import com.letras.pfc_letras.facades.Facade;
 import com.letras.pfc_letras.models.users.UserModel;
 import com.letras.pfc_letras.models.users.UserRoles;
@@ -43,7 +44,7 @@ public class BookController {
 
         UserModel userModel = (UserModel) session.getAttribute("usersession");
         if (userModel != null) {
-            model.addAttribute("user", facade.getUserDto(userModel).get());
+            model.addAttribute("user", facade.getUserDto(userModel).orElseThrow(UserNotFound::new));
             return (userModel.getRoles().contains(UserRoles.USER)) ? "index" : "admin-books";
         }
 
@@ -56,7 +57,7 @@ public class BookController {
         UserModel userModel = (UserModel) session.getAttribute("usersession");
 
         if (userModel != null)
-            model.addAttribute("user", facade.getUserDto(userModel).get());
+            model.addAttribute("user", facade.getUserDto(userModel).orElseThrow(UserNotFound::new));
 
         return "book-details";
     }
@@ -68,8 +69,7 @@ public class BookController {
         UserModel userModel = (UserModel) session.getAttribute("usersession");
 
         if (userModel != null)
-            model.addAttribute("user", facade.getUserDto(userModel).get());
-
+            model.addAttribute("user", facade.getUserDto(userModel).orElseThrow(UserNotFound::new));
         return "author-details";
     }
 }
