@@ -118,7 +118,10 @@ function sendRequest(route, options) {
         .then(response => {
             switch (response.status){
                 case 200:
-                    createAlert('La reserva se ha actualizado correctamente.','success')
+                    createAlert('El prestamo se ha renovado correctamente.','success')
+                    break;
+                case 201:
+                    createAlert('La reserva se ha creado correctamente.','success')
                     break;
                 case 403:
                     return response.json().then(data => {
