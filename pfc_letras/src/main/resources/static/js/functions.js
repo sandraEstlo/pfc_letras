@@ -74,7 +74,7 @@ function createAlert(message, type) {
         });
     });
 
-    setTimeout("location.reload()", 2000);
+    //setTimeout("location.reload()", 2000);
 }
 
 
@@ -138,4 +138,5 @@ function sendRequest(route, options) {
         .catch(error => {
             console.error('Error en la solicitud:', error);
         });
+    setTimeout("location.reload()", 2000);
 }
