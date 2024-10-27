@@ -28,5 +28,6 @@ Gestión de su perfil y préstamos activos.
 **Base de Datos:** MongoDB en la nube a través de MongoDB Atlas.
 **Gestión de dependencias:** Maven para la gestión y configuración de bibliotecas.
 
+## Desarrollo de la aplicación
 ![general](https://github.com/sandraEstlo/pfc_letras/blob/main/images/01.png)
 
