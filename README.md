@@ -12,21 +12,21 @@ Este proyecto consiste en el desarrollo de una aplicación web para la gestión 
 
 ## Funcionalidades Principales
 ### Usuarios Anónimos
-Visualización del catálogo de libros.
-Búsqueda y filtrado de libros por categorías.
-Acceso a los detalles de los libros y autores.
-Registro y autenticación de usuarios.
+- Visualización del catálogo de libros.
+- Búsqueda y filtrado de libros por categorías.
+- Acceso a los detalles de los libros y autores.
+- Registro y autenticación de usuarios.
 
 ### Usuarios Autenticados
-Realización de reservas y renovaciones de préstamos.
-Consulta de disponibilidad en tiempo real.
-Gestión de su perfil y préstamos activos.
+- Realización de reservas y renovaciones de préstamos.
+- Consulta de disponibilidad en tiempo real.
+- Gestión de su perfil y préstamos activos.
 
 ## Tecnologías Utilizadas
-**Backend:** Java con Spring Boot, Spring Data, Spring MVC y Spring Security.
-**Frontend:** Thymeleaf, HTML, CSS y Bulma para el diseño responsivo.
-**Base de Datos:** MongoDB en la nube a través de MongoDB Atlas.
-**Gestión de dependencias:** Maven para la gestión y configuración de bibliotecas.
+- **Backend:** Java con Spring Boot, Spring Data, Spring MVC y Spring Security.
+- **Frontend:** Thymeleaf, HTML, CSS y Bulma para el diseño responsivo.
+- **Base de Datos:** MongoDB en la nube a través de MongoDB Atlas.
+- **Gestión de dependencias:** Maven para la gestión y configuración de bibliotecas.
 
 ## Desarrollo de la aplicación
 ![general](https://github.com/sandraEstlo/pfc_letras/blob/main/images/01.png)
