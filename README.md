@@ -1,6 +1,6 @@
 ![imagen proyecto](https://github.com/sandraEstlo/pfc_letras/blob/main/images/banner.png)
 
-# Aplicación web de una Biblioteca
+# Aplicación web
 Este proyecto consiste en el desarrollo de una aplicación web para la gestión de una biblioteca, donde los usuarios pueden buscar libros, realizar reservas, y renovar préstamos. La aplicación está desarrollada en Java usando Spring Boot para el backend, Thymeleaf para el frontend y MongoDb para la base de datos.
 
 ### Objetivos del Proyecto
