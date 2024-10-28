@@ -15,9 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.security.core.AuthenticationException;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 @Controller
 public class UserController {
 
@@ -52,12 +49,3 @@ public class UserController {
         return "redirect:/login";
     }
 }
-
-//                          List<String> errors = bindingResult.getFieldErrors()
-//                                               .stream()
-//                                               .map(error -> error.getField() + "," + error.getDefaultMessage())
-//                                               .collect(Collectors.toList());
-//
-//            model.addAttribute("errors", errors);
-//            model.addAttribute("result", bindingResult);
-//            model.addAttribute("createUserDto", createUserDto);

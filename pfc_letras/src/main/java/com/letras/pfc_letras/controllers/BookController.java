@@ -2,18 +2,23 @@ package com.letras.pfc_letras.controllers;
 
 import com.letras.pfc_letras.dtos.author.AuthorDetailsDto;
 import com.letras.pfc_letras.dtos.book.BookDto;
+import com.letras.pfc_letras.errors.exceptions.User.UserNotFound;
 import com.letras.pfc_letras.facades.Facade;
-import com.letras.pfc_letras.models.UsersModels.UserModel;
+import com.letras.pfc_letras.models.users.UserModel;
+import com.letras.pfc_letras.models.users.UserRoles;
+import com.letras.pfc_letras.services.books.BookService;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpSession;
 import org.apache.logging.log4j.util.Strings;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,18 +30,24 @@ public class BookController {
 
     @GetMapping("/")
     public String books(Model model,
+                        @PageableDefault(size = 16) Pageable pageable,
                         @RequestParam(value = "text", required = false) String text,
+                        @RequestParam(value = "filter", required = false) List<String> filter,
                         HttpSession session) {
 
-        List<BookDto> books = (Strings.isEmpty(text)) ? facade.findAllBooks()
-                : facade.searchBookByKey(text);
+        model.addAttribute("categories", facade.getAllGroupCategories());
+        model.addAttribute("filter", filter);
+        model.addAttribute("text", text);
 
-        model.addAttribute("books", books);
+        model.addAttribute("books", (Strings.isEmpty(text) && (filter==null || filter.isEmpty()))
+                                                         ? facade.findAllBooks(pageable): facade.searchBookByKey(text, filter, pageable));
 
         UserModel userModel = (UserModel) session.getAttribute("usersession");
         if (userModel != null) {
-            model.addAttribute("user", facade.getUserDto(userModel).get());
+            model.addAttribute("user", facade.getUserDto(userModel).orElseThrow(UserNotFound::new));
+            return (userModel.getRoles().contains(UserRoles.USER)) ? "index" : "admin-books";
         }
+
         return "index";
     }
 
@@ -44,9 +55,10 @@ public class BookController {
     public String getBookDetails(Model model, @PathVariable String id, HttpSession session) {
         model.addAttribute("book", facade.findBookById(id).orElse(null));
         UserModel userModel = (UserModel) session.getAttribute("usersession");
-        if (userModel != null) {
-            model.addAttribute("user", facade.getUserDto(userModel).get());
-        }
+
+        if (userModel != null)
+            model.addAttribute("user", facade.getUserDto(userModel).orElseThrow(UserNotFound::new));
+
         return "book-details";
     }
 
@@ -56,9 +68,8 @@ public class BookController {
         authorDetailsDto.ifPresent(author -> model.addAttribute("author", author));
         UserModel userModel = (UserModel) session.getAttribute("usersession");
 
-        if (userModel != null) {
-            model.addAttribute("user", facade.getUserDto(userModel).get());
-        }
+        if (userModel != null)
+            model.addAttribute("user", facade.getUserDto(userModel).orElseThrow(UserNotFound::new));
         return "author-details";
     }
 }

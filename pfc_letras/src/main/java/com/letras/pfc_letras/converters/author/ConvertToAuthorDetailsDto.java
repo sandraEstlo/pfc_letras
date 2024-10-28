@@ -4,7 +4,7 @@ import com.letras.pfc_letras.dtos.author.AuthorDetailsDto;
 import com.letras.pfc_letras.dtos.book.BookDto;
 import com.letras.pfc_letras.models.AuthorModel;
 import com.letras.pfc_letras.models.BookModel;
-import com.letras.pfc_letras.services.BookService;
+import com.letras.pfc_letras.services.books.BookService;
 import jakarta.annotation.Resource;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;

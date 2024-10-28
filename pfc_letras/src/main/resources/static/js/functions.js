@@ -1,12 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const button = document.getElementById("dropdown-button");
-    const dropdownMenu = document.getElementById('dropdown-menu3')
-
-    button.onclick = () => {
-       var _= dropdownMenu.style.visibility === "visible" ? dropdownMenu.style.visibility = "hidden"
-                                                                 : dropdownMenu.style.visibility = "visible";
-    }
-});
 
 document.addEventListener('DOMContentLoaded', (event) => {
     const currentUrl = window.location.pathname;
@@ -21,14 +12,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
                                break;
         }
     }
-
-    // Add event listener for notification delete buttons
-    (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
-        const $notification = $delete.parentNode;
-        $delete.addEventListener('click', () => {
-            $notification.parentNode.removeChild($notification);
-        });
-    });
 });
 
 
@@ -40,6 +23,12 @@ function createAlert(message, type) {
         const wrapper = document.createElement('div');
         wrapper.className = `notification is-${type} is-light`;
         wrapper.setAttribute('role', 'alert');
+        wrapper.style.position = 'fixed';
+        wrapper.style.right = '10px';
+        wrapper.style.padding = '10px';
+        wrapper.style.width = 'auto';
+        wrapper.style.height = 'auto';
+        wrapper.style.zIndex = '999';
 
         const icon = document.createElement('span');
         icon.className = 'mdi';
@@ -49,14 +38,20 @@ function createAlert(message, type) {
                 icon.classList.add('mdi-alert');
                 icon.style.color = color;
                 break;
+            case 'success':
+                color = '#95B26D';
+                icon.classList.add('mdi-check-circle');
+                icon.style.color = color;
+                break;
             default:
-                icon.className = '';
+
         }
 
         const messageDiv = document.createElement('div');
         messageDiv.appendChild(icon);
         messageDiv.appendChild(document.createTextNode(` ${message}`));
         messageDiv.style.color = color;
+        messageDiv.style.margin = '10px 40px 10px 10px'
         wrapper.appendChild(messageDiv);
 
         const closeButton = document.createElement('button');
@@ -71,11 +66,77 @@ function createAlert(message, type) {
     };
 
     appendAlert(message, type);
+
+    (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+        const $notification = $delete.parentNode;
+        $delete.addEventListener('click', () => {
+            $notification.parentNode.removeChild($notification);
+        });
+    });
+
+    //setTimeout("location.reload()", 2000);
 }
 
 
-function createLoan() {
-    const bookId = document.getElementById('book-id').getAttribute('data-bookId');
-    const userId = document.getElementById('user-id').getAttribute('data-userId');
-    alert('book id: '+ bookId + ' || user name: ' + userId);
+function createLoan(bookId) {
+    const data = {
+        userId: document.getElementById('user-id').getAttribute('data-userId'),
+        bookIds: [bookId],
+        operation: 'RESERVAR'
+    };
+
+    const options = {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    };
+
+    sendRequest("/letras/new", options)
+}
+
+function updateLoan(button) {
+    const data = {
+        loanId: button.getAttribute('data-loan-id'),
+        userId: button.getAttribute('data-user-id'),
+        bookIds: [button.getAttribute('data-book-id')],
+        operation: 'RENOVAR'
+    };
+
+    const options = {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    }
+
+    sendRequest("/letras/renovate", options)
+}
+
+function sendRequest(route, options) {
+    fetch(route, options)
+        .then(response => {
+            switch (response.status){
+                case 200:
+                    createAlert('El prestamo se ha renovado correctamente.','success')
+                    break;
+                case 201:
+                    createAlert('La reserva se ha creado correctamente.','success')
+                    break;
+                case 403:
+                    return response.json().then(data => {
+                        createAlert(data.message, 'warning');
+                        throw new Error(data.message);
+                    });
+                default:
+                    createAlert('Ha ocurrido un error inesperado.','warning')
+            }
+        })
+        .then(data => {
+            console.log('Respuesta del servidor:', data);
+        })
+        .catch(error => {
+            console.error('Error en la solicitud:', error);
+        });
+    setTimeout("location.reload()", 2000);
 }

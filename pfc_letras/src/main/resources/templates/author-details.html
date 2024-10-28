@@ -4,7 +4,9 @@
     <body>
         <div class="author-details-001">
             <div th:if="${user == null}"><nav th:replace="~{fragments/component-nav01 :: nav}"></nav></div>
-            <div th:if="${user != null}"><nav th:replace="~{fragments/component-nav02 :: nav}"></nav></div>
+            <div th:if="${user != null}"><nav th:replace="~{fragments/component-nav-03 :: nav}"></nav></div>
+            <div th:if="${user != null}" id="user-id" th:data-userId="${user.id}"></div>
+            <div id="liveAlertPlaceholder"></div>
             <div class="group-1">
                 <img class="imagotipo2" th:src="${author.getImage()}"  alt=""/>
                 <div class="frame-8">
@@ -17,14 +19,8 @@
             <div class="subtitle">Bibliografía</div>
             <div class="box-cards">
                 <div class="frame-1">
-                    <div class="element-card" th:each="book: ${author.getBooksDto()}">
-                        <div class="rectangle-card-content"></div>
-                        <div class="container-image">
-                            <img class="imagotipo3" th:src="@{${book.getImage()}}" />
-                        </div>
-                        <div class="frame-bok"></div>
-                        <div class="card-author" th:text="@{${book.getTitle()}}"></div>
-                        <div class="author-details-book" th:text="@{${book.getAuthorsNames()}}"></div>
+                    <div class="component-card" th:each="book: ${author.getBooksDto()}">
+                        <div th:replace="(~{fragments/card-book :: card-book(book=${book}, user=${user})})"></div>
                     </div>
                 </div>
             </div>

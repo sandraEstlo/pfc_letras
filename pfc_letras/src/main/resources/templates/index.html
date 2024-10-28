@@ -1,18 +1,40 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="~{fragments/head :: head}"></head>
-<style>
-</style>
+<script src="/js/tree-functions.js"></script>
     <body>
         <div class="home-001">
             <div th:if="${user == null}"><nav th:replace="~{fragments/component-nav01 :: nav}"></nav></div>
-            <div th:if="${user != null}"><nav th:replace="~{fragments/component-nav02 :: nav}"></nav></div>
+            <div th:if="${user != null}"><nav th:replace="~{fragments/component-nav-03 :: nav}"></nav></div>
             <div th:if="${user != null}" id="user-id" th:data-userId="${user.id}"></div>
+            <div id="liveAlertPlaceholder"></div>
             <main class="main">
-                <div class="advertisements"></div>
+                <div class="container-banner">
+                    <div class="div-2">
+                        <div class="div-3">
+                            <div class="column">
+                                <img src="https://raw.githubusercontent.com/sanesloEduca/imagenes/main/verano-cuadrada.png" class="img"/>
+                            </div>
+                            <div class="column-2">
+                                <div class="div-4">
+                                    <div class="div-5">Recomendaciones destacadas para este Verano</div>
+                                    <div class="div-6">
+                                        Para que comiences tu aventura literaria, aquí te dejamos algunas de
+                                        nuestras recomendaciones destacadas para este verano
+                                    </div>
+                                    <div class="div-7">
+                                        <div class="div-8">Ir al articulo</div>
+                                        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5f0cb4c9b3a760771b5cc84f5f14a3da111bf768fb7abaeab1f11fc061e8d4eb?"  class="img-2"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="header-search">
-                    <p class="title-catalog">Catalogo</p>
+                    <p class="title-catalog">Catálogo</p>
                     <form action="/" method="get" class="component-search">
+                        <input type="hidden" id="filter" name="filter" th:value="${filter}"/>
                         <input name="text" class="bar-search">
                             <button type="submit" class="btn-search">
                                 <svg class = elements-icons width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -22,26 +44,64 @@
                         </input>
                     </form>
                 </div>
+                <aside class="category-tree-container">
+                    <div class="category-tree">
+                        <ul class="tree">
+                            <li id="category" th:each="category : ${categories}">
+                                <label  th:for="'category' + ${category.name}" th:text="${category.name}"></label>
+                                <ul class="subtree" th:if="${category.subcategories != null and category.subcategories.size() > 0}">
+                                    <li th:each="subcategory : ${category.subcategories}">
+                                        <input type="checkbox" th:id="'subcategory' + ${subcategory.name}"
+                                               th:checked="${filter != null and filter.contains(subcategory.name)}"
+                                               onchange="updateChecked(this)"/>
+                                        <label th:for="'subcategory' + ${subcategory.id}" th:text="${subcategory.name}"></label>
+                                        <ul class="subsubtree" th:if="${subcategory.subcategories != null and subcategory.subcategories.size() > 0}">
+                                            <li th:each="subsubcategory : ${subcategory.subcategories}">
+                                                <input type="checkbox" th:id="'subsubcategory' + ${subsubcategory.name}"
+                                                       th:checked="${filter != null and filter.contains(subsubcategory.name)}"
+                                                       onchange="updateChecked(this)" th:class="${subsubcategory.classGroup}"/>
+                                                <label th:for="'subsubcategory' + ${subsubcategory.id}" th:text="${subsubcategory.name}"></label>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </aside>
                 <div class="scrollbar-1">
                     <div class="box-image" >
                         <div class="component-card" th:each="book: ${books}">
-                                <div id="book-id" th:data-bookId="@{${book.getId()}}"></div>
-                                <div class="rectangle-25" ></div>
-                                <div  type="button" th:if="${user != null}">
-                                    <div th:replace="~{fragments/component-button-loan :: div}"></div>
-                                </div>
-                                <div class="image-container">
-                                    <img class="img-book" th:src="@{${book.getImage()}}" alt="image-@{${book.getTitle()}}"/>
-                                </div>
-                                <div class="frame-14"></div>
-                                <a th:href="@{/book/{id}(id=${book.getId()})}">
-                                    <div class="title" th:text="@{${book.getTitle()}}"></div>
-                                </a>
-                                <div class="author" th:text="@{${book.getAuthorsNames()}}"></div>
+                            <div th:replace="(~{fragments/card-book :: card-book(book=${book}, user=${user})})"></div>
                         </div>
                     </div>
                 </div>
             </main>
+            <footer class="footer">
+                <div class="pagination is-rounded"  aria-label="pagination">
+                    <ul class="pagination-list">
+                        <li th:class="${books.number == 0} ? disabled">
+                            <a th:href="@{/(page=${books.number - 1}, filter=${filter}, text=${text})}" class="pagination-link" aria-label="Goto page 1"> < </a>
+                        </li>
+                        <li th:if="${books.number != 0}">
+                            <a th:href="@{/(page=0, filter=${filter}, text=${text})}" class="pagination-link" aria-label="Goto page 1">1</a>
+                            <span class="pagination-ellipsis">&hellip; </span>
+                        </li>
+                        <li>
+                            <a href="#" class="pagination-link is-current" aria-label="Goto page 45" th:text="${books.number + 1}"></a>
+                            <span th:if="${books.number + 1 < books.totalPages}" class="pagination-ellipsis">&hellip; </span>
+                        </li>
+                        <li th:if="${books.number + 1 < books.totalPages}">
+                            <a th:href="@{/(page=${books.totalPages - 1}, filter=${filter}, text=${text})}" class="pagination-link" th:text="${books.totalPages}"></a>
+                        </li>
+                        <li th:class="${books.number + 1 >= books.totalPages} ? 'disabled'">
+                            <a th:if="${books.number + 1 < books.totalPages}" th:href="@{/(page=${books.number + 1}, filter=${filter}, text=${text})}" class="pagination-link"> > </a>
+                            <span th:if="${books.number + 1 >= books.totalPages}" class="pagination-link disabled"> > </span>
+                        </li>
+                    </ul>
+                </div>
+            </footer>
         </div>
+
     </body>
 </html>

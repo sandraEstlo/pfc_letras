@@ -1,0 +1,19 @@
+<div class="rectangle-25" th:fragment="card-book(book, user)">
+    <div type="button" th:if="${user != null}">
+        <div type="button" id="btn-loan" th:data-bookid = "@{${book.getId()}}"
+             onclick="createLoan(this.getAttribute('data-bookid'))">
+            <div th:replace="~{fragments/element-icon-loan-false :: div}"></div>
+            <div id="loan">Reservar</div>
+        </div>
+    </div>
+    <a th:href="@{/book/{id}(id=${book.getId()})}">
+        <div class="image-container">
+            <img class="img-book" th:src="@{${book.getImage()}}" alt="image-@{${book.getTitle()}}"/>
+        </div>
+        <div class="frame-14">
+            <div class="title" th:text="@{${book.getTitle()}}"></div>
+            <div class="author" th:text="@{${book.getAuthorsNames()}}"></div>
+        </div>
+        <div id="book-id" th:data-bookId="@{${book.getId()}}"></div>
+    </a>
+</div>
