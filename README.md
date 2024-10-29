@@ -25,7 +25,7 @@ Este proyecto consiste en el desarrollo de una **aplicación web para la gestió
 ![Maven](https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white)
 
 > #### 💡 Proyecto Anterior
-> Este proyecto es la continuación de una aplicación de escritoria para un usuario administrador, realizado durante el segundo trimestre del módulo de **Desarrollo de Interfaces** en el **Grado Superior de Aplicaciones Multiplataforma**.
+> Este proyecto esta basado en una aplicación de escritorio (C#), realizado durante el segundo trimestre del módulo de **Desarrollo de Interfaces** en el **Grado Superior de Aplicaciones Multiplataforma**.
 > 
 > 📂 Puedes ver el repositorio del proyecto anterior aquí: [Repositorio Proyecto Anterior](https://github.com/sandraEstlo/gestion_biblioteca_admin)
 
