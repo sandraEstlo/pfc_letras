@@ -1,32 +1,28 @@
 ![imagen proyecto](https://github.com/sandraEstlo/pfc_letras/blob/main/images/banner.png)
 
-# Aplicación web
-Este proyecto consiste en el desarrollo de una aplicación web para la gestión de una biblioteca, donde los usuarios pueden buscar libros, realizar reservas, y renovar préstamos. La aplicación está desarrollada en Java usando Spring Boot para el backend, Thymeleaf para el frontend y MongoDb para la base de datos.
+# 📚 Aplicación Web de Biblioteca
 
-### Objetivos del Proyecto
-1. Facilitar la gestión de una biblioteca digital mediante un sistema web.
-2. Permitir a los usuarios realizar búsquedas en el catálogo de libros.
-3. Habilitar funciones de reserva y renovación de préstamos de manera eficiente.
-4. Aplicar medidas de seguridad básicas con Spring Security.
-5. Mantener una arquitectura clara y escalable, utilizando el patrón MVC.
+Este proyecto consiste en el desarrollo de una **aplicación web para la gestión de una biblioteca**. Los usuarios pueden buscar libros, realizar reservas y renovar préstamos. La aplicación está desarrollada en **Java** usando **Spring Boot** para el backend, **Thymeleaf** para el frontend y **MongoDB** para la base de datos.
 
-## Funcionalidades Principales
-### Usuarios Anónimos
-- Visualización del catálogo de libros.
-- Búsqueda y filtrado de libros por categorías.
-- Acceso a los detalles de los libros y autores.
-- Registro y autenticación de usuarios.
-
-### Usuarios Autenticados
-- Realización de reservas y renovaciones de préstamos.
-- Consulta de disponibilidad en tiempo real.
-- Gestión de su perfil y préstamos activos.
+## 🎯 Objetivos del Proyecto
+1. 📖 Facilitar la gestión de una biblioteca digital mediante un sistema web.
+2. 🔍 Permitir a los usuarios realizar búsquedas en el catálogo de libros.
+3. 🗓️ Habilitar funciones de reserva y renovación de préstamos de manera eficiente.
+4. 🔐 Aplicar medidas de seguridad básicas con **Spring Security**.
+5. 🛠️ Mantener una arquitectura clara y escalable utilizando el patrón **MVC**.
 
 ## Tecnologías Utilizadas
-- **Backend:** Java con Spring Boot, Spring Data, Spring MVC y Spring Security.
-- **Frontend:** Thymeleaf, HTML, CSS y Bulma para el diseño responsivo.
-- **Base de Datos:** MongoDB en la nube a través de MongoDB Atlas.
-- **Gestión de dependencias:** Maven para la gestión y configuración de bibliotecas.
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white) 
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white) 
+![Spring Data](https://img.shields.io/badge/Spring%20Data-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
+![Spring MVC](https://img.shields.io/badge/Spring%20MVC-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
+![Spring Security](https://img.shields.io/badge/Spring%20Security-6DB33F?style=for-the-badge&logo=spring-security&logoColor=white)
+![Thymeleaf](https://img.shields.io/badge/Thymeleaf-005F0F?style=for-the-badge&logo=thymeleaf&logoColor=white)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![Bulma](https://img.shields.io/badge/Bulma-00D1B2?style=for-the-badge&logo=bulma&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+![Maven](https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white)
 
 ## Desarrollo de la aplicación
 
