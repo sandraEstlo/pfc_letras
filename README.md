@@ -29,5 +29,18 @@ Este proyecto consiste en el desarrollo de una aplicación web para la gestión 
 - **Gestión de dependencias:** Maven para la gestión y configuración de bibliotecas.
 
 ## Desarrollo de la aplicación
-![general](https://github.com/sandraEstlo/pfc_letras/blob/main/images/01.png)
+
+### Interfaz del usuario
+#### Usuario anónimo
+<p align="center">
+  <img src="https://github.com/sandraEstlo/pfc_letras/blob/main/images/01.png" alt="general">
+</p>
+<p align="center">
+  <img src="https://github.com/sandraEstlo/pfc_letras/blob/main/images/login.png" alt="Login">
+</p>
+<p align="center">
+  <img src="https://github.com/sandraEstlo/pfc_letras/blob/main/images/Registro.png" alt="Registro">
+</p>
+
+
 
