@@ -24,6 +24,11 @@ Este proyecto consiste en el desarrollo de una **aplicación web para la gestió
 ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
 ![Maven](https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white)
 
+> #### 💡 Proyecto Anterior
+> Este proyecto es la continuación de una aplicación de escritoria para un usuario administrador, realizado durante el segundo trimestre del módulo de **Desarrollo de Interfaces** en el **Grado Superior de Aplicaciones Multiplataforma**.
+> 
+> 📂 Puedes ver el repositorio del proyecto anterior aquí: [Repositorio Proyecto Anterior](https://github.com/sandraEstlo/gestion_biblioteca_admin)
+
 ## Desarrollo de la aplicación
 
 ### Interfaz del usuario
