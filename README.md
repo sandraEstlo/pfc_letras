@@ -47,6 +47,10 @@ Este proyecto consiste en el desarrollo de una aplicación web para la gestión 
 <p align="center">
   <img src="https://github.com/sandraEstlo/pfc_letras/blob/main/images/detalle.png" alt="Registro">
 </p>
+<p align="center">
+  <img src="https://github.com/sandraEstlo/pfc_letras/blob/main/images/paginacion.png" alt="Registro">
+</p>
+
 
 #### Usuario autentificado
 Una vez se inicia sesión, si el usuario dispone del Rol de ‘Usuario’, se le redirigirá a la página principal con ciertos cambios en los componentes, permitiendo además las opciones de búsqueda y filtrado permitidas a los usuarios anónimos, tramitar reservas o renovar préstamos.
